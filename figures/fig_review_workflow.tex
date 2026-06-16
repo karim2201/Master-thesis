@@ -1,0 +1,18 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.1cm]
+\tikzstyle{stepbox}=[rounded corners=6pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=4.3cm, minimum height=1.0cm, align=center]
+\tikzstyle{reject}=[rounded corners=6pt, draw=DTOrange, thick, fill=DTLightOrange, minimum width=3.4cm, minimum height=0.9cm, align=center]
+
+\node[stepbox] (id) {Identification\\Records found: \textbf{N = [ ]}};
+\node[stepbox, below=of id] (screen) {Screening\\After duplicates: \textbf{N = [ ]}};
+\node[stepbox, below=of screen] (elig) {Eligibility\\Full-text assessed: \textbf{N = [ ]}};
+\node[stepbox, below=of elig] (incl) {Included\\Selected studies: \textbf{N = [ ]}};
+
+\node[reject, right=2.4cm of screen] (ex1) {Excluded by title / abstract\\N = [ ]};
+\node[reject, right=2.4cm of elig] (ex2) {Excluded after full text\\N = [ ]};
+
+\draw[->, thick] (id) -- (screen);
+\draw[->, thick] (screen) -- (elig);
+\draw[->, thick] (elig) -- (incl);
+\draw[->, thick, DTOrange] (screen) -- (ex1);
+\draw[->, thick, DTOrange] (elig) -- (ex2);
+\end{tikzpicture}

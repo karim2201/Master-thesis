@@ -1,0 +1,137 @@
+\chapter{Digital Twin in Healthcare and eHealth}
+
+\section{Digital Twin for Health}
+A Digital Twin for Health is a virtual representation used to support healthcare-related monitoring, simulation, prediction, and decision-making. Depending on its scope, it may represent a patient, an organ, a disease process, a medical device, a clinical workflow, a hospital unit, or a public health system. Unlike a simple dashboard, a Digital Twin aims to maintain a dynamic relationship between real-world data and virtual models.
+
+Recent healthcare literature emphasizes that a health Digital Twin should not be reduced to a static model or a conventional artificial intelligence classifier. It should include a physical entity, a virtual counterpart, and a connection between both, while remaining individualized, interconnected, interactive, informative, and impactful~\cite{katsoulakis2024digital}. This definition is important because healthcare applications often use the term Digital Twin for systems that are closer to simulation models, digital shadows, or clinical dashboards. In this thesis, the term is used in a strict but practical sense: an eHealth Digital Twin is a connected virtual representation that can be updated by health data and can provide services such as monitoring, prediction, simulation, and decision support.
+
+\section{Types of Healthcare Digital Twins}
+Healthcare Digital Twins can be classified into several categories:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Patient-specific Digital Twins:} virtual representations of individual patients using multimodal data.
+    \item \textbf{Organ or body-system Digital Twins:} models focusing on a specific organ or physiological system.
+    \item \textbf{Disease Digital Twins:} models representing disease progression, risk factors, or treatment response.
+    \item \textbf{Medical device Digital Twins:} virtual representations of devices used for design, monitoring, or safety assessment.
+    \item \textbf{Hospital and process Digital Twins:} models of workflows, resources, patient flow, logistics, and healthcare units.
+    \item \textbf{Public health Digital Twins:} models used for population-level monitoring, planning, prevention, and crisis management.
+\end{itemize}
+
+This taxonomy is consistent with the diversity of healthcare Digital Twin applications reported in the literature. Human Digital Twins may represent the entire human body, a body system, a body organ, a body function, or a disease state, while hospital Digital Twins can represent healthcare processes and resources~\cite{debenedictis2023digital}. Figure~\ref{fig:healthcare_dt_taxonomy} summarizes these categories.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.95\textwidth}{!}{\input{figures/fig_healthcare_dt_taxonomy}}
+    \caption{General taxonomy of Digital Twin applications in healthcare and eHealth.}
+    \label{fig:healthcare_dt_taxonomy}
+\end{figure}
+
+\section{Main Application Domains in Healthcare}
+Digital Twin applications in healthcare can be organized around several major use cases. Figure~\ref{fig:healthcare_applications} presents a general map of these application areas.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.92\textwidth}{!}{\input{figures/fig_healthcare_applications}}
+    \caption{Main application domains of Digital Twins in healthcare.}
+    \label{fig:healthcare_applications}
+\end{figure}
+
+\subsection{Personalized and Precision Medicine}
+Personalized medicine is one of the most important motivations for Digital Twins in healthcare. Instead of using only average population models, a patient-specific twin can integrate information about the patient profile, medical history, biological measurements, lifestyle, and response to previous interventions. This makes it possible to support individualized risk assessment, treatment selection, and follow-up.
+
+In this context, hybrid approaches are particularly important because healthcare decisions often require both data-driven prediction and physiological interpretation. Sharma and Kaur proposed a patient-specific framework that combines mechanistic physiological modeling with deep learning, using heterogeneous clinical data such as EHRs, ECG, imaging, and wearable sensor streams~\cite{sharma2025patient}. Such approaches are relevant because purely statistical models can be accurate but difficult to interpret, while purely mechanistic models can be interpretable but hard to personalize at scale.
+
+\subsection{Remote Monitoring and Chronic Disease Management}
+Digital Twins can support remote monitoring by continuously or periodically updating a virtual representation from home sensors, wearable devices, mobile applications, and telemedicine platforms. This is relevant for chronic disease management, elderly care, rehabilitation, hospital-at-home programs, and long-term follow-up. A twin can help identify trends, detect anomalies, estimate deterioration risk, and generate alerts for healthcare professionals.
+
+This use case is not limited to one disease. It can be adapted to diabetes, respiratory diseases, cardiovascular diseases, neurological monitoring, mental health, rehabilitation, or frailty monitoring. The main requirement is the availability of reliable longitudinal data and clinically meaningful models.
+
+\subsection{Hospital Workflow and Resource Optimization}
+Healthcare Digital Twins can also represent hospitals, departments, or services. In this case, the objective is not only patient physiology but also operational performance. The twin may simulate patient flow, waiting times, bed allocation, staffing, equipment availability, queue management, and emergency department pressure. Noeikham et al. propose a healthcare-unit architecture and show how a Digital Twin can be used for monitoring service systems, predictive analytics, and process optimization in a chemotherapy unit~\cite{noeikham2024architecture}.
+
+This operational perspective is important because eHealth is not only about individual monitoring. It also includes the digital transformation of care delivery. Hospital Digital Twins can support administrators and clinicians in testing organizational decisions before applying them to real services, which can reduce risk and improve resource allocation.
+
+\subsection{Surgical Planning and Clinical Training}
+Digital Twins may support surgical planning by creating patient-specific anatomical or functional models from imaging and clinical data. These models can help clinicians understand anatomy, test strategies, plan interventions, and train on realistic virtual representations. In surgical contexts, the twin is often closer to an organ-specific or anatomical model, but it can become more dynamic when connected to intraoperative data or postoperative follow-up.
+
+\subsection{Medical Device Design and Safety}
+Digital Twins are also used in the development, testing, and monitoring of medical devices. A device Digital Twin may represent the behavior of a device under different physiological conditions, support performance testing, or predict possible failure. In healthcare, this is particularly relevant for implantable devices, prostheses, pacemakers, imaging systems, monitoring devices, and wearable sensors.
+
+\subsection{Drug Discovery, Dosing, and Treatment Simulation}
+Another important application is the simulation of pharmacological effects and treatment strategies. Digital Twins can be used to test potential drug responses, optimize dosage, and compare virtual treatment scenarios before making a clinical decision. In practice, this requires reliable biological models, high-quality patient data, and careful clinical validation. The ethical implications are also important because simulated treatment recommendations may influence real patient care.
+
+\subsection{In Silico Clinical Trials and Virtual Cohorts}
+Digital Twins can contribute to \textit{in silico} clinical trials by creating virtual patient populations or virtual cohorts. These approaches can be used to test hypotheses, reduce risk, support trial design, and explore treatment effects before or alongside conventional clinical studies. However, such virtual trials must be validated against real clinical evidence and must be transparent regarding assumptions, uncertainty, and bias.
+
+\subsection{Public Health and Population-Level Digital Twins}
+At the population level, Digital Twins can support public health monitoring, epidemic response, vaccination planning, resource distribution, and policy simulation. De Benedictis et al. illustrate this direction with CanTwin, a Digital Twin case study for social distancing and public health management in a workplace setting~\cite{debenedictis2023digital}. This shows that Digital Twins in healthcare are not limited to individual patients; they can also support collective health and system-level decision-making.
+
+\section{Patient-Centered eHealth Digital Twins}
+A patient-centered eHealth Digital Twin integrates clinical, physiological, behavioral, and contextual data to support personalized monitoring and decision-making. Such a system may receive information from EHRs, connected devices, laboratory results, patient-reported outcomes, and environmental sources. However, the level of clinical reliability depends on data quality, model validation, and the ability to handle uncertainty.
+
+Patient-centered Digital Twins require a data lifecycle that includes acquisition, preprocessing, alignment, storage, modeling, simulation, service delivery, and feedback. They also require an explicit distinction between observed data and inferred state variables. For example, a sensor may directly measure heart rate or activity level, while a model may estimate risk, disease progression, treatment response, or latent physiological parameters. The inferred outputs should therefore be presented with uncertainty and should not be confused with direct measurements.
+
+\section{Healthcare Process Digital Twins}
+Digital Twins are not limited to individual patients. They can also represent healthcare processes, such as emergency department flow, outpatient services, operating room scheduling, hospital bed allocation, or vaccination campaigns. In this context, the Digital Twin supports simulation of operational scenarios and optimization of healthcare resources.
+
+A process Digital Twin generally requires event data, timestamps, resource availability, staff schedules, patient pathways, and performance indicators. Its objective is to support operational decisions such as allocating staff, reducing waiting time, improving patient flow, detecting bottlenecks, and planning resources under uncertainty. This type of twin is important for eHealth because digital health services must be integrated into real healthcare organizations, not only into individual mobile applications.
+
+\section{Digital Twins in the Cardiovascular Field}
+Although this thesis studies eHealth in a general sense, the cardiovascular field is one of the most mature and important healthcare domains for Digital Twin research. Cardiovascular diseases are complex, dynamic, and heterogeneous. They involve electrical, mechanical, hemodynamic, anatomical, behavioral, and clinical factors. For this reason, cardiovascular Digital Twins provide a useful example of how eHealth Digital Twins can combine multimodal data, mechanistic modeling, artificial intelligence, and clinical decision support.
+
+\subsection{Why Cardiovascular Digital Twins?}
+Cardiovascular care often requires individualized interpretation of signals and measurements such as ECG, blood pressure, imaging, cardiac volumes, ejection fraction, pulmonary pressures, medication history, comorbidities, symptoms, and laboratory tests. Coorey et al. describe the health Digital Twin for cardiovascular disease as an emerging interdisciplinary field in which real-time patient data and virtual representations can be used for prediction and treatment optimization~\cite{coorey2022health}. This makes cardiovascular care a strong candidate for Digital Twin development because the same disease label may correspond to different underlying mechanisms in different patients.
+
+\subsection{Data Sources for Cardiovascular Digital Twins}
+A cardiovascular Digital Twin can integrate several data categories:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Biosignals:} ECG, photoplethysmography, heart rate variability, and wearable sensor streams.
+    \item \textbf{Hemodynamic measurements:} systolic and diastolic blood pressure, pulmonary artery pressure, cardiac output, and vascular resistance.
+    \item \textbf{Medical imaging:} echocardiography, CT, MRI, angiography, and anatomical segmentation.
+    \item \textbf{Clinical data:} EHR, diagnosis, symptoms, medication, laboratory tests, and comorbidities.
+    \item \textbf{Lifestyle and contextual data:} activity, sleep, diet, stress, environment, and adherence information.
+\end{itemize}
+
+These heterogeneous sources are useful because a Digital Twin is expected to represent more than a single measurement. However, they also increase the difficulty of data alignment, missing data management, validation, and privacy protection.
+
+\subsection{Organ-Level Heart and Hemodynamic Twins}
+Organ-level cardiovascular twins aim to reproduce the structure or function of the heart, vessels, or circulatory system. They can be used to simulate blood flow, cardiac mechanics, electrophysiology, valve function, device behavior, or hemodynamic response. In precision cardiology, such models may support noninvasive evaluation of physiology, testing of interventions, and better understanding of patient-specific mechanisms.
+
+Geddes et al. present a proof-of-concept framework for heart failure Digital Twins that uses CT pulmonary angiography and hemodynamic data to model pulmonary arterial pressure using computational fluid dynamics~\cite{geddes2025right}. The study is important because it shows how Digital Twins can estimate clinically relevant variables that are otherwise difficult or invasive to measure continuously.
+
+\subsection{Heart Failure Digital Twins}
+Heart failure is a particularly relevant use case because it is heterogeneous and difficult to personalize using simple clinical variables alone. Gu et al. developed mechanistic computational models of the cardiovascular system for 343 heart failure patients and used Digital Twin-derived features to guide interpretable AI for diagnosis and prognosis~\cite{gu2025heartfailure}. Their work shows that Digital Twin features can help identify phenogroups, mechanistic drivers, and prognostic indicators that may be more interpretable than raw clinical variables alone.
+
+This example illustrates a central advantage of Digital Twins in healthcare: they can transform heterogeneous measurements into structured physiological features. These features can then be used by AI models to improve prediction while maintaining a link to physiological meaning.
+
+\subsection{Electrophysiology and Arrhythmia Applications}
+Another cardiovascular direction is electrophysiology. Patient-specific cardiac electrical models can help simulate activation patterns, arrhythmia mechanisms, and response to interventions such as ablation or cardiac resynchronization therapy. These applications often require ECG, imaging, anatomical segmentation, and electrophysiological constraints. They demonstrate how a Digital Twin can serve not only as a monitoring tool, but also as a simulation environment for therapy planning.
+
+\subsection{Cardiovascular Digital Twin Data Flow}
+Figure~\ref{fig:cardiovascular_dt_pipeline} summarizes a general cardiovascular Digital Twin data flow. The same pattern can be adapted to other body systems by changing the data sources and domain-specific models.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_cardiovascular_dt_pipeline}}
+    \caption{General data flow for cardiovascular Digital Twin applications.}
+    \label{fig:cardiovascular_dt_pipeline}
+\end{figure}
+
+\subsection{Benefits and Limitations in Cardiovascular Applications}
+Cardiovascular Digital Twins can improve understanding of disease heterogeneity, support personalized risk estimation, enable virtual testing of interventions, and provide interpretable physiological features for AI models. However, they also face important limitations. High-quality multimodal data may be difficult to obtain, imaging and invasive measurements are not always available, models may require calibration, and predictions must be validated before clinical use. Furthermore, real-time synchronization is still challenging because high-fidelity physiological simulations can be computationally expensive.
+
+\section{Ethical, Legal, and Social Considerations}
+Healthcare Digital Twins use sensitive data and may influence medical decisions. Therefore, their development must consider consent, privacy, data ownership, transparency, fairness, bias mitigation, accountability, and clinical responsibility. Ethical design is not an optional component; it is a necessary condition for trustworthy eHealth Digital Twins.
+
+Bruynseels et al. emphasize that health Digital Twins may redefine the meaning of health, normality, prevention, and enhancement because they can compare an individual against both personal longitudinal patterns and population-level patterns~\cite{bruynseels2018digital}. This creates opportunities for earlier and more personalized care, but it also raises risks of discrimination, unequal access, over-medicalization, and misuse of sensitive data.
+
+\section{Challenges and Limitations}
+The implementation of Digital Twins in eHealth faces several challenges: interoperability between healthcare systems, access to high-quality multimodal data, real-time synchronization, computational cost, cybersecurity, explainability, regulatory approval, integration into clinical workflows, and acceptance by healthcare professionals and patients.
+
+The literature also highlights additional issues: data bias, lack of representative datasets, missing longitudinal data, validation difficulties, unclear responsibility when recommendations are wrong, and the gap between academic prototypes and clinically deployable systems~\cite{katsoulakis2024digital}. For cardiovascular applications, these challenges are even more visible because models often depend on specialized imaging, invasive measurements, or complex simulations.
+
+\section{Conclusion}
+Digital Twins offer a promising direction for eHealth, but their adoption requires more than technical models. It requires architecture, governance, validation, security, interoperability, and ethical alignment. The cardiovascular field illustrates how Digital Twins can move from general monitoring to advanced multimodal modeling and interpretable decision support. These issues are addressed in the state-of-the-art chapters that follow.
+
+\clearpage

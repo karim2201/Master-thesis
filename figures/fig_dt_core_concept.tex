@@ -1,0 +1,24 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.4cm]
+\tikzstyle{mainbox}=[rounded corners=8pt, draw=DTBlue, very thick, fill=DTLightBlue, minimum width=3.7cm, minimum height=1.3cm, align=center]
+\tikzstyle{midbox}=[rounded corners=8pt, draw=DTGreen, very thick, fill=DTLightGreen, minimum width=3.3cm, minimum height=1.1cm, align=center]
+\tikzstyle{service}=[rounded corners=8pt, draw=DTPurple, thick, fill=DTLightPurple, minimum width=2.7cm, minimum height=0.85cm, align=center]
+\tikzstyle{arrow}=[->, thick]
+
+\node[mainbox] (physical) {\textbf{Physical Space}\\patient, device, workflow, hospital unit};
+\node[mainbox, right=5.2cm of physical] (virtual) {\textbf{Virtual Space}\\models, state, behavior, context};
+\node[midbox, midway, above=1.3cm of physical.east, xshift=2.6cm] (data) {\textbf{Data}\\real-time, historical, contextual};
+\node[midbox, midway, below=1.3cm of physical.east, xshift=2.6cm] (connection) {\textbf{Connection}\\APIs, sensors, networks, standards};
+\node[service, above=1.3cm of virtual] (monitor) {Monitoring};
+\node[service, right=0.6cm of monitor] (predict) {Prediction};
+\node[service, below=1.3cm of virtual] (simulate) {Simulation};
+\node[service, right=0.6cm of simulate] (decision) {Decision support};
+
+\draw[arrow, DTBlue] (physical) -- node[above, align=center]{measurements\\events} (virtual);
+\draw[arrow, DTGreen] (virtual) -- node[below, align=center]{feedback\\recommendations} (physical);
+\draw[arrow, DTGray] (data) -- (virtual);
+\draw[arrow, DTGray] (connection) -- (physical);
+\draw[arrow, DTPurple] (virtual) -- (monitor);
+\draw[arrow, DTPurple] (virtual) -- (predict);
+\draw[arrow, DTPurple] (virtual) -- (simulate);
+\draw[arrow, DTPurple] (virtual) -- (decision);
+\end{tikzpicture}

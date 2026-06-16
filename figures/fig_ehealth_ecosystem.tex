@@ -1,0 +1,20 @@
+\begin{tikzpicture}[font=\small, node distance=1.4cm, >=Latex]
+\tikzstyle{core}=[circle, draw=DTBlue, very thick, fill=DTLightBlue, minimum size=3.0cm, align=center]
+\tikzstyle{box}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=3.0cm, minimum height=1.0cm, align=center]
+\tikzstyle{arrow}=[->, thick, DTGray]
+
+\node[core] (center) {\textbf{eHealth}\\Digital Health\\Ecosystem};
+\node[box, above=1.7cm of center] (patients) {Patients\\and caregivers};
+\node[box, right=3.7cm of center] (clinicians) {Healthcare\\professionals};
+\node[box, below=1.7cm of center] (ehr) {EHR / EMR\\Clinical repositories};
+\node[box, left=3.7cm of center] (devices) {Connected devices\\IoT / IoMT};
+\node[box, above right=1.3cm and 2.5cm of center] (telemed) {Telemedicine\\and mobile apps};
+\node[box, below right=1.3cm and 2.5cm of center] (ai) {Analytics and\\decision support};
+\node[box, below left=1.3cm and 2.5cm of center] (security) {Security, privacy\\and governance};
+\node[box, above left=1.3cm and 2.5cm of center] (admin) {Healthcare\\organizations};
+
+\foreach \x in {patients,clinicians,ehr,devices,telemed,ai,security,admin}
+  \draw[arrow] (\x) -- (center);
+\foreach \x in {patients,clinicians,ehr,devices,telemed,ai,security,admin}
+  \draw[arrow, dashed] (center) -- (\x);
+\end{tikzpicture}

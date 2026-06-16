@@ -1,0 +1,90 @@
+\chapter{Comparative Study of Digital Twin Approaches in eHealth}
+
+\section{Overview of Selected Studies}
+The selected studies can be grouped into six major categories: general Digital Twin reviews, Digital Twin for Health reviews, architecture-oriented healthcare Digital Twin studies, patient-specific and hybrid AI-simulation frameworks, application-oriented healthcare Digital Twin studies, and cardiovascular Digital Twin studies. This classification helps distinguish between conceptual foundations, technical implementation, healthcare applications, responsible deployment, and domain-specific clinical examples.
+
+\section{General Digital Twin Reviews}
+General Digital Twin reviews provide the conceptual foundation of this thesis. They explain the evolution of the Digital Twin concept, its distinction from related concepts, maturity levels, enabling technologies, and implementation challenges. These studies are useful because healthcare Digital Twins inherit many technical principles from industrial and cyber-physical systems, while adapting them to medical constraints such as safety, privacy, clinical validation, and integration with healthcare workflows.
+
+\section{Digital Twin for Healthcare Reviews}
+Healthcare-oriented reviews show that Digital Twin research is growing across multiple medical and organizational applications. These include patient monitoring, hospital management, surgical planning, drug development, clinical trial design, wellness, and personalized medicine. The literature suggests that Digital Twins for healthcare are promising but still emerging, with many works remaining conceptual or prototype-based~\cite{katsoulakis2024digital}.
+
+\section{Healthcare Digital Twin Architectures}
+Architecture-oriented studies are especially important because they describe how the physical space, data layer, virtual representation, services, connectivity, and security mechanisms can be organized. In healthcare, a good architecture must support interoperability with existing information systems, protect sensitive data, and provide reliable decision services. De Benedictis et al. propose a generalized six-layer architecture for healthcare Digital Twins, while Noeikham et al. propose a five-layer architecture for a healthcare unit with emphasis on security, privacy, and connection with healthcare ICT systems~\cite{debenedictis2023digital,noeikham2024architecture}.
+
+\section{Healthcare Applications Beyond Architecture}
+Beyond architecture, the literature discusses how Digital Twins can support personalized medicine, chronic disease monitoring, hospital resource optimization, surgical planning, drug development, and public health. These application studies are useful because they show that Digital Twins are not only a technical architecture but also a service-oriented paradigm. A healthcare Digital Twin becomes meaningful when it provides a concrete service: monitoring, prediction, scenario simulation, risk estimation, therapy planning, or workflow optimization.
+
+\section{Cardiovascular Digital Twin Studies}
+The cardiovascular field is included as a specific application domain because it is one of the most developed areas in healthcare Digital Twin research. Cardiovascular Digital Twins can combine biosignals, imaging, hemodynamic measurements, EHR data, and physiological simulations. The reviewed papers cover broad cardiovascular Digital Twin concepts, heart failure modeling, pulmonary artery pressure prediction, and interpretable AI for prognosis. These studies show the added value of combining mechanistic modeling and AI when the clinical problem is heterogeneous and dynamic.
+
+\section{Ethics, Security, and Governance}
+Digital Twins in eHealth require strong governance. Privacy, informed consent, data ownership, bias, transparency, accountability, and clinical responsibility must be considered from the design phase. Without these elements, Digital Twin systems may become technically advanced but clinically unacceptable or socially harmful. Ethical and governance studies are therefore included in the comparison because they define conditions for trustworthy deployment, not only technical performance~\cite{bruynseels2018digital}.
+
+\section{Comparative Table}
+Table~\ref{tab:comparative_study} summarizes selected studies and their relevance to this thesis. The table is placed in landscape orientation to preserve readability and to follow the style of wide comparative tables used in Master state-of-the-art reports.
+
+\begin{landscape}
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.18}
+\begin{longtable}{p{4.0cm} p{3.0cm} p{3.2cm} p{5.2cm} p{5.2cm}}
+\caption{Comparative overview of selected Digital Twin studies for eHealth.}\label{tab:comparative_study}\\
+\toprule
+\textbf{Study} & \textbf{Scope} & \textbf{Type of DT} & \textbf{Main Contribution} & \textbf{Limitations / Challenges} \\
+\midrule
+\endfirsthead
+\caption[]{Comparative overview of selected Digital Twin studies for eHealth (continued).}\\
+\toprule
+\textbf{Study} & \textbf{Scope} & \textbf{Type of DT} & \textbf{Main Contribution} & \textbf{Limitations / Challenges} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Fuller et al.~\cite{fuller2020digital} & General DT & Model, shadow, twin & Clarifies definitions, misconceptions, enabling technologies, applications, and open challenges. & Not specific to eHealth; requires adaptation to medical constraints such as privacy, validation, and patient safety. \\
+\addlinespace
+Botín-Sanabria et al.~\cite{botin2022digital} & General DT applications & Multi-domain DT & Presents a systematic review, maturity levels, implementation challenges, and application domains. & Broad scope; healthcare is one domain among many and clinical deployment issues are not deeply detailed. \\
+\addlinespace
+Tomczyk and van der Valk~\cite{tomczyk2022paradigm} & DT definition evolution & Conceptual DT & Explains the shift from three-dimensional definitions to extended definitions including data and services. & Focuses mainly on conceptual analysis rather than healthcare implementation. \\
+\addlinespace
+Iliu\c{t}\u{a} et al.~\cite{iliuta2024digital} & DT evolution and applications & Multi-domain DT & Reviews DT evolution, definitions, classifications, architectures, and applications in fields including medicine. & The medical part is broad and does not provide a full clinical architecture for eHealth deployment. \\
+\addlinespace
+Katsoulakis et al.~\cite{katsoulakis2024digital} & Digital Twins for Health & DT4H & Reviews healthcare applications, types, challenges, enabling technologies, research centers, and future opportunities. & Field is still emerging and requires standards, validation, infrastructure, and real deployment evidence. \\
+\addlinespace
+De Benedictis et al.~\cite{debenedictis2023digital} & Healthcare architecture & Healthcare/process DT & Proposes a generalized six-layer healthcare Digital Twin architecture and classifies healthcare applications into patient treatment, surgery support, pharmaceutical processes, and public health. & Case study is process-oriented; patient-specific and organ-level clinical models need further extension. \\
+\addlinespace
+Noeikham et al.~\cite{noeikham2024architecture} & Healthcare unit architecture & Hospital/service DT & Proposes a five-layer architecture emphasizing security, privacy, integration with EHR/CDR systems, and healthcare service monitoring. & Requires adaptation to broader eHealth scenarios beyond a single healthcare unit and needs scalability evaluation. \\
+\addlinespace
+Bruynseels et al.~\cite{bruynseels2018digital} & Ethics and governance & Human/health DT & Discusses ethical implications, privacy, discrimination, governance, and the transformation of health-related concepts. & Conceptual and ethical focus rather than technical architecture or clinical validation. \\
+\addlinespace
+Sharma and Kaur~\cite{sharma2025patient} & Patient-specific healthcare & Hybrid AI-simulation DT & Proposes a hybrid framework combining physiological simulation, deep learning, multimodal data, personalization, and treatment planning. & Requires strong external validation, data quality control, clinical workflow evaluation, and regulatory analysis. \\
+\addlinespace
+Coorey et al.~\cite{coorey2022health} & Cardiovascular disease & Health/CVD DT review & Maps cardiovascular Digital Twin research, concepts, industrial activity, patents, applications, and challenges in precision cardiovascular care. & Many CVD works remain simulation models or precursor systems rather than fully synchronized clinical Digital Twins. \\
+\addlinespace
+Geddes et al.~\cite{geddes2025right} & Heart failure monitoring & Hemodynamic HF DT & Uses patient-specific pulmonary artery models and computational fluid dynamics to estimate pulmonary artery pressure and support noninvasive monitoring. & Proof-of-concept scale; depends on imaging, boundary conditions, computational modeling, and validation against invasive measurements. \\
+\addlinespace
+Gu et al.~\cite{gu2025heartfailure} & Heart failure diagnosis and prognosis & Mechanistic cardiovascular DT + AI & Builds Digital Twins from cardiovascular system models for 343 HF patients and uses DT-derived features to improve interpretable AI prognosis. & Requires multicenter prospective validation, longitudinal data integration, and broader testing across heterogeneous HF populations. \\
+\end{longtable}
+\endgroup
+\end{landscape}
+
+\section{Synthesis of Findings}
+The comparative study reveals several trends. First, Digital Twin definitions converge around the need for a physical entity, a virtual representation, and a connection between both. Second, eHealth applications require additional layers for interoperability, security, governance, and clinical validation. Third, artificial intelligence and simulation are complementary: AI supports prediction and pattern extraction, while simulation can provide interpretability and scenario testing. Fourth, the healthcare field is moving from general conceptual definitions toward concrete applications such as hospital workflows, personalized medicine, \textit{in silico} trials, public health, and cardiovascular modeling.
+
+A second finding is that the term Digital Twin is used with different maturity levels. Some works present static anatomical models, others use one-way monitoring pipelines, while fewer systems implement a bidirectional feedback loop. Therefore, in eHealth, it is important to distinguish between a digital model, a digital shadow, a Digital Twin, and an intelligent Digital Twin. This distinction prevents overclaiming and helps evaluate the real maturity of proposed systems.
+
+A third finding is that cardiovascular research provides some of the clearest examples of the value of Digital Twins. Heart failure and hemodynamic monitoring require multimodal data and mechanistic interpretation, which makes them suitable for hybrid modeling. The studies by Geddes et al. and Gu et al. show two complementary directions: one focuses on physics-based estimation of hard-to-measure hemodynamic variables, while the other uses Digital Twin-derived physiological features to improve interpretable AI prognosis~\cite{geddes2025right,gu2025heartfailure}.
+
+\section{Research Gap}
+The main research gap identified in this review is the lack of general, reusable, and clinically aware eHealth Digital Twin architectures that combine interoperability, privacy, virtual modeling, AI-based analytics, simulation services, and decision support in a coherent manner. A second gap concerns the transition from proof-of-concept systems to clinically validated systems. Many papers show promising models, but fewer demonstrate continuous deployment, integration with real clinical workflows, regulatory readiness, and long-term evaluation.
+
+A third gap concerns multimodal and longitudinal data. Healthcare Digital Twins require data that are not only diverse but also temporally aligned and clinically meaningful. Missing values, inconsistent measurements, sensor errors, and biased datasets can directly affect the reliability of a twin. Cardiovascular examples show that integrating imaging, biosignals, hemodynamics, and clinical records is powerful, but also technically and clinically demanding.
+
+\section{Conclusion}
+This chapter compared selected Digital Twin studies and extracted the main trends and limitations. The review was expanded beyond general eHealth architecture to include healthcare applications and cardiovascular Digital Twin research. The next chapter proposes a general architecture for eHealth Digital Twins based on the findings of the literature review.
+
+\clearpage

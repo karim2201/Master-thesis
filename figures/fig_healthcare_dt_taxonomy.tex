@@ -1,0 +1,16 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.0cm]
+\tikzstyle{root}=[rounded corners=8pt, draw=DTBlue, very thick, fill=DTLightBlue, minimum width=5.3cm, minimum height=1.1cm, align=center]
+\tikzstyle{leaf}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=3.6cm, minimum height=0.95cm, align=center]
+\tikzstyle{arrow}=[->, thick, DTGray]
+
+\node[root] (root) {\textbf{Digital Twins in Healthcare and eHealth}};
+\node[leaf, below left=1.2cm and 3.2cm of root] (patient) {Patient-specific\\digital twins};
+\node[leaf, below=1.2cm of root] (organ) {Organ / body-system\\digital twins};
+\node[leaf, below right=1.2cm and 3.2cm of root] (disease) {Disease and care-pathway\\digital twins};
+\node[leaf, below=1.4cm of patient] (hospital) {Hospital and workflow\\digital twins};
+\node[leaf, below=1.4cm of organ] (device) {Medical device\\digital twins};
+\node[leaf, below=1.4cm of disease] (public) {Public health and\\population twins};
+
+\foreach \x in {patient,organ,disease,hospital,device,public}
+  \draw[arrow] (root) -- (\x);
+\end{tikzpicture}

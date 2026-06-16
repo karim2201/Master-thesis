@@ -1,0 +1,114 @@
+\documentclass[12pt,a4paper]{report}
+
+% =========================================================
+% Digital Twin for eHealth -- Master Thesis LaTeX Template
+% Engine: XeLaTeX, with Arabic/French/English support.
+% =========================================================
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguages{french,arabic}
+\setmainfont{Times New Roman}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.1]{Arial}
+\usepackage{geometry}
+\geometry{top=1.5cm,bottom=1.5cm,left=2.5cm,right=2.5cm,headheight=28pt}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pdflscape} % landscape pages for wide comparative tables
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=blue,
+  citecolor=blue
+}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,backgrounds,matrix}
+\usepackage{fancyhdr}
+\usepackage[Glenn]{fncychap}
+
+% ------------------ Colors for generated figures ------------------
+\definecolor{DTBlue}{RGB}{37,99,235}
+\definecolor{DTLightBlue}{RGB}{219,234,254}
+\definecolor{DTGreen}{RGB}{22,163,74}
+\definecolor{DTLightGreen}{RGB}{220,252,231}
+\definecolor{DTOrange}{RGB}{234,88,12}
+\definecolor{DTLightOrange}{RGB}{255,237,213}
+\definecolor{DTPurple}{RGB}{124,58,237}
+\definecolor{DTLightPurple}{RGB}{237,233,254}
+\definecolor{DTGray}{RGB}{75,85,99}
+\definecolor{DTLightGray}{RGB}{243,244,246}
+
+% ------------------ Formatting ------------------
+\pagestyle{plain}
+
+\newcommand{\todo}[1]{\par\noindent\fcolorbox{DTOrange}{DTLightOrange}{\parbox{0.95\linewidth}{\textbf{TODO:} #1}}\par\vspace{0.5em}}
+\newcommand{\figplaceholder}[1]{\par\noindent\fcolorbox{DTGray}{DTLightGray}{\parbox[c][3.5cm][c]{0.95\linewidth}{\centering\textbf{Figure placeholder}\par #1}}\par}
+
+% ------------------ Thesis metadata ------------------
+\newcommand{\thesistitle}{Digital Twin for eHealth: State of the Art and Conceptual Architecture}
+\newcommand{\studentname}{[Student Name]}
+\newcommand{\supervisorname}{[Supervisor Name]}
+\newcommand{\cosupervisorname}{[Co-Supervisor Name]}
+\newcommand{\academicYear}{2025/2026}
+\newcommand{\institution}{Higher School of Computer Science -- 8 Mai 1945, Sidi Bel Abbes}
+\newcommand{\specialization}{[Specialization]}
+
+\begin{document}
+
+\selectlanguage{english}
+\input{preliminaries/title_page}
+
+\pagenumbering{roman}
+\input{preliminaries/acknowledgement}
+\input{preliminaries/abstract_en}
+\input{preliminaries/resume_fr}
+\input{preliminaries/abstract_ar_placeholder}
+\input{preliminaries/acronyms}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+
+\pagenumbering{arabic}
+
+\part{General Introduction}
+\input{chapters/chapter1_general_introduction}
+
+\part{Background}
+\input{chapters/chapter2_ehealth_foundations}
+\input{chapters/chapter3_digital_twin_fundamentals}
+\input{chapters/chapter4_digital_twin_in_ehealth}
+
+\part{State of the Art}
+\input{chapters/chapter5_review_methodology}
+\input{chapters/chapter6_comparative_study}
+
+\part{Proposed Method}
+\input{chapters/chapter7_proposed_architecture}
+
+\part{Conclusion}
+\input{chapters/chapter8_general_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography/references}
+
+\appendix
+\input{chapters/appendix_figures_and_tables}
+
+\end{document}

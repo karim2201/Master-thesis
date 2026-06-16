@@ -1,0 +1,17 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.0cm]
+\tikzstyle{stage}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=3.1cm, minimum height=1.35cm, align=center]
+\tikzstyle{stageb}=[rounded corners=6pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=3.1cm, minimum height=1.35cm, align=center]
+\tikzstyle{stageg}=[rounded corners=6pt, draw=DTGreen, thick, fill=DTLightGreen, minimum width=3.1cm, minimum height=1.35cm, align=center]
+\tikzstyle{stagep}=[rounded corners=6pt, draw=DTPurple, thick, fill=DTLightPurple, minimum width=3.1cm, minimum height=1.35cm, align=center]
+
+\node[stage] (model) {\textbf{Digital Model}\\manual updates\\static representation};
+\node[stageb, right=1.2cm of model] (shadow) {\textbf{Digital Shadow}\\automatic one-way\\physical $\rightarrow$ digital};
+\node[stageg, right=1.2cm of shadow] (twin) {\textbf{Digital Twin}\\automatic two-way\\physical $\leftrightarrow$ digital};
+\node[stagep, right=1.2cm of twin] (intelligent) {\textbf{Intelligent Twin}\\learning, reasoning\\adaptive services};
+
+\draw[->, thick, DTGray] (model) -- (shadow);
+\draw[->, thick, DTGray] (shadow) -- (twin);
+\draw[->, thick, DTGray] (twin) -- (intelligent);
+
+\node[below=0.8cm of shadow, align=center, text=DTGray] {Increasing synchronization, autonomy, data integration, and decision-support capability};
+\end{tikzpicture}

@@ -1,0 +1,25 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.2cm]
+\tikzstyle{box}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=2.7cm, minimum height=1.0cm, align=center]
+\tikzstyle{bluebox}=[rounded corners=6pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=2.7cm, minimum height=1.0cm, align=center]
+\tikzstyle{greenbox}=[rounded corners=6pt, draw=DTGreen, thick, fill=DTLightGreen, minimum width=2.7cm, minimum height=1.0cm, align=center]
+\tikzstyle{purplebox}=[rounded corners=6pt, draw=DTPurple, thick, fill=DTLightPurple, minimum width=2.7cm, minimum height=1.0cm, align=center]
+
+\node[box] (patient) {Physical world\\patient / process};
+\node[bluebox, right=1.0cm of patient] (sources) {Data sources\\devices, apps, EHR};
+\node[bluebox, right=1.0cm of sources] (preprocess) {Preprocessing\\clean, align, validate};
+\node[box, right=1.0cm of preprocess] (storage) {Data storage\\history, context};
+\node[greenbox, below=1.5cm of storage] (twin) {Virtual Twin\\state and behavior};
+\node[purplebox, left=1.0cm of twin] (analytics) {Analytics\\AI + simulation};
+\node[purplebox, left=1.0cm of analytics] (services) {Services\\dashboard, alerts};
+\node[box, left=1.0cm of services] (users) {Users\\clinicians, patients};
+
+\draw[->, thick] (patient) -- (sources);
+\draw[->, thick] (sources) -- (preprocess);
+\draw[->, thick] (preprocess) -- (storage);
+\draw[->, thick] (storage) -- (twin);
+\draw[->, thick] (twin) -- (analytics);
+\draw[->, thick] (analytics) -- (services);
+\draw[->, thick] (services) -- (users);
+\draw[->, thick, dashed, DTGreen] (users.north) .. controls (-3.5,2.0) and (-5.2,1.8) .. node[above, align=center]{feedback / actions} (patient.north);
+\draw[->, thick, dashed, DTBlue] (analytics.north) -- node[right]{update} (storage.south);
+\end{tikzpicture}

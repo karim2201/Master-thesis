@@ -1,0 +1,18 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.1cm]
+\tikzstyle{core}=[circle, draw=DTBlue, very thick, fill=DTLightBlue, minimum size=3.0cm, align=center]
+\tikzstyle{app}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=3.2cm, minimum height=0.9cm, align=center]
+\tikzstyle{arrow}=[->, thick, DTGray]
+
+\node[core] (center) {\textbf{Healthcare}\\Digital Twin\\applications};
+\node[app, above=1.7cm of center] (personalized) {Personalized\\medicine};
+\node[app, below=1.7cm of center] (public) {Public health\\planning};
+\node[app, left=3.8cm of center] (remote) {Remote monitoring\\and chronic care};
+\node[app, right=3.8cm of center] (hospital) {Hospital workflow\\and resource use};
+\node[app, above left=1.25cm and 2.6cm of center] (surgery) {Surgical planning\\and training};
+\node[app, above right=1.25cm and 2.6cm of center] (device) {Medical device\\design and safety};
+\node[app, below left=1.25cm and 2.6cm of center] (drug) {Drug discovery\\and dosing};
+\node[app, below right=1.25cm and 2.6cm of center] (trial) {In silico trials\\and virtual cohorts};
+
+\foreach \x in {personalized,public,remote,hospital,surgery,device,drug,trial}
+  \draw[arrow] (center) -- (\x);
+\end{tikzpicture}

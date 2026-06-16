@@ -1,0 +1,50 @@
+\chapter{eHealth and Digital Health Foundations}
+
+\section{Definition of eHealth}
+eHealth refers to the use of information and communication technologies to support healthcare services, medical decision-making, prevention, diagnosis, monitoring, treatment, administration, and patient engagement. It includes a wide range of systems such as telemedicine, mobile health, electronic health records, connected medical devices, remote monitoring platforms, and clinical decision support systems.
+
+\section{From Traditional Healthcare to Connected Healthcare}
+Traditional healthcare is often centered around episodic consultations, paper-based documentation, and hospital-centered workflows. Connected healthcare extends this model by enabling continuous or near-continuous data acquisition, remote communication, and digital coordination among patients, physicians, caregivers, and healthcare institutions.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.92\textwidth}{!}{\input{figures/fig_ehealth_ecosystem}}
+    \caption{General eHealth ecosystem and its main stakeholders.}
+    \label{fig:ehealth_ecosystem}
+\end{figure}
+
+\section{Main Components of eHealth Systems}
+A general eHealth system may include several components:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Patient-facing technologies:} mobile applications, wearable sensors, home monitoring devices, and patient portals.
+    \item \textbf{Clinical information systems:} EHR, EMR, laboratory information systems, radiology systems, and hospital management platforms.
+    \item \textbf{Communication services:} teleconsultation, secure messaging, remote follow-up, and alerts.
+    \item \textbf{Analytics and decision support:} machine learning models, rule-based reasoning, risk estimation, dashboards, and report generation.
+    \item \textbf{Infrastructure:} cloud platforms, edge devices, APIs, databases, cybersecurity modules, and interoperability standards.
+\end{itemize}
+
+\section{Data Sources in eHealth}
+eHealth systems rely on heterogeneous data sources. These include structured clinical data, medical measurements, biosignals, medical images, laboratory results, prescriptions, lifestyle data, environmental data, administrative data, and patient-reported outcomes. The combination of these sources is valuable but challenging due to differences in format, sampling frequency, quality, reliability, and privacy requirements.
+
+
+\section{Multimodal Data and Longitudinal Follow-Up}
+eHealth systems increasingly depend on multimodal data. A single health situation may involve structured data from EHRs, biosignals from connected devices, medical images, laboratory results, prescriptions, lifestyle data, and patient-reported outcomes. For Digital Twin development, the temporal dimension is especially important: isolated measurements provide only a snapshot, while longitudinal data make it possible to model trends, detect deterioration, and personalize what is considered normal for a specific patient.
+
+Multimodal integration is difficult because each data source has its own format, sampling frequency, noise level, and clinical meaning. For example, wearable data may be continuous but noisy, imaging data may be detailed but episodic, and EHR data may be rich but incomplete. A robust eHealth architecture must therefore include preprocessing, timestamp alignment, missing data management, and semantic standardization.
+
+\section{Internet of Medical Things and Edge-Cloud Computing}
+The Internet of Medical Things (IoMT) connects medical sensors, wearable devices, home monitoring systems, mobile applications, and clinical equipment. These devices can support real-time or near-real-time monitoring, but they also introduce constraints related to energy consumption, connectivity, latency, privacy, and cybersecurity. Edge computing can process sensitive or time-critical data close to the patient, while cloud computing can provide scalable storage, model training, and large-scale analytics.
+
+A Digital Twin-based eHealth system may combine edge and cloud resources. Edge devices can perform first-level filtering, anomaly detection, or local alerts, while cloud services can update patient histories, run heavier simulations, and support long-term analytics. The choice between edge and cloud depends on clinical urgency, bandwidth, model complexity, and privacy requirements.
+
+\section{Interoperability Standards}
+Interoperability is essential for eHealth because patient information may be generated and stored by different systems. Standards such as HL7 and FHIR support the exchange of healthcare information using common formats and resources. In a Digital Twin-based eHealth system, interoperability standards help connect data acquisition modules, clinical repositories, virtual models, and decision services.
+
+\section{Challenges in eHealth}
+The main challenges of eHealth include data fragmentation, missing data, inconsistent measurements, limited integration between systems, security and privacy risks, lack of clinical validation, usability barriers, and unequal access to digital services. These challenges justify the need for more integrated, dynamic, and trustworthy approaches such as Digital Twin-based architectures.
+
+\section{Conclusion}
+This chapter introduced the foundations of eHealth and highlighted the need for integrated and dynamic systems. The next chapter presents Digital Twin fundamentals and explains how this paradigm differs from conventional digital models and simulations.
+
+\clearpage

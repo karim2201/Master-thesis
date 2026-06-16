@@ -1,0 +1,18 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.0cm]
+\tikzstyle{center}=[circle, draw=DTBlue, very thick, fill=DTLightBlue, minimum size=2.8cm, align=center]
+\tikzstyle{box}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=3.1cm, minimum height=0.9cm, align=center]
+\tikzstyle{arrow}=[->, thick, DTGray]
+
+\node[center] (dt) {eHealth\\\textbf{Digital Twin}};
+\node[box, above=1.4cm of dt] (auth) {Authentication\\authorization};
+\node[box, below=1.4cm of dt] (privacy) {Data minimization\\consent management};
+\node[box, left=3.6cm of dt] (encrypt) {Encryption\\secure APIs};
+\node[box, right=3.6cm of dt] (audit) {Audit logs\\traceability};
+\node[box, above left=1.1cm and 2.5cm of dt] (govern) {Governance\\policies};
+\node[box, above right=1.1cm and 2.5cm of dt] (ethics) {Ethics\\fairness, transparency};
+\node[box, below left=1.1cm and 2.5cm of dt] (valid) {Validation\\clinical plausibility};
+\node[box, below right=1.1cm and 2.5cm of dt] (monitor) {Monitoring\\incident response};
+
+\foreach \x in {auth,privacy,encrypt,audit,govern,ethics,valid,monitor}
+  \draw[arrow] (\x) -- (dt);
+\end{tikzpicture}

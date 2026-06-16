@@ -1,0 +1,24 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{layer}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=13.2cm, minimum height=0.95cm, align=center]
+\tikzstyle{security}=[rounded corners=8pt, draw=DTOrange, thick, dashed, fill=DTLightOrange, inner sep=0.25cm]
+
+\node[layer, fill=DTLightBlue, draw=DTBlue] (service) at (0,0) {\textbf{Service Layer}: dashboards, alerts, reports, decision support, scenario simulation};
+\node[layer, fill=DTLightPurple, draw=DTPurple] (ai) at (0,-1.25) {\textbf{Intelligence and Simulation Layer}: AI/ML, rules, prediction, optimization, uncertainty};
+\node[layer, fill=DTLightGreen, draw=DTGreen] (virtual) at (0,-2.5) {\textbf{Virtual Twin Layer}: dynamic virtual representation, state update, context model};
+\node[layer] (data) at (0,-3.75) {\textbf{Data Management Layer}: databases, time-series storage, metadata, audit logs};
+\node[layer] (interop) at (0,-5.0) {\textbf{Interoperability and Preprocessing}: cleaning, normalization, HL7/FHIR mapping};
+\node[layer] (acq) at (0,-6.25) {\textbf{Data Acquisition Layer}: connected devices, mobile apps, EHR systems, manual inputs};
+\node[layer, fill=DTLightOrange, draw=DTOrange] (physical) at (0,-7.5) {\textbf{Physical Layer}: patients, clinicians, medical devices, healthcare environments};
+
+\draw[->, thick, DTBlue] (physical) -- (acq);
+\draw[->, thick, DTBlue] (acq) -- (interop);
+\draw[->, thick, DTBlue] (interop) -- (data);
+\draw[->, thick, DTBlue] (data) -- (virtual);
+\draw[->, thick, DTBlue] (virtual) -- (ai);
+\draw[->, thick, DTBlue] (ai) -- (service);
+\draw[->, thick, DTGreen, dashed] (service.east) .. controls (7.2,-1.0) and (7.2,-6.5) .. node[right, align=center]{feedback / recommendations} (physical.east);
+
+\begin{scope}[on background layer]
+\node[security, fit=(service)(ai)(virtual)(data)(interop)(acq)(physical), label={[text=DTOrange]right:\rotatebox{-90}{\textbf{Security, privacy, governance, validation}}}] {};
+\end{scope}
+\end{tikzpicture}

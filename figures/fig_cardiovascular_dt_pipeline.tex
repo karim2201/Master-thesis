@@ -1,0 +1,18 @@
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.1cm]
+\tikzstyle{box}=[rounded corners=6pt, draw=DTGray, thick, fill=DTLightGray, minimum width=3.0cm, minimum height=1.05cm, align=center]
+\tikzstyle{bluebox}=[rounded corners=6pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=3.1cm, minimum height=1.05cm, align=center]
+\tikzstyle{greenbox}=[rounded corners=6pt, draw=DTGreen, thick, fill=DTLightGreen, minimum width=3.1cm, minimum height=1.05cm, align=center]
+\tikzstyle{purplebox}=[rounded corners=6pt, draw=DTPurple, thick, fill=DTLightPurple, minimum width=3.1cm, minimum height=1.05cm, align=center]
+
+\node[box] (patient) {Cardiovascular\\patient / process};
+\node[bluebox, right=0.9cm of patient] (sources) {Data sources\\ECG, BP, imaging, EHR};
+\node[greenbox, right=0.9cm of sources] (model) {Virtual cardiovascular\\representation};
+\node[purplebox, right=0.9cm of model] (analytics) {Analytics and\\simulation};
+\node[purplebox, right=0.9cm of analytics] (services) {Clinical services\\risk, alerts, planning};
+
+\draw[->, thick, DTBlue] (patient) -- (sources);
+\draw[->, thick, DTBlue] (sources) -- node[above]{preprocess} (model);
+\draw[->, thick, DTPurple] (model) -- node[above]{reasoning} (analytics);
+\draw[->, thick, DTPurple] (analytics) -- (services);
+\draw[->, thick, DTGreen, dashed] (services.south) .. controls (5.0,-1.8) and (-2.0,-1.8) .. node[below]{feedback / treatment adaptation} (patient.south);
+\end{tikzpicture}

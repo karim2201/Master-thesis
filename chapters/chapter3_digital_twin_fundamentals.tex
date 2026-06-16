@@ -1,0 +1,48 @@
+\chapter{Digital Twin Fundamentals}
+
+\section{Origin and Evolution of the Digital Twin Concept}
+The Digital Twin concept emerged from engineering and product lifecycle management, where virtual representations of physical assets are used to support design, monitoring, prediction, and optimization. Over time, the concept evolved from static digital representations toward dynamic systems connected to real-world data streams and capable of supporting simulation and decision-making.
+
+In its general form, a Digital Twin can be understood as a virtual representation of a physical entity or process that is connected to the real world through data exchange. The virtual representation is not only a visual model; it may include data, models, algorithms, services, and interfaces used to understand and improve the physical counterpart.
+
+\section{Digital Model, Digital Shadow, and Digital Twin}
+One important distinction in the literature is between digital models, digital shadows, and digital twins. A digital model is a virtual representation with no automatic data exchange. A digital shadow includes automatic data flow from the physical entity to the digital representation. A full Digital Twin requires stronger integration, where the physical and virtual entities interact through a bidirectional data flow.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.95\textwidth}{!}{\input{figures/fig_dt_maturity}}
+    \caption{Evolution from digital model to intelligent Digital Twin.}
+    \label{fig:dt_maturity}
+\end{figure}
+
+\section{Core Components of a Digital Twin}
+Most Digital Twin definitions include three fundamental components: a physical entity, a virtual entity, and a connection between them. More extended views also include data and services as explicit components. In this thesis, the Digital Twin is considered as a system composed of five main elements:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Physical space:} the real-world entity, process, device, patient, or healthcare environment.
+    \item \textbf{Virtual space:} the digital representation that models the state and behavior of the physical counterpart.
+    \item \textbf{Data:} real-time, historical, contextual, and simulated data used to feed and update the twin.
+    \item \textbf{Services:} monitoring, simulation, prediction, optimization, alerts, and decision support.
+    \item \textbf{Connection:} communication mechanisms enabling synchronization between the physical and virtual spaces.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.88\textwidth}{!}{\input{figures/fig_dt_core_concept}}
+    \caption{Core components of a Digital Twin system.}
+    \label{fig:dt_core_concept}
+\end{figure}
+
+\section{Enabling Technologies}
+Digital Twin systems are enabled by several technologies. The Internet of Things allows physical entities to be monitored through sensors and connected devices. Cloud and edge computing provide infrastructure for data storage and processing. Artificial intelligence and machine learning support pattern recognition, prediction, personalization, and anomaly detection. Simulation models provide interpretable and mechanistic representations of system behavior. Cybersecurity technologies protect data exchange, access control, and system integrity.
+
+\section{Digital Twin Services}
+The value of a Digital Twin is expressed through its services. Typical services include real-time monitoring, visualization, anomaly detection, risk estimation, scenario simulation, optimization, predictive maintenance, and decision support. In healthcare, these services must be designed carefully because incorrect outputs may affect clinical decisions and patient safety.
+
+\section{Digital Twin Maturity}
+Digital Twins can be classified according to their level of maturity. A low-maturity system may only provide a static representation, while a high-maturity system can learn from real-time data, simulate future behavior, interact with the physical world, and support autonomous or semi-autonomous decisions. In healthcare, fully autonomous Digital Twins remain rare because of clinical safety, ethical, legal, and validation requirements.
+
+\section{Conclusion}
+This chapter presented the foundations of Digital Twin technology. The next chapter focuses on how this paradigm is adapted to healthcare and eHealth in a general manner.
+
+\clearpage
