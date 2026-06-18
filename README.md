@@ -2,7 +2,7 @@
 
 **Title:** Digital Twin for eHealth: State of the Art and Conceptual Architecture
 
-This project is a starting LaTeX structure for a Master thesis about Digital Twin for eHealth in a general healthcare context. It intentionally avoids focusing on any specific PFE project or a single clinical specialty.
+This project is a LaTeX structure for a Master thesis about Digital Twin for eHealth in a general healthcare context. The main study remains focused on Digital Twins for eHealth, while the final chapter introduces CardioTwin as a practical cardiovascular continuation for the PFE.
 
 ## Main file
 - `main.tex`
@@ -26,6 +26,13 @@ xelatex main.tex
 ## Folder structure
 - `preliminaries/`: title page, acknowledgements, abstracts, acronyms
 - `chapters/`: thesis chapters
+  - Chapter 1: General Introduction
+  - Chapter 2: Digital Twin Fundamentals
+  - Chapter 3: eHealth and Digital Health Foundations
+  - Chapter 4: Digital Twins in Healthcare and eHealth
+  - Chapter 5: Literature Review Methodology
+  - Chapter 6: Comparative Study of Digital Twin Approaches in eHealth
+  - Chapter 7: General Conclusion and Proposed Method for the PFE
 - `figures/`: generated TikZ figures
 - `bibliography/`: BibTeX references
 

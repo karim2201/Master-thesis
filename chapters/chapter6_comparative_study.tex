@@ -73,18 +73,79 @@ Gu et al.~\cite{gu2025heartfailure} & Heart failure diagnosis and prognosis & Me
 \end{landscape}
 
 \section{Synthesis of Findings}
-The comparative study reveals several trends. First, Digital Twin definitions converge around the need for a physical entity, a virtual representation, and a connection between both. Second, eHealth applications require additional layers for interoperability, security, governance, and clinical validation. Third, artificial intelligence and simulation are complementary: AI supports prediction and pattern extraction, while simulation can provide interpretability and scenario testing. Fourth, the healthcare field is moving from general conceptual definitions toward concrete applications such as hospital workflows, personalized medicine, \textit{in silico} trials, public health, and cardiovascular modeling.
+\subsection{Conceptual Findings}
+The comparative study shows that Digital Twin definitions converge around a common conceptual structure: a physical entity, a virtual representation, a connection mechanism, data exchange, and services built on top of the virtual representation. However, the reviewed literature also shows that these elements are not implemented with the same level of maturity in all studies. Some systems remain digital models because they represent an entity without continuous data exchange. Others correspond more closely to digital shadows because data flow from the physical entity to the virtual representation without a clinically meaningful feedback loop. Fully developed Digital Twins require a maintained connection between the real and virtual entities, while intelligent Digital Twins add AI, learning, adaptive reasoning, or advanced simulation capabilities~\cite{fuller2020digital,tomczyk2022paradigm,iliuta2024digital}.
 
-A second finding is that the term Digital Twin is used with different maturity levels. Some works present static anatomical models, others use one-way monitoring pipelines, while fewer systems implement a bidirectional feedback loop. Therefore, in eHealth, it is important to distinguish between a digital model, a digital shadow, a Digital Twin, and an intelligent Digital Twin. This distinction prevents overclaiming and helps evaluate the real maturity of proposed systems.
+This distinction is particularly important in healthcare because overusing the term Digital Twin can hide major differences in clinical maturity. A static anatomical model, a monitoring dashboard, a simulation model, and a patient-specific decision-support system may all be described as Digital Twins in the literature, but they do not provide the same degree of synchronization, personalization, or clinical usefulness. The synthesis therefore supports a cautious interpretation: healthcare Digital Twin systems should be evaluated according to their data connection, model update logic, service capability, validation level, and role in clinical decision-making.
 
-A third finding is that cardiovascular research provides some of the clearest examples of the value of Digital Twins. Heart failure and hemodynamic monitoring require multimodal data and mechanistic interpretation, which makes them suitable for hybrid modeling. The studies by Geddes et al. and Gu et al. show two complementary directions: one focuses on physics-based estimation of hard-to-measure hemodynamic variables, while the other uses Digital Twin-derived physiological features to improve interpretable AI prognosis~\cite{geddes2025right,gu2025heartfailure}.
+The reviewed studies also confirm that AI and simulation are complementary rather than interchangeable. AI methods are useful for pattern recognition, diagnosis assistance, risk prediction, and the extraction of latent relationships from multimodal data. Simulation and mechanistic modeling provide a way to represent physiological mechanisms, explore scenarios, and support interpretability. Cardiovascular examples illustrate this complementarity clearly. Geddes et al. use patient-specific hemodynamic modeling to estimate variables that are difficult to measure directly, while Gu et al. combine mechanistic cardiovascular models with interpretable AI for heart-failure prognosis~\cite{geddes2025right,gu2025heartfailure}. These examples suggest that healthcare Digital Twins are most promising when data-driven and knowledge-driven approaches are combined.
+
+\subsection{Architectural Findings}
+Architecture-oriented studies converge toward layered and modular healthcare Digital Twin architectures. De Benedictis et al. propose a generalized layered structure for healthcare Digital Twins, while Noeikham et al. emphasize healthcare-unit integration, ICT systems, security, privacy, and service monitoring~\cite{debenedictis2023digital,noeikham2024architecture}. Broader reviews also show that Digital Twin architectures normally separate the physical entity, data acquisition, data management, virtual modeling, analytics, and service layers~\cite{fuller2020digital,iliuta2024digital,katsoulakis2024digital}.
+
+The synthesis of these studies indicates that a healthcare Digital Twin architecture should not be treated as a single monolithic system. It should be organized as a modular structure able to connect heterogeneous biomedical data, preserve longitudinal patient context, update virtual representations, run AI or simulation services, and expose outputs to users through clinically interpretable services. This organization is not an arbitrary architecture invented independently of the review; it is derived from recurring components identified across the selected studies.
+
+\subsection{Derived Multi-Layer Architecture}
+From the reviewed literature, seven recurring architectural layers can be synthesized for a general eHealth Digital Twin system:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Physical Layer}: represents the real healthcare environment, including patients, medical devices, sensors, clinicians, hospital units, and clinical processes.
+    \item \textbf{Data Acquisition Layer}: collects data from connected sensors, electronic health records, laboratory results, imaging systems, wearable devices, and clinical inputs.
+    \item \textbf{Interoperability and Preprocessing Layer}: cleans, validates, aligns, standardizes, and transforms heterogeneous data so that they can be used by the twin.
+    \item \textbf{Data Management Layer}: stores structured and unstructured data, maintains longitudinal records, manages metadata, and supports secure access to patient-related information.
+    \item \textbf{Virtual Twin Layer}: maintains the virtual representation of the patient, organ, device, process, or healthcare service being modeled.
+    \item \textbf{Intelligence and Simulation Layer}: applies AI, analytics, mechanistic simulation, risk estimation, and what-if analysis to support interpretation and prediction.
+    \item \textbf{Service Layer}: provides monitoring, visualization, alerts, reports, decision support, and controlled feedback to healthcare professionals, patients, or administrators.
+\end{itemize}
+
+Figure~\ref{fig:proposed_architecture} summarizes this multi-layer architecture as a result of the state-of-the-art synthesis.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_proposed_architecture}}
+    \caption{Multi-layer eHealth Digital Twin architecture derived from the state-of-the-art synthesis.}
+    \label{fig:proposed_architecture}
+\end{figure}
+
+The figure should be interpreted as a general research synthesis rather than as a final implementation design. It identifies the layers that repeatedly appear in the literature and clarifies their relationships. The lower layers connect the real healthcare environment to validated and interoperable data. The middle layers maintain the longitudinal patient or system representation. The upper layers transform the representation into services, predictions, simulations, and decision-support outputs. In healthcare, this structure must remain adaptable because an organ-level cardiovascular twin, a hospital workflow twin, and a public-health twin do not use the same data sources or models.
+
+\subsection{Cross-Cutting Requirements}
+The literature also shows that several requirements cannot be isolated in a final component. Security, privacy, governance, interoperability, ethics, traceability, consent management, explainability, clinical validation, and human supervision must affect every architectural layer~\cite{bruynseels2018digital,katsoulakis2024digital,noeikham2024architecture}. For example, privacy constraints begin at data acquisition, continue through storage and modeling, and remain relevant when decision-support outputs are shown to users. Similarly, explainability is not only a property of the AI model; it also depends on data provenance, model assumptions, uncertainty communication, and clinical interpretation.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.9\textwidth}{!}{\input{figures/fig_security_privacy}}
+    \caption{Cross-cutting security, privacy, governance, and ethical requirements synthesized for eHealth Digital Twin systems.}
+    \label{fig:security_privacy}
+\end{figure}
+
+These cross-cutting requirements are essential for trustworthy deployment. A technically correct twin may still be unsuitable for healthcare if it lacks consent traceability, auditability, bias monitoring, cybersecurity protection, or clinical accountability. The reviewed literature therefore supports a governance-by-design approach in which technical, organizational, and ethical safeguards are considered from the first architectural decisions.
+
+\subsection{Data Flow and Service Logic}
+The synthesized data-flow logic follows a progressive sequence: the physical healthcare environment generates biomedical, clinical, behavioral, or organizational data; the data acquisition layer captures these data; preprocessing and interoperability mechanisms validate, clean, normalize, align, and standardize them; the data management layer stores them with longitudinal context; the virtual twin is updated; AI and simulation components analyze the updated state; services present outputs to users; and any feedback to the real environment remains controlled and supervised.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.92\textwidth}{!}{\input{figures/fig_data_flow}}
+    \caption{Synthesized data and feedback flow for a Digital Twin-based eHealth system.}
+    \label{fig:data_flow}
+\end{figure}
+
+This workflow highlights an important healthcare constraint: feedback should normally remain human-supervised and clinically validated. In industrial Digital Twins, automated control can be acceptable in many contexts. In clinical environments, however, recommendations, alerts, treatment scenarios, or simulated outcomes must be interpreted by healthcare professionals and integrated with medical judgment, patient context, and ethical responsibility.
+
+\subsection{Evaluation Requirements}
+The review suggests that eHealth Digital Twins should be evaluated using several complementary criteria. Technical validation concerns functional completeness, interoperability, synchronization quality, latency, scalability, reliability, security, privacy, auditability, and robustness. Model validation concerns predictive performance, physiological plausibility, uncertainty communication, explainability, calibration, and sensitivity to missing or noisy data. Clinical validation concerns safety, clinical plausibility, usefulness, prospective evaluation, comparison with accepted clinical practice, and clinician review. Workflow validation concerns usability, dashboard clarity, integration into routine practice, alert fatigue, user trust, and the effect of the system on care processes.
+
+These evaluation dimensions show that a Digital Twin cannot be validated only as a software application or only as an AI model. A healthcare twin must be technically functional, scientifically plausible, clinically meaningful, ethically acceptable, and usable in the target healthcare workflow.
 
 \section{Research Gap}
-The main research gap identified in this review is the lack of general, reusable, and clinically aware eHealth Digital Twin architectures that combine interoperability, privacy, virtual modeling, AI-based analytics, simulation services, and decision support in a coherent manner. A second gap concerns the transition from proof-of-concept systems to clinically validated systems. Many papers show promising models, but fewer demonstrate continuous deployment, integration with real clinical workflows, regulatory readiness, and long-term evaluation.
+The expanded synthesis clarifies the general architecture of eHealth Digital Twins, but several gaps remain. First, the literature still contains few fully synchronized and bidirectional clinical Digital Twins. Many systems are closer to digital models, simulations, or digital shadows than to continuously updated and clinically integrated twins. Second, healthcare data remain fragmented across biomedical sensors, electronic health records, imaging systems, laboratory platforms, patient-reported information, and administrative systems. This fragmentation limits multimodal fusion and longitudinal interpretation.
 
-A third gap concerns multimodal and longitudinal data. Healthcare Digital Twins require data that are not only diverse but also temporally aligned and clinically meaningful. Missing values, inconsistent measurements, sensor errors, and biased datasets can directly affect the reliability of a twin. Cardiovascular examples show that integrating imaging, biosignals, hemodynamics, and clinical records is powerful, but also technically and clinically demanding.
+Interoperability is another persistent gap. Healthcare Digital Twins must connect with existing clinical information systems and standards, but many prototypes do not demonstrate integration in real clinical environments. Prospective clinical validation is also limited. Promising models often remain evaluated on retrospective datasets, small proof-of-concept studies, or simulated cases. Accepted maturity benchmarks for healthcare Digital Twins are still missing, making it difficult to compare systems consistently.
+
+Further gaps concern the combination of AI and mechanistic simulation, the communication of uncertainty, and the explainability of outputs. Hybrid approaches are promising, especially in cardiovascular applications, but they require reliable data, explicit assumptions, and careful validation. Privacy, cybersecurity, ethics, responsibility, and consent remain central challenges because Digital Twins depend on sensitive and often longitudinal patient information. Finally, high computational requirements, infrastructure needs, and limited integration into routine clinical workflows continue to slow the transition from research prototypes to operational healthcare systems.
 
 \section{Conclusion}
-This chapter compared selected Digital Twin studies and extracted the main trends and limitations. The review was expanded beyond general eHealth architecture to include healthcare applications and cardiovascular Digital Twin research. The next chapter proposes a general architecture for eHealth Digital Twins based on the findings of the literature review.
+This chapter compared selected Digital Twin studies and extracted the main conceptual, architectural, and evaluation findings for eHealth Digital Twins. The synthesis established the layered structure, cross-cutting requirements, data-flow logic, and validation principles required for a trustworthy eHealth Digital Twin. The final chapter summarizes the contributions and limitations of this Master study and introduces the proposed PFE as a practical cardiovascular specialization of these general findings.
 
 \clearpage
