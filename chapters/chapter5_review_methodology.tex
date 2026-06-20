@@ -1,13 +1,15 @@
 \chapter{Literature Review Methodology}
 
-\section{Purpose of the Review}
-The purpose of this literature review is to analyze how Digital Twin technology is defined, structured, and applied in eHealth. The review focuses on general healthcare applications while also examining the cardiovascular field as a representative clinical domain where Digital Twin research is relatively advanced. It aims to identify conceptual foundations, architectures, enabling technologies, application categories, cardiovascular use cases, and open challenges.
+\section{Review Objective}
+The objective of this chapter is to define the method used to build the state-of-the-art analysis of Digital Twins for eHealth. The review is structured and focused, but it is not presented as an exhaustive protocol-based evidence synthesis. No complete reproducible search log with database-specific dates, initial record counts, duplicate-removal counts, screening counts, full-text exclusion counts, and exclusion reasons is available in this project. For this reason, the methodology is reported as a structured state-of-the-art literature review.
+
+The review aims to connect several bodies of literature: general Digital Twin foundations, healthcare and eHealth applications, healthcare-oriented architectures, patient-specific modeling, cardiovascular examples, interoperability, privacy, security, ethics, explainability, and validation. The purpose is not to cover every publication using the term Digital Twin, but to select high-relevance peer-reviewed papers and authoritative sources that support the conceptual and architectural synthesis developed in Chapter 6.
 
 \section{Research Questions}
 The review is guided by the following research questions:
 
 \begin{itemize}[leftmargin=*]
-    \item \textbf{RQ1:} What are the main definitions and components of Digital Twin technology?
+    \item \textbf{RQ1:} What are the main definitions, components, and maturity levels of Digital Twin technology?
     \item \textbf{RQ2:} How is Digital Twin technology applied in healthcare and eHealth?
     \item \textbf{RQ3:} What architectures have been proposed for healthcare Digital Twins?
     \item \textbf{RQ4:} What technologies enable Digital Twin-based eHealth systems?
@@ -15,74 +17,97 @@ The review is guided by the following research questions:
     \item \textbf{RQ6:} How is Digital Twin technology used in the cardiovascular field, and what can this domain teach us about patient-specific and clinically interpretable eHealth systems?
 \end{itemize}
 
-\section{Search Strategy}
-The literature search is based on combinations of the following keywords:
+\section{Scope of the Review}
+The review covers two complementary levels. The first level is general and concerns Digital Twin concepts, enabling technologies, healthcare applications, architectures, and trustworthy deployment requirements. This level supports the general eHealth orientation of the thesis. The second level is a representative clinical deep-dive into cardiovascular Digital Twins. This domain is used because it combines biosignals, imaging, hemodynamic measurements, longitudinal monitoring, patient heterogeneity, and patient-specific physiological modeling~\cite{coorey2022health,corralacero2020digital,geddes2025right,gu2025heartfailure}.
+
+The review therefore includes both broad review papers and selected original studies. Broad reviews are used to clarify definitions, taxonomy, architecture, and recurring challenges~\cite{fuller2020digital,jones2020characterising,katsoulakis2024digital}. Original or application-oriented studies are used to illustrate concrete architectures, healthcare-unit twins, patient-specific frameworks, and cardiovascular modeling approaches~\cite{debenedictis2023digital,noeikham2024architecture,sharma2025patient,geddes2025right,gu2025heartfailure}.
+
+\section{Source Identification Strategy}
+Sources were identified through focused searches and citation tracing from high-relevance review papers. The platforms and sources consulted included publisher pages and indexing platforms such as IEEE Xplore, PubMed/MEDLINE, ScienceDirect, Springer Nature, MDPI, official DOI pages, and official standards pages when relevant. These platforms are reported as source-identification channels, not as evidence that a database-by-database protocol search with final numerical counts was performed.
+
+The search concepts combined Digital Twin terminology with healthcare, architecture, interoperability, validation, ethics, and cardiovascular terms. Examples include:
 
 \begin{itemize}[leftmargin=*]
-    \item ``Digital Twin'';
-    \item ``Digital Twin in Healthcare'';
-    \item ``Digital Twin for Health'';
-    \item ``Digital Twin eHealth'';
-    \item ``Patient-Specific Digital Twin'';
-    \item ``Healthcare Digital Twin Architecture'';
-    \item ``Digital Twin Ethics Healthcare'';
-    \item ``Digital Twin Interoperability Healthcare'';
-    \item ``Digital Twin Personalized Medicine'';
-    \item ``Digital Twin Remote Monitoring'';
-    \item ``Digital Twin Hospital Workflow'';
-    \item ``Cardiovascular Digital Twin'';
-    \item ``Heart Failure Digital Twin'';
-    \item ``Hemodynamic Digital Twin''.
+    \item ``digital twin'' AND healthcare;
+    \item ``digital twin'' AND eHealth;
+    \item ``digital twin for health'';
+    \item ``patient-specific digital twin'';
+    \item ``healthcare digital twin architecture'';
+    \item ``cardiovascular digital twin'';
+    \item ``heart failure digital twin'';
+    \item ``digital twin'' AND interoperability;
+    \item ``digital twin'' AND ethics AND healthcare;
+    \item ``digital twin'' AND clinical validation.
 \end{itemize}
 
-The selected papers include review articles, architecture proposals, conceptual studies, and application-oriented research related to Digital Twins in healthcare. Cardiovascular papers were added because they provide concrete examples of multimodal, patient-specific, and physiology-informed Digital Twin development.
+Additional sources were selected from the reference lists of key review papers when the original paper could be verified and when its contribution was relevant to the comparative analysis. The PFE topic was used only as a practical motivation for the cardiovascular continuation; it was not cited as an external scientific authority.
 
-\section{Inclusion and Exclusion Criteria}
+\section{Selection Criteria}
 \subsection{Inclusion Criteria}
-Papers are included if they satisfy at least one of the following criteria:
+Studies were included when they satisfied at least one of the following criteria:
 
 \begin{itemize}[leftmargin=*]
-    \item they define or discuss Digital Twin concepts and maturity levels;
-    \item they focus on Digital Twin applications in healthcare or eHealth;
-    \item they propose a healthcare Digital Twin architecture;
-    \item they discuss enabling technologies such as IoT, AI, simulation, cloud, edge computing, or interoperability standards;
-    \item they analyze ethical, legal, privacy, or security challenges in healthcare Digital Twins;
-    \item they present a patient-specific, organ-specific, disease-specific, process-oriented, or public-health Digital Twin;
-    \item they provide a cardiovascular Digital Twin example involving biosignals, imaging, hemodynamics, heart failure, or interpretable AI.
+    \item they define or clarify the Digital Twin concept;
+    \item they distinguish digital models, digital shadows, and Digital Twins;
+    \item they propose healthcare-oriented Digital Twin architectures;
+    \item they present healthcare Digital Twin applications;
+    \item they examine patient-specific modeling;
+    \item they discuss AI and simulation integration;
+    \item they present cardiovascular or heart-failure applications;
+    \item they address interoperability, privacy, ethics, validation, explainability, or governance;
+    \item they are sufficiently detailed to support the comparative analysis.
 \end{itemize}
 
 \subsection{Exclusion Criteria}
-Papers are excluded if they are not related to Digital Twins, if they focus only on non-healthcare domains without transferable concepts, if they use the term Digital Twin only as a synonym for a static model without any data connection, or if they provide insufficient methodological, architectural, or clinical detail.
+Studies were excluded when they:
 
-\section{Review Workflow}
-The review workflow follows a simplified systematic approach inspired by PRISMA. The process includes identification, screening, eligibility assessment, and final inclusion of relevant studies.
+\begin{itemize}[leftmargin=*]
+    \item used the term Digital Twin without a clear physical--virtual relationship;
+    \item were unrelated to healthcare or to transferable Digital Twin foundations;
+    \item provided no meaningful conceptual, architectural, application, or evaluation contribution;
+    \item were duplicates of already selected sources;
+    \item were inaccessible in sufficient detail;
+    \item were purely promotional or unsupported commercial material;
+    \item confused a simple simulation or dashboard with a mature Digital Twin without justification.
+\end{itemize}
+
+\section{Data Extraction and Classification}
+For each selected source, the review extracted the following information when available:
+
+\begin{itemize}[leftmargin=*]
+    \item publication type and scope;
+    \item physical entity, patient, organ, device, or healthcare process represented;
+    \item data modalities and data sources;
+    \item modeling approach, including mechanistic simulation, AI, hybrid modeling, or rule-based reasoning;
+    \item synchronization direction and maturity level;
+    \item services provided, such as monitoring, prediction, simulation, treatment planning, workflow optimization, or decision support;
+    \item validation or evidence reported by the authors;
+    \item interoperability, security, privacy, ethics, explainability, and governance considerations;
+    \item limitations and future research directions.
+\end{itemize}
+
+The extracted information was then classified into thematic groups: Digital Twin foundations, Digital Twins for Health, healthcare architectures, patient-specific and hybrid frameworks, cardiovascular Digital Twins, and interoperability. Ethics, governance, explainability, and validation were treated as cross-cutting themes.
+
+\section{Synthesis Method}
+The synthesis was qualitative and comparative. The selected studies were compared across recurring dimensions rather than summarized one by one. Particular attention was given to conceptual maturity, physical--virtual coupling, data modalities, synchronization, modeling strategy, clinical or operational service, validation level, interoperability, explainability, and governance.
+
+Figure~\ref{fig:review_workflow} summarizes the structured workflow used in this review.
 
 \begin{figure}[H]
     \centering
-    \resizebox{0.78\textwidth}{!}{\input{figures/fig_review_workflow}}
-    \caption{Simplified literature review workflow. Replace the numbers after final paper selection.}
+    \resizebox{0.72\textwidth}{!}{\input{figures/fig_review_workflow}}
+    \caption{Workflow of the structured state-of-the-art literature review.}
     \label{fig:review_workflow}
 \end{figure}
 
-\section{Classification Criteria}
-The selected papers are classified according to:
+The synthesis supports the comparative table and the findings developed in Chapter 6. It is designed to identify recurring architectural components, cross-cutting requirements, methodological limitations, and research gaps rather than to calculate a meta-analytic effect size or produce statistical evidence.
 
-\begin{itemize}[leftmargin=*]
-    \item application domain;
-    \item type of Digital Twin;
-    \item clinical or operational use case;
-    \item data sources;
-    \item architecture layers;
-    \item enabling technologies;
-    \item modeling approach, such as mechanistic simulation, AI, hybrid modeling, or rule-based reasoning;
-    \item services provided, such as monitoring, prediction, simulation, treatment planning, or workflow optimization;
-    \item maturity level;
-    \item security and privacy considerations;
-    \item clinical validation strategy;
-    \item limitations and future directions.
-\end{itemize}
+\section{Methodological Limitations}
+The main limitation of this review is that it is not exhaustive. It does not report database-specific search dates, exact record counts, duplicate-removal counts, exclusion counts, or a complete search log. As a result, it should be interpreted as a structured and focused state-of-the-art review rather than an exhaustive evidence synthesis.
+
+Another limitation is the heterogeneity of Digital Twin terminology. Some publications use the term Digital Twin for static models, offline simulations, dashboards, or digital shadows. The review therefore interprets maturity cautiously and avoids treating all reported systems as fully synchronized and clinically validated Digital Twins. Finally, the field is evolving rapidly, so the reviewed literature represents a selected and verified evidence base rather than a final boundary of the domain.
 
 \section{Conclusion}
-This chapter defined the methodology used to analyze Digital Twin research for eHealth. The review was expanded to include general healthcare applications and cardiovascular Digital Twin studies. The next chapter applies these criteria to compare selected studies and extract the main trends.
+This chapter defined the structured methodology used to analyze Digital Twin research for eHealth. It clarified the review objective, research questions, scope, source-identification strategy, selection criteria, data-extraction dimensions, synthesis method, and methodological limitations. The next chapter applies this framework to compare selected studies and derive the main conceptual, architectural, clinical, and evaluation findings.
 
 \clearpage

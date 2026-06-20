@@ -25,7 +25,7 @@ A general eHealth system may include several components:
 \end{itemize}
 
 \section{Data Sources in eHealth}
-eHealth systems rely on heterogeneous data sources. These include structured clinical data, medical measurements, biosignals, medical images, laboratory results, prescriptions, lifestyle data, environmental data, administrative data, and patient-reported outcomes. The combination of these sources is valuable but challenging due to differences in format, sampling frequency, quality, reliability, and privacy requirements.
+eHealth systems rely on heterogeneous data sources. These include structured clinical data, medical measurements, biosignals, medical images, laboratory results, prescriptions, lifestyle data, environmental data, administrative data, and patient-reported outcomes. The combination of these sources is valuable but challenging due to differences in format, sampling frequency, quality, reliability, and privacy requirements~\cite{lehne2019interoperability,dimitrov2016medical}.
 
 
 \section{Multimodal Data and Longitudinal Follow-Up}
@@ -34,12 +34,12 @@ eHealth systems increasingly depend on multimodal data. A single health situatio
 Multimodal integration is difficult because each data source has its own format, sampling frequency, noise level, and clinical meaning. For example, wearable data may be continuous but noisy, imaging data may be detailed but episodic, and EHR data may be rich but incomplete. A robust eHealth architecture must therefore include preprocessing, timestamp alignment, missing data management, and semantic standardization.
 
 \section{Internet of Medical Things and Edge-Cloud Computing}
-The Internet of Medical Things (IoMT) connects medical sensors, wearable devices, home monitoring systems, mobile applications, and clinical equipment. These devices can support real-time or near-real-time monitoring, but they also introduce constraints related to energy consumption, connectivity, latency, privacy, and cybersecurity. Edge computing can process sensitive or time-critical data close to the patient, while cloud computing can provide scalable storage, model training, and large-scale analytics.
+The Internet of Medical Things (IoMT) connects medical sensors, wearable devices, home monitoring systems, mobile applications, and clinical equipment. These devices can support real-time or near-real-time monitoring, but they also introduce constraints related to energy consumption, connectivity, latency, privacy, and cybersecurity~\cite{dimitrov2016medical}. Edge computing can process sensitive or time-critical data close to the patient, while cloud computing can provide scalable storage, model training, and large-scale analytics.
 
 A Digital Twin-based eHealth system may combine edge and cloud resources. Edge devices can perform first-level filtering, anomaly detection, or local alerts, while cloud services can update patient histories, run heavier simulations, and support long-term analytics. The choice between edge and cloud depends on clinical urgency, bandwidth, model complexity, and privacy requirements.
 
 \section{Interoperability Standards}
-Interoperability is essential for eHealth because patient information may be generated and stored by different systems. Standards such as HL7 and FHIR support the exchange of healthcare information using common formats and resources. In a Digital Twin-based eHealth system, interoperability standards help connect data acquisition modules, clinical repositories, virtual models, and decision services.
+Interoperability is essential for eHealth because patient information may be generated and stored by different systems. Standards such as HL7 and FHIR support the exchange of healthcare information using common formats and resources~\cite{lehne2019interoperability,mandel2016smart,hl7fhir2024}. In a Digital Twin-based eHealth system, interoperability standards help connect data acquisition modules, clinical repositories, virtual models, and decision services.
 
 \section{Challenges in eHealth}
 The main challenges of eHealth include data fragmentation, missing data, inconsistent measurements, limited integration between systems, security and privacy risks, lack of clinical validation, usability barriers, and unequal access to digital services. These challenges justify the need for more integrated, dynamic, and trustworthy approaches such as Digital Twin-based architectures.

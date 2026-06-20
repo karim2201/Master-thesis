@@ -56,9 +56,6 @@
 % ------------------ Formatting ------------------
 \pagestyle{plain}
 
-\newcommand{\todo}[1]{\par\noindent\fcolorbox{DTOrange}{DTLightOrange}{\parbox{0.95\linewidth}{\textbf{TODO:} #1}}\par\vspace{0.5em}}
-\newcommand{\figplaceholder}[1]{\par\noindent\fcolorbox{DTGray}{DTLightGray}{\parbox[c][3.5cm][c]{0.95\linewidth}{\centering\textbf{Figure placeholder}\par #1}}\par}
-
 % ------------------ Thesis metadata ------------------
 \newcommand{\thesistitle}{Digital Twin for eHealth: State of the Art and Conceptual Architecture}
 \newcommand{\studentname}{[Student Name]}
@@ -77,7 +74,7 @@
 \input{preliminaries/acknowledgement}
 \input{preliminaries/abstract_en}
 \input{preliminaries/resume_fr}
-\input{preliminaries/abstract_ar_placeholder}
+\input{preliminaries/abstract_ar}
 \input{preliminaries/acronyms}
 
 \tableofcontents
@@ -104,8 +101,5 @@
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography/references}
-
-\appendix
-\input{chapters/appendix_figures_and_tables}
 
 \end{document}
