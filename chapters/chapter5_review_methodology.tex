@@ -3,7 +3,7 @@
 \section{Review Objective}
 The objective of this chapter is to define the method used to build the state-of-the-art analysis of Digital Twins for eHealth. The review is structured and focused, but it is not presented as an exhaustive protocol-based evidence synthesis. No complete reproducible search log with database-specific dates, initial record counts, duplicate-removal counts, screening counts, full-text exclusion counts, and exclusion reasons is available in this project. For this reason, the methodology is reported as a structured state-of-the-art literature review.
 
-The review aims to connect several bodies of literature: general Digital Twin foundations, healthcare and eHealth applications, healthcare-oriented architectures, patient-specific modeling, cardiovascular examples, interoperability, privacy, security, ethics, explainability, and validation. The purpose is not to cover every publication using the term Digital Twin, but to select high-relevance peer-reviewed papers and authoritative sources that support the conceptual and architectural synthesis developed in Chapter 6.
+The review aims to connect several bodies of literature: general Digital Twin foundations, healthcare and eHealth applications, healthcare-oriented architectures, AI-enabled and hybrid Digital Twin approaches, patient-specific modeling, cardiovascular examples, interoperability, privacy, security, ethics, explainability, and validation. The purpose is not to cover every publication using the term Digital Twin, but to select high-relevance peer-reviewed papers and authoritative sources that support the conceptual and architectural synthesis developed in Chapter 6.
 
 \section{Research Questions}
 The review is guided by the following research questions:
@@ -35,6 +35,11 @@ The search concepts combined Digital Twin terminology with healthcare, architect
     \item ``healthcare digital twin architecture'';
     \item ``cardiovascular digital twin'';
     \item ``heart failure digital twin'';
+    \item ``artificial intelligence'' AND ``digital twin'' AND healthcare;
+    \item ``machine learning'' AND ``digital twin'' AND health;
+    \item ``AI-powered digital twin'';
+    \item ``generative AI'' AND ``digital twin'' AND healthcare;
+    \item ``large language model'' AND ``digital twin'' AND patient;
     \item ``digital twin'' AND interoperability;
     \item ``digital twin'' AND ethics AND healthcare;
     \item ``digital twin'' AND clinical validation.
@@ -79,6 +84,8 @@ For each selected source, the review extracted the following information when av
     \item physical entity, patient, organ, device, or healthcare process represented;
     \item data modalities and data sources;
     \item modeling approach, including mechanistic simulation, AI, hybrid modeling, or rule-based reasoning;
+    \item AI technique used, learning paradigm, model inputs, prediction or inference target, and role of AI inside the Digital Twin lifecycle;
+    \item level of personalization, explainability method, uncertainty handling, and validation strategy for AI-enabled components;
     \item synchronization direction and maturity level;
     \item services provided, such as monitoring, prediction, simulation, treatment planning, workflow optimization, or decision support;
     \item validation or evidence reported by the authors;
@@ -86,7 +93,7 @@ For each selected source, the review extracted the following information when av
     \item limitations and future research directions.
 \end{itemize}
 
-The extracted information was then classified into thematic groups: Digital Twin foundations, Digital Twins for Health, healthcare architectures, patient-specific and hybrid frameworks, cardiovascular Digital Twins, and interoperability. Ethics, governance, explainability, and validation were treated as cross-cutting themes.
+The extracted information was then classified into thematic groups: Digital Twin foundations, Digital Twins for Health, healthcare architectures, AI-enabled and hybrid Digital Twin approaches, patient-specific frameworks, cardiovascular Digital Twins, and interoperability. Ethics, governance, explainability, and validation were treated as cross-cutting themes.
 
 \section{Synthesis Method}
 The synthesis was qualitative and comparative. The selected studies were compared across recurring dimensions rather than summarized one by one. Particular attention was given to conceptual maturity, physical--virtual coupling, data modalities, synchronization, modeling strategy, clinical or operational service, validation level, interoperability, explainability, and governance.
