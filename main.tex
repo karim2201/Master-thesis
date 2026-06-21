@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+﻿\documentclass[12pt,a4paper]{report}
 
 % =========================================================
 % Digital Twin for eHealth -- Master Thesis LaTeX Template
@@ -21,6 +21,7 @@
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{pdflscape} % landscape pages for wide comparative tables
+\usepackage{ragged2e}
 \usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{caption}
@@ -56,9 +57,13 @@
 % ------------------ Formatting ------------------
 \pagestyle{plain}
 
+% ------------------ Source-content compatibility ------------------
+\newcommand{\todo}[1]{\par\noindent\fcolorbox{DTOrange}{DTLightOrange}{\parbox{0.95\linewidth}{\textbf{TODO:} #1}}\par\vspace{0.5em}}
+\newcommand{\figplaceholder}[1]{\par\noindent\fcolorbox{DTGray}{DTLightGray}{\parbox[c][3.5cm][c]{0.95\linewidth}{\centering\textbf{Figure placeholder}\par #1}}\par}
+
 % ------------------ Thesis metadata ------------------
 \newcommand{\thesistitle}{Digital Twin for eHealth: State of the Art and Conceptual Architecture}
-\newcommand{\studentname}{[Student Name]}
+\newcommand{\studentname}{Halimi Abdelkrim and Hakkas Yacine}
 \newcommand{\supervisorname}{Mr. Mimoun Malki}
 \newcommand{\cosupervisorname}{Mr. Abdelhamid Malki}
 \newcommand{\academicYear}{2025/2026}
@@ -88,18 +93,24 @@
 \input{chapters/chapter1_general_introduction}
 
 \part{Background}
-\input{chapters/chapter3_digital_twin_fundamentals}
 \input{chapters/chapter2_ehealth_foundations}
+\input{chapters/chapter3_digital_twin_fundamentals}
 \input{chapters/chapter4_digital_twin_in_ehealth}
 
 \part{State of the Art}
 \input{chapters/chapter5_review_methodology}
 \input{chapters/chapter6_comparative_study}
 
-\part{General Conclusion and PFE Transition}
-\input{chapters/chapter7_general_conclusion_and_pfe_transition}
+\part{Proposed Method}
+\input{chapters/chapter7_proposed_architecture}
+
+\part{Conclusion}
+\input{chapters/chapter8_general_conclusion}
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography/references}
+
+\appendix
+\input{chapters/appendix_figures_and_tables}
 
 \end{document}

@@ -1,18 +1,18 @@
-\begin{tikzpicture}[font=\small, >=Latex, node distance=0.95cm]
-\tikzstyle{stepbox}=[rounded corners=5pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=5.7cm, minimum height=0.9cm, align=center]
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.1cm]
+\tikzstyle{step}=[rounded corners=6pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=4.3cm, minimum height=1.0cm, align=center]
+\tikzstyle{reject}=[rounded corners=6pt, draw=DTOrange, thick, fill=DTLightOrange, minimum width=3.4cm, minimum height=0.9cm, align=center]
 
-\node[stepbox] (rq) {Research objectives and questions};
-\node[stepbox, below=of rq] (sources) {Source identification};
-\node[stepbox, below=of sources] (screen) {Relevance and quality screening};
-\node[stepbox, below=of screen] (extract) {Data extraction};
-\node[stepbox, below=of extract] (classify) {Thematic classification};
-\node[stepbox, below=of classify] (compare) {Comparative analysis};
-\node[stepbox, below=of compare] (synthesis) {Synthesis of findings};
+\node[step] (id) {Identification\\Records found: \textbf{N = [ ]}};
+\node[step, below=of id] (screen) {Screening\\After duplicates: \textbf{N = [ ]}};
+\node[step, below=of screen] (elig) {Eligibility\\Full-text assessed: \textbf{N = [ ]}};
+\node[step, below=of elig] (incl) {Included\\Selected studies: \textbf{N = [ ]}};
 
-\draw[->, thick] (rq) -- (sources);
-\draw[->, thick] (sources) -- (screen);
-\draw[->, thick] (screen) -- (extract);
-\draw[->, thick] (extract) -- (classify);
-\draw[->, thick] (classify) -- (compare);
-\draw[->, thick] (compare) -- (synthesis);
+\node[reject, right=2.4cm of screen] (ex1) {Excluded by title / abstract\\N = [ ]};
+\node[reject, right=2.4cm of elig] (ex2) {Excluded after full text\\N = [ ]};
+
+\draw[->, thick] (id) -- (screen);
+\draw[->, thick] (screen) -- (elig);
+\draw[->, thick] (elig) -- (incl);
+\draw[->, thick, DTOrange] (screen) -- (ex1);
+\draw[->, thick, DTOrange] (elig) -- (ex2);
 \end{tikzpicture}
