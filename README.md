@@ -51,4 +51,4 @@ xelatex main.tex
 
 - This version is configured for XeLaTeX in order to preserve Arabic, French, and English rendering.
 - Landscape tables use `pdflscape`, `longtable`, and `ragged2e`.
-- The title page styling, Arabic header text, and multilingual front matter are preserved from the current formatted project.
+- The title page styling, Arabic header text, and multilingual front matter are preserved from the formatted project.
