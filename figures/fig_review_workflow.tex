@@ -1,18 +1,17 @@
-\begin{tikzpicture}[font=\small, >=Latex, node distance=1.1cm]
-\tikzstyle{step}=[rounded corners=6pt, draw=DTBlue, thick, fill=DTLightBlue, minimum width=4.3cm, minimum height=1.0cm, align=center]
-\tikzstyle{reject}=[rounded corners=6pt, draw=DTOrange, thick, fill=DTLightOrange, minimum width=3.4cm, minimum height=0.9cm, align=center]
+\begin{tikzpicture}[font=\small, >=Latex, node distance=1.0cm]
+\tikzstyle{workflowstep}=[
+    rectangle, rounded corners=2pt, draw=DTBlue, fill=DTLightBlue,
+    text width=4.4cm, minimum height=0.9cm, align=center, line width=0.6pt
+]
+\node[workflowstep] (rq) {Research objectives and questions};
+\node[workflowstep, below=of rq] (source) {Source identification};
+\node[workflowstep, below=of source] (screen) {Relevance and quality screening};
+\node[workflowstep, below=of screen] (extract) {Data extraction};
+\node[workflowstep, below=of extract] (theme) {Thematic classification};
+\node[workflowstep, below=of theme] (compare) {Comparative analysis};
+\node[workflowstep, below=of compare] (synthesis) {Synthesis of findings and PFE implications};
 
-\node[step] (id) {Identification\\Records found: \textbf{N = [ ]}};
-\node[step, below=of id] (screen) {Screening\\After duplicates: \textbf{N = [ ]}};
-\node[step, below=of screen] (elig) {Eligibility\\Full-text assessed: \textbf{N = [ ]}};
-\node[step, below=of elig] (incl) {Included\\Selected studies: \textbf{N = [ ]}};
-
-\node[reject, right=2.4cm of screen] (ex1) {Excluded by title / abstract\\N = [ ]};
-\node[reject, right=2.4cm of elig] (ex2) {Excluded after full text\\N = [ ]};
-
-\draw[->, thick] (id) -- (screen);
-\draw[->, thick] (screen) -- (elig);
-\draw[->, thick] (elig) -- (incl);
-\draw[->, thick, DTOrange] (screen) -- (ex1);
-\draw[->, thick, DTOrange] (elig) -- (ex2);
+\foreach \a/\b in {rq/source,source/screen,screen/extract,extract/theme,theme/compare,compare/synthesis}{
+    \draw[->, thick, DTBlue] (\a) -- (\b);
+}
 \end{tikzpicture}

@@ -1,0 +1,35 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    year/.style={draw=DTBlue, fill=DTLightBlue, rounded corners=2pt, align=center, font=\scriptsize, minimum width=2.15cm, minimum height=1.0cm},
+    stage/.style={draw=DTGray, fill=DTLightGray, rounded corners=2pt, align=center, font=\scriptsize, text width=3.6cm, minimum height=0.9cm},
+    arrow/.style={->, thick, DTBlue}
+]
+\node[year] (g) at (0,0) {2003/2005\\Grieves\\PLM};
+\node[year] (n) at (2.8,0) {2010/2012\\NASA\\Glaessgen--Stargel};
+\node[year] (b) at (5.6,0) {2016\\Boschert\\Rosen};
+\node[year] (ne) at (8.4,0) {2017\\Negri et al.};
+\node[year] (kt) at (11.2,0) {2018\\Kritzinger\\Tao et al.};
+\node[year] (jf) at (14.0,0) {2020\\Jones\\Fuller};
+\node[year] (vt) at (16.8,0) {2020/2021\\van der Valk\\et al.};
+\node[year] (tv) at (19.6,0) {2022\\Tomczyk\\van der Valk};
+
+\draw[arrow] (g) -- (n);
+\draw[arrow] (n) -- (b);
+\draw[arrow] (b) -- (ne);
+\draw[arrow] (ne) -- (kt);
+\draw[arrow] (kt) -- (jf);
+\draw[arrow] (jf) -- (vt);
+\draw[arrow] (vt) -- (tv);
+
+\node[stage] (s1) at (2.2,-2.0) {physical entity\\+ virtual entity\\+ connection};
+\node[stage] (s2) at (7.0,-2.0) {synchronization, lifecycle\\and simulation};
+\node[stage] (s3) at (11.8,-2.0) {data and services\\as explicit dimensions};
+\node[stage] (s4) at (16.6,-2.0) {configurable, intelligent\\and application-oriented twins};
+
+\draw[arrow] (s1) -- (s2);
+\draw[arrow] (s2) -- (s3);
+\draw[arrow] (s3) -- (s4);
+\draw[DTGray, dashed] (g.south) -- (s1.north);
+\draw[DTGray, dashed] (kt.south) -- (s3.north);
+\draw[DTGray, dashed] (tv.south) -- (s4.north);
+\end{tikzpicture}

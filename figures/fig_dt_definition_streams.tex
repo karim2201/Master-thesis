@@ -1,0 +1,30 @@
+\begin{tikzpicture}[
+    stream/.style={draw=DTBlue, fill=DTLightBlue, rounded corners=4pt, align=left, font=\scriptsize, text width=5.0cm, minimum height=3.2cm},
+    title/.style={font=\small\bfseries, align=center},
+    arrow/.style={->, thick, DTGray}
+]
+\node[stream] (classic) at (0,0) {
+{\centering\textbf{Classical approach}\par}
+\textbf{Focus:} physical entity, virtual entity, bidirectional link\\
+\textbf{Authors:} Grieves; NASA; Glaessgen--Stargel\\
+\textbf{Strength:} clear minimum structure\\
+\textbf{Limit:} data and services often implicit
+};
+\node[stream] (extended) at (6.0,0) {
+{\centering\textbf{Extended approach}\par}
+\textbf{Focus:} physical, virtual, data, services, connections\\
+\textbf{Authors:} Tao et al.; Qi and Tao\\
+\textbf{Strength:} platform and service orientation\\
+\textbf{Limit:} can become broad without maturity criteria
+};
+\node[stream] (application) at (12.0,0) {
+{\centering\textbf{Application-oriented approach}\par}
+\textbf{Focus:} configuration for a concrete use case\\
+\textbf{Authors:} van der Valk et al.; healthcare reviews\\
+\textbf{Strength:} domain relevance\\
+\textbf{Limit:} risk of fragmented definitions
+};
+\draw[arrow] (classic) -- (extended);
+\draw[arrow] (extended) -- (application);
+\node[align=center, font=\scriptsize, text=DTGray] at (6,-2.4) {Tomczyk and van der Valk interpret these streams as evidence of a definitional shift shaped by technology and use cases.};
+\end{tikzpicture}

@@ -1,29 +1,70 @@
-\chapter{General Conclusion and Future Work}
+\chapter{General Conclusion and Proposed Method for the PFE}
 
 \section{General Conclusion}
-This thesis studied the Digital Twin paradigm in the context of eHealth. It showed that Digital Twin technology can support the transition from fragmented digital health applications toward dynamic, personalized, and service-oriented healthcare systems. A Digital Twin is not only a digital copy or a visualization tool; it is a connected virtual representation that uses data, models, and services to support monitoring, simulation, prediction, and decision-making.
+This Master’s thesis studied the Digital Twin paradigm in the context of eHealth. It showed that a Digital Twin is not only a digital copy, dashboard, or isolated prediction model, but a connected physical--virtual system that uses data, models, and services to support monitoring, simulation, prediction, and decision support. The thesis also distinguished digital models, digital shadows, connected Digital Twins, and intelligent Digital Twins in order to avoid confusing static simulations with mature, updated, and clinically meaningful systems.
 
-The literature review showed that Digital Twins for Health are receiving growing attention, but the field remains emerging. Existing works provide valuable definitions, classifications, architectures, and use cases. However, many systems are still conceptual, prototype-based, or limited to specific scenarios. The implementation of reliable eHealth Digital Twins requires interoperability, security, privacy, clinical validation, explainability, and ethical governance.
+The first part of the study clarified the foundations of eHealth, Digital Twin technology, and healthcare Digital Twin applications. The state-of-the-art analysis then examined two complementary domains. The first state of the art reviewed Digital Twins in eHealth and healthcare, including patient-specific twins, organ and device twins, hospital-process twins, public-health twins, Artificial Intelligence-enabled systems, hybrid AI--simulation models, interoperability, ethics, privacy, governance, and validation. The second state of the art focused on cardiovascular Digital Twins, including electrophysiology, arrhythmia modeling, ablation planning, electromechanical and hemodynamic models, heart-failure twins, patient-specific calibration, AI-accelerated simulation, and population-scale cardiac twins.
 
-To address these needs, this thesis proposed a general multi-layer architecture for Digital Twin-based eHealth systems. The architecture includes physical, acquisition, interoperability, data management, virtual twin, intelligence, simulation, and service layers, with security and privacy as cross-cutting requirements.
+The comparative analyses confirmed that the field is scientifically active but not yet uniformly mature. Many studies remain conceptual, retrospective, or proof-of-concept. Fully synchronized, longitudinal, clinically validated, and workflow-integrated healthcare Digital Twins remain uncommon. The thesis therefore emphasized cautious terminology, traceable data flows, uncertainty-aware interpretation, human supervision, and the distinction between measured, calculated, estimated, predicted, and simulated values.
 
-\section{Limitations}
-This thesis is primarily an academic state-of-the-art and conceptual architecture study. It does not provide a full clinical deployment or a validated medical product. The proposed architecture must be adapted and evaluated according to a specific healthcare use case, available data sources, regulatory constraints, and user requirements.
-
-\section{Future Work}
-Future work may focus on implementing and evaluating the proposed architecture in real or semi-real eHealth scenarios. Important directions include:
+\section{Main Contributions of the Master Study}
+The main contributions of this work are:
 
 \begin{itemize}[leftmargin=*]
-    \item integration with standardized EHR systems using HL7/FHIR;
-    \item development of secure data acquisition pipelines from connected medical devices;
-    \item design of explainable AI and simulation modules;
-    \item validation using realistic healthcare datasets;
-    \item evaluation of usability with healthcare professionals and patients;
-    \item strengthening privacy, consent management, and ethical governance;
-    \item extension toward multi-twin ecosystems connecting patients, devices, workflows, and healthcare services.
+    \item a structured review of eHealth and Digital Twin foundations;
+    \item a dual state-of-the-art study covering general healthcare Digital Twins and cardiovascular Digital Twins;
+    \item two landscape comparative tables that compare studies by represented entity, data, modeling approach, maturity, evidence, and limitations;
+    \item synthesis figures that clarify AI roles, eHealth Digital Twin categories, cardiovascular Digital Twin categories, maturity levels, and the transition toward CardioTwin;
+    \item a general multi-layer architecture for Digital Twin-based eHealth systems;
+    \item a literature-derived rationale for translating the Master’s thesis findings into the CardioTwin PFE.
 \end{itemize}
 
+\section{Limitations of the Study}
+This thesis is primarily a state-of-the-art and conceptual architecture study. It does not provide a complete clinical deployment, regulatory medical device, or prospectively validated healthcare product. The reviewed literature is also heterogeneous: authors use the term Digital Twin with different levels of rigor, and many publications describe simulations, predictive models, or digital shadows rather than fully synchronized twins.
+
+Another limitation is that the proposed architecture remains general. It identifies layers, data flows, and cross-cutting requirements, but each healthcare use case still requires specific datasets, clinical objectives, validation protocols, regulatory analysis, and user requirements. In cardiovascular medicine, high-fidelity twinning may require imaging, invasive measurements, calibration, and computational resources that are beyond the scope of this Master’s thesis and the associated academic prototype.
+
+\section{From the Master Study to the PFE}
+The CardioTwin PFE is introduced as a practical cardiovascular continuation of the Master’s thesis. The transition follows a clear logic: general Digital Twin foundations define the physical--virtual relationship; eHealth foundations define the healthcare data and service environment; the healthcare state of the art identifies architectural, AI, interoperability, and governance requirements; the cardiovascular state of the art identifies a clinically relevant specialization; and the synthesis translates these findings into a feasible prototype scope.
+
+The cardiovascular domain was selected because it satisfies several technical and methodological criteria identified in the literature. Cardiovascular diseases require longitudinal and personalized monitoring; the domain combines electrical, hemodynamic, physiological, clinical, and sometimes imaging information; patient presentations are heterogeneous; disease trajectories change over time; and treatment responses vary between patients. The reviewed literature also provides examples ranging from numerical simulation and patient-specific calibrated models to AI-assisted phenotyping and prognosis.
+
+\section{Introduction to the PFE Project}
+The PFE is entitled:
+
+\begin{quote}
+\textbf{CardioTwin -- Design and Deployment of an AI-Powered Cardiovascular Digital Twin for Diagnostic Assistance and Therapeutic Simulation}
+\end{quote}
+
+CardioTwin is positioned as a patient-oriented cardiovascular Digital Twin prototype inspired by the literature synthesis. It does not claim to reproduce a complete three-dimensional virtual heart or to provide autonomous medical prescriptions. Instead, it aims to combine real biomedical measurements, ECG signal analysis, clinical and physiological information, patient-state representation, cardiovascular risk assessment, controlled what-if simulation, monitoring, and visualization services.
+
+\section{Proposed PFE Methodology}
+The proposed method follows the layered and evidence-aware logic derived from the Master’s thesis.
+
+\subsection{Data Acquisition and Validation}
+CardioTwin will acquire or import ECG data, systolic blood pressure, diastolic blood pressure, heart rate when available, demographic information, clinical history, symptoms, and other relevant physiological measurements. The prototype may use connected medical sensors and the MySignals eHealth development kit where appropriate, but hardware acquisition remains a means to support the patient-state model rather than an objective in itself. Preprocessing includes ECG filtering, artifact handling, normalization, segmentation, timestamp alignment, missing-data handling, and validation of measurement consistency.
+
+\subsection{ECG and Clinical Assessment}
+The ECG diagnostic-assistance module analyzes biosignals for rhythm or abnormality detection using suitable Machine Learning or Deep Learning models and biomedical datasets such as PTB-XL, MIT-BIH, SVDB, AFDB, or INCART when required by the implementation. These outputs are diagnostic-support elements only. They are combined with age, sex, SBP, DBP, heart rate, clinical history, symptoms, and relevant cardiac measurements to build a broader cardiovascular assessment.
+
+\subsection{Patient-State Fusion and Twin Update}
+The virtual patient state fuses ECG findings, clinical risk, physiological measurements, and historical information. This state is more than an isolated ECG classifier because it preserves the relationship between measurements, derived indicators, model estimates, predictions, and simulated outputs. The cardiovascular twin is updated when new validated information is received, while explicitly distinguishing measured values from calculated, estimated, predicted, and simulated values.
+
+\subsection{What-If Simulation and Services}
+The what-if module is an exploratory decision-support component. It may simulate changes in blood pressure, physiological parameters, lifestyle scenarios, medication-effect assumptions, or possible evolution over a selected time horizon. These scenarios are estimates based on models, evidence, or population-level effects and must not be interpreted as guaranteed individual outcomes or autonomous medical prescriptions. The service layer provides patient dashboards, ECG visualization, historical trends, risk summaries, alerts, what-if scenario outputs, and clinician-oriented reports.
+
+\subsection{Human-in-the-Loop Decision Support}
+CardioTwin assists healthcare professionals but does not replace them. Clinical decisions remain under professional supervision, simulated recommendations require medical interpretation, and autonomous therapeutic control is outside the scope of the PFE.
+
+\section{Evaluation Strategy}
+The evaluation plan covers several complementary levels. Data acquisition evaluation verifies sensor communication, completeness, timestamps, signal quality, and measurement consistency. ECG-model evaluation uses appropriate metrics such as accuracy, precision, recall, F1-score, macro-F1, sensitivity, specificity, confusion matrices, and external dataset testing where available. Patient-state evaluation examines consistency between measurements and stored state, correct longitudinal updates, and handling of missing or contradictory measurements.
+
+What-if evaluation focuses on traceability of assumptions, consistency with cited medical evidence, plausible direction and magnitude of simulated effects, transparent uncertainty, and the absence of unsupported claims of individual treatment efficacy. System evaluation considers latency, modularity, reliability, usability, security, interoperability, and dashboard clarity. Full clinical validation would require clinician review, prospective evaluation, ethical approval where necessary, representative patient data, and regulatory consideration; these steps may remain future work beyond the academic prototype.
+
+\section{Future Work}
+Future work should first implement and evaluate the CardioTwin prototype. Important directions include integrating real biomedical sensors, improving ECG and clinical-data fusion, validating patient-state updates, strengthening what-if simulation, adding explainability and uncertainty communication, using interoperability standards, and conducting clinician-centered usability evaluation. Longer-term work should move toward prospective validation, regulatory analysis, multicenter data, and extension to other healthcare Digital Twin domains.
+
 \section{Final Remarks}
-Digital Twins for eHealth represent a promising research direction at the intersection of healthcare, computer science, data engineering, artificial intelligence, and systems modeling. Their success will depend not only on technical performance, but also on trust, interoperability, clinical relevance, and responsible design.
+Digital Twins for eHealth represent a demanding research direction at the intersection of healthcare, computer science, data engineering, Artificial Intelligence, and systems modeling. Their success will depend not only on model performance, but also on synchronization, evidence, transparency, interoperability, privacy, clinical relevance, and responsible human-supervised use. CardioTwin is a practical continuation of this Master’s thesis because it operationalizes a focused subset of these findings in the cardiovascular domain while preserving the scientific limits identified by the state of the art.
 
 \clearpage

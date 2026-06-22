@@ -1,7 +1,9 @@
 \chapter{Digital Twin in Healthcare and eHealth}
 
 \section{Digital Twin for Health}
-A Digital Twin for Health is a virtual representation used to support healthcare-related monitoring, simulation, prediction, and decision-making. Depending on its scope, it may represent a patient, an organ, a disease process, a medical device, a clinical workflow, a hospital unit, or a public health system. Unlike a simple dashboard, a Digital Twin aims to maintain a dynamic relationship between real-world data and virtual models.
+A Digital Twin for Health inherits the general physical--virtual structure introduced in the Digital Twin fundamentals chapter, but it also depends on the eHealth ecosystem described in the previous chapter. Healthcare twins add domain-specific requirements that are particularly important in clinical contexts: they must preserve clinical meaning, integrate multimodal patient data, support longitudinal updating, communicate uncertainty, protect privacy, and remain subject to validation and human supervision. A Digital Twin for Health is therefore a virtual representation used to support healthcare-related monitoring, simulation, prediction, and decision-making while remaining connected to a clearly identified patient, organ, device, process, or health system.
+
+Depending on its scope, it may represent a patient, an organ, a disease process, a medical device, a clinical workflow, a hospital unit, or a public health system. Unlike a simple dashboard, a Digital Twin aims to maintain a dynamic relationship between real-world data and virtual models. The general Digital Twin criteria still apply: a domain-specific health twin should not be considered mature merely because it contains medical data or an AI model.
 
 \section{Types of Healthcare Digital Twins}
 Healthcare Digital Twins can be classified into several categories:
@@ -18,7 +20,7 @@ Healthcare Digital Twins can be classified into several categories:
 \begin{figure}[H]
     \centering
     \resizebox{0.95\textwidth}{!}{\input{figures/fig_healthcare_dt_taxonomy}}
-    \caption{General taxonomy of Digital Twin applications in healthcare and eHealth.}
+    \caption{General taxonomy of Digital Twin applications in healthcare and eHealth. Author synthesis based on the reviewed literature.}
     \label{fig:healthcare_dt_taxonomy}
 \end{figure}
 

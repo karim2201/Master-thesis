@@ -3,11 +3,20 @@
 \section{Chapter Scope and Analytical Approach}
 This chapter develops two complementary states of the art. The first examines Digital Twins in eHealth and healthcare at the level of patients, organs, medical devices, care processes, hospitals, public health, and precision medicine. The second narrows the analysis to cardiovascular Digital Twins, where patient-specific computational models have been applied to electrophysiology, hemodynamics, heart failure, treatment planning, risk stratification, and virtual testing. The separation is deliberate: the eHealth review identifies the general concepts, architectures, data requirements, services, and governance conditions of healthcare Digital Twins, whereas the cardiovascular review evaluates how these principles are instantiated in one clinically demanding and data-rich domain.
 
-The analysis combines review papers, architecture proposals, methodological studies, and original application studies. Each paper is examined according to the represented physical entity, input data, modeling strategy, physical--virtual synchronization, services, validation evidence, and limitations. A strict maturity interpretation is applied throughout: a patient-specific simulation is not automatically a complete Digital Twin, and strong prediction performance does not replace continuous synchronization, model updating, traceability, or clinical validation. The chapter therefore distinguishes conceptual visions, static models, calibrated patient-specific models, digital shadows, process twins, partial Digital Twins, and more mature connected systems.
+The analysis combines review papers, architecture proposals, methodological studies, and original application studies. Each paper is examined according to the represented physical entity, input data, modeling strategy, physical--virtual synchronization, services, validation evidence, and limitations. The definition framework established in Chapter~3 is used throughout: a patient-specific simulation is not automatically a complete Digital Twin, and strong prediction performance does not replace continuous synchronization, model updating, traceability, or clinical validation. The chapter therefore distinguishes conceptual visions, static digital models, offline patient-specific simulations, episodically calibrated models, Digital Shadows, process Digital Twins, partial connected Digital Twins, and intelligent-DT directions.
 
 % =========================================================
 \section{State of the Art I: Digital Twins in eHealth and Healthcare}
 \label{sec:sota_ehealth}
+
+This first state of the art examines healthcare Digital Twins beyond a single disease or organ. It considers patient-specific twins, organ and body-system twins, disease and care-pathway twins, medical-device twins, hospital-process twins, and population-level twins. Figure~\ref{fig:ehealth_dt_taxonomy_synthesis} summarizes this application taxonomy as an author synthesis of the reviewed literature.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_ehealth_dt_taxonomy_synthesis}}
+    \caption{Taxonomy of Digital Twin applications in eHealth derived from the reviewed literature. Author synthesis based on the reviewed literature.}
+    \label{fig:ehealth_dt_taxonomy_synthesis}
+\end{figure}
 
 \subsection{Evolution of the Healthcare Digital Twin Concept}
 The transfer of Digital Twin principles from engineering to healthcare introduced a fundamental change in the nature of the physical counterpart. Industrial twins usually represent assets with relatively well-defined boundaries and operating laws, whereas healthcare twins may represent a changing person, an organ, a disease trajectory, a medical device, a care pathway, or an organizational process. Human physiology is multiscale, partially observable, variable across individuals, and influenced by behavior, treatment, environment, and social context. Consequently, a healthcare Digital Twin cannot be assessed only by geometric fidelity or sensor connectivity; its credibility also depends on clinical meaning, uncertainty, longitudinal consistency, and safe integration into care workflows.
@@ -42,6 +51,15 @@ Sharma and Kaur~\cite{sharma2025patient} propose a hybrid patient-specific frame
 
 Across these studies, AI contributes at several stages of the twin lifecycle: artifact detection and preprocessing, latent-state estimation, image segmentation, anomaly detection, diagnosis support, prognosis, patient stratification, parameter calibration, surrogate modeling, scenario ranking, and continuous adaptation. Each role creates a different validation obligation. An imputation model must not silently create clinically important values; a diagnostic model requires discriminative and calibration testing; an adaptive model requires drift monitoring and controlled revalidation; and a surrogate simulation requires evidence that it preserves the behavior of the mechanistic model inside the intended domain.
 
+Figure~\ref{fig:ai_lifecycle_dt} positions these roles across the healthcare Digital Twin lifecycle. The figure deliberately separates AI capability from Digital Twin maturity: the presence of learning algorithms can enrich a twin, but maturity still depends on the persistence of the physical--virtual relationship, controlled state updates, service integration, and validation.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_ai_lifecycle_dt}}
+    \caption{Functional roles of Artificial Intelligence across the healthcare Digital Twin lifecycle. Author synthesis based on the reviewed literature.}
+    \label{fig:ai_lifecycle_dt}
+\end{figure}
+
 \subsection{Interoperability, Validation, and Governance}
 Interoperability is a structural requirement rather than a peripheral feature. Patient twins may receive data from sensors, mobile applications, EHRs, imaging platforms, laboratories, and clinician inputs, each with different identifiers, formats, semantics, time scales, and data-quality characteristics. Healthcare standards such as HL7 FHIR can facilitate exchange, but syntactic compatibility alone does not guarantee semantic consistency or temporal alignment. The twin must preserve provenance, measurement units, timestamps, uncertainty, and the distinction between measured, calculated, estimated, predicted, and simulated values.
 
@@ -52,7 +70,7 @@ Bruynseels et al.~\cite{bruynseels2018digital} analyze the ethical consequences 
 Clinical credibility requires multiple forms of evaluation. Technical verification asks whether software, data pipelines, and numerical implementations behave as specified. Model validation examines whether outputs reproduce relevant physiological or operational behavior. External validation tests transportability to other populations, institutions, devices, and time periods. Prospective clinical validation evaluates whether the twin improves decisions or outcomes in real workflows. Human-factors evaluation assesses usability, alert burden, trust, and the effect of the system on clinical responsibilities. Most reviewed studies address only a subset of these layers.
 
 \subsection{Comparative Table for Digital Twins in eHealth}
-Table~\ref{tab:ehealth_sota} compares representative eHealth and healthcare Digital Twin studies. The table separates conceptual contribution from implementation evidence and applies cautious maturity labels.
+Table~\ref{tab:ehealth_sota} compares representative eHealth and healthcare Digital Twin studies. The selected studies are not treated as an exhaustive inventory of all healthcare Digital Twin publications; rather, they were chosen because together they cover conceptual definitions, patient-specific visions, process-oriented twins, healthcare-unit architectures, public-health perspectives, AI-enabled approaches, methodological requirements, and ethics. The comparison criteria therefore emphasize the represented entity, data integration, modeling approach, maturity, evidence, and limitations. This structure makes it possible to compare conceptual reviews with implementations, patient twins with process twins, AI-only approaches with hybrid approaches, and architecture proposals with clinically oriented systems.
 
 \clearpage
 \begin{landscape}
@@ -106,9 +124,47 @@ The eHealth literature shows a progression from broad personalized-medicine visi
 
 Five conclusions emerge. First, a healthcare twin must have a clearly defined physical counterpart and clinical purpose. Second, longitudinal data and model updating are essential for claims of personalization. Third, AI improves data interpretation and adaptation but does not establish Digital Twin maturity by itself. Fourth, interoperability, provenance, uncertainty, and governance must cross all architecture layers. Fifth, the evidence base remains dominated by reviews, conceptual frameworks, retrospective analyses, and focused prototypes; prospective demonstrations of clinical benefit are comparatively rare.
 
+The table also shows that healthcare Digital Twin research is divided between broad conceptual frameworks and narrower technical systems. Patient-centered works emphasize personalization and clinical reasoning but often lack persistent synchronization, while process-oriented twins more clearly demonstrate connected data flows but represent organizational rather than physiological entities. AI-enhanced approaches expand diagnosis support, prediction, and personalization, yet their evidence is often retrospective or experimental. Hybrid AI--mechanistic proposals are scientifically attractive because they combine pattern recognition with physiological structure, but they create additional validation obligations. These observations are directly relevant to the PFE because CardioTwin must not be presented as an ECG classifier alone; it must be framed as a patient-state system with traceable data, controlled updates, interpretable services, and human-supervised outputs.
+
+\subsection{Implications of the eHealth State of the Art for CardioTwin}
+The general eHealth literature provides the architectural and methodological rationale for CardioTwin. It shows that a Digital Twin for healthcare cannot be reduced to a single AI module, dashboard, or prediction model. A clinically meaningful prototype must maintain a virtual patient state, update this state through validated data flows, preserve provenance, and distinguish between values that are measured, calculated, estimated, predicted, or simulated. This distinction is essential for CardioTwin because ECG analysis, blood-pressure measurements, risk scores, and what-if scenarios do not have the same evidential status.
+
+The reviewed studies also justify the main CardioTwin components. Biomedical acquisition responds to the need for a physical--virtual connection. ECG processing and AI-assisted interpretation respond to the role of AI in biosignal analysis. SBP, DBP, heart-rate, clinical-history, and risk-factor integration support multimodal patient-state representation. Longitudinal storage and state updates address the requirement for persistent personalization. What-if scenarios and dashboards translate the service layer into practical decision support, while human-in-the-loop supervision, explainability, privacy, and validation remain cross-cutting constraints rather than optional additions.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Design implications of the eHealth state of the art for CardioTwin.}
+\label{tab:ehealth_implications_cardiotwin}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{3.1cm} >{\RaggedRight\arraybackslash}p{3.35cm} >{\RaggedRight\arraybackslash}p{3.65cm} >{\RaggedRight\arraybackslash}X}
+\toprule
+\textbf{Literature finding} & \textbf{Implication for CardioTwin} & \textbf{Implementation direction} & \textbf{Limitation or precaution}\\
+\midrule
+AI alone is not a Digital Twin & Maintain a persistent virtual patient state & Fuse ECG, BP, clinical variables, and historical information & This does not by itself prove full clinical Digital Twin maturity\\
+\addlinespace
+Digital Twins require synchronization & Update the patient state after validated measurements & Sensor- or API-based acquisition and update pipeline & State quality depends on measurement reliability and timing\\
+\addlinespace
+Multimodality supports personalization & Combine biosignals, SBP, DBP, symptoms, history, and risk factors & Multimodal fusion layer with temporal alignment & Missing, delayed, or contradictory data remain possible\\
+\addlinespace
+Healthcare twins require traceability & Preserve source, timestamp, and value type & Mark values as measured, calculated, estimated, predicted, or simulated & Traceability improves auditability but does not guarantee clinical correctness\\
+\addlinespace
+Clinical services require supervision & Keep healthcare professionals in the decision loop & Alerts, reports, risk summaries, and scenarios without autonomous treatment & Full clinical validation and regulatory assessment remain future work\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 % =========================================================
 \section{State of the Art II: Cardiovascular Digital Twins}
 \label{sec:sota_cardio}
+
+The second state of the art narrows the analysis to cardiovascular Digital Twins. This domain is used as a representative clinical deep-dive because it combines electrical signals, anatomical imaging, hemodynamic measurements, clinical history, longitudinal monitoring, and patient-specific physiological modeling. Figure~\ref{fig:cardiovascular_dt_taxonomy} summarizes the main categories identified in the reviewed cardiovascular literature.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_cardiovascular_dt_taxonomy}}
+    \caption{Main categories of cardiovascular Digital Twins identified in the state of the art. Author synthesis based on the reviewed literature.}
+    \label{fig:cardiovascular_dt_taxonomy}
+\end{figure}
 
 \subsection{From Precision Cardiology to Cardiac Digital Twins}
 Cardiovascular medicine is a representative Digital Twin domain because cardiac function emerges from coupled electrical, mechanical, fluid, anatomical, and autonomic processes. Clinical data are correspondingly multimodal: ECG describes surface electrical activity, imaging reveals anatomy and motion, catheterization measures pressures and flows, laboratory tests characterize biological state, and wearables provide longitudinal rhythm and activity data. The same diagnosis may arise from different mechanisms, which creates a strong rationale for patient-specific modeling.
@@ -153,7 +209,7 @@ Qian et al.~\cite{qian2025populations} demonstrate population-scale cardiac twin
 Recent AI surrogate approaches aim to reduce the cost of whole-heart models by learning approximations to high-fidelity simulations. These methods can enable rapid parameter estimation, sensitivity analysis, and near-real-time scenario evaluation. Their clinical credibility depends on domain-of-validity analysis, uncertainty quantification, and safeguards against extrapolation. The hybrid strategy is promising because the mechanistic model defines physiological structure while AI accelerates inference, but it also introduces two interacting error sources: the mechanistic assumptions and the learned surrogate approximation.
 
 \subsection{Comparative Table for Cardiovascular Digital Twins}
-Table~\ref{tab:cardio_sota} compares the principal cardiovascular studies according to clinical objective, data, modeling, evidence, and maturity. Foundational personalized-heart studies are included and explicitly labeled as precursors where they do not implement persistent synchronization.
+Table~\ref{tab:cardio_sota} compares the principal cardiovascular studies according to clinical objective, data, modeling, evidence, and maturity. Foundational personalized-heart studies are included and explicitly labeled as precursors where they do not implement persistent synchronization. The comparison distinguishes electrophysiological models from hemodynamic and electromechanical models, high-fidelity simulations from fast surrogates, patient-specific calibration from longitudinal synchronization, and mechanistic interpretation from AI-assisted prognosis.
 
 \clearpage
 \begin{landscape}
@@ -219,27 +275,79 @@ Three modeling directions can be distinguished. Electrophysiological twins simul
 
 A recurring technical problem is non-uniqueness: different parameter combinations can reproduce similar clinical observations. A twin can therefore fit an ECG or pressure curve while representing the wrong underlying physiology. Credible cardiovascular twins need uncertainty distributions, sensitivity analysis, independent measurements, and validation against outcomes not used for calibration. This is especially important when the twin is used to recommend an ablation target, predict treatment response, or estimate an invasive marker.
 
+The cardiovascular table also reveals a tension between physiological richness and deployability. Electrophysiological and electromechanical twins can explain mechanisms and simulate interventions, but they often require imaging, expert segmentation, specialized calibration, and high computational effort. AI-enhanced and population-scale approaches improve speed and scalability, yet they may depend on retrospective cohorts, inferred parameters, or simulation-derived training data. For this reason, the most credible direction is not to replace mechanistic modeling with AI, but to combine mechanistic constraints, data-driven estimation, uncertainty reporting, and clinically realistic validation.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_dt_evidence_maturity_continuum}}
+    \caption{Evidence and maturity continuum for healthcare and cardiovascular Digital Twins. Author synthesis based on the reviewed literature.}
+    \label{fig:dt_evidence_maturity_continuum}
+\end{figure}
+
+\subsection{Implications of the Cardiovascular State of the Art for CardioTwin}
+The cardiovascular literature informs the practical scope of CardioTwin in two ways. First, it demonstrates why the cardiovascular domain is a suitable specialization: cardiac assessment combines electrical activity, hemodynamic variables, clinical symptoms, risk factors, imaging, and longitudinal follow-up. Second, it shows the limits of what can be claimed in an academic prototype. High-fidelity cardiac twins may require three-dimensional anatomy, invasive pressure measurements, patient-specific boundary conditions, electrophysiological calibration, or expensive multiphysics computation. CardioTwin is therefore positioned as a lower-complexity patient-state cardiovascular twin, not as a complete virtual heart.
+
+In this scope, ECG provides important electrical information but cannot alone describe the full cardiovascular state. SBP, DBP, heart rate, clinical history, symptoms, and risk factors provide complementary information for risk assessment and longitudinal monitoring. Mechanistic cardiovascular studies justify the need for physiological interpretation, while AI supports ECG analysis, pattern recognition, patient stratification, and risk estimation. What-if scenarios must remain evidence-based, transparent, and uncertainty-aware: population-level medication or lifestyle effects cannot be interpreted as guaranteed individual outcomes.
+
+CardioTwin is therefore inspired by the reviewed cardiovascular Digital Twin literature but does not claim to implement full three-dimensional cardiac anatomy, complete electromechanical simulation, invasive pulmonary-pressure modeling, autonomous treatment optimization, or clinically certified personalized drug-response prediction. These functions remain outside the PFE scope and would require specialized datasets, clinical protocols, regulatory consideration, and prospective validation.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Cardiovascular state-of-the-art findings and their translation into the CardioTwin PFE.}
+\label{tab:cardio_implications_cardiotwin}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{3.35cm} >{\RaggedRight\arraybackslash}p{3.2cm} >{\RaggedRight\arraybackslash}p{3.55cm} >{\RaggedRight\arraybackslash}X}
+\toprule
+\textbf{Cardiovascular DT finding} & \textbf{Relevance to CardioTwin} & \textbf{CardioTwin implementation} & \textbf{Out-of-scope element}\\
+\midrule
+ECG is one modality among several & Avoid an ECG-only representation of the patient & ECG analysis combined with BP, symptoms, history, and risk factors & Complete cardiac anatomy and full organ reconstruction\\
+\addlinespace
+High-fidelity models require calibration & Use explicit patient-state variables and transparent assumptions & Patient-specific measurements, history, and update rules & Full CFD or electromechanical calibration\\
+\addlinespace
+Hybrid modeling improves interpretation & Combine AI outputs with clinical reasoning and scenario logic & ECG AI, clinical assessment, risk estimation, and controlled what-if rules & Autonomous therapy optimization\\
+\addlinespace
+Longitudinal data support personalization & Preserve patient history and repeated measurements & State storage, trend visualization, and repeated updates & Continuous hospital-grade monitoring\\
+\addlinespace
+Uncertainty is unavoidable & Display assumptions, warnings, and limits of interpretation & Transparent scenario outputs and human-supervised decisions & Guaranteed individual treatment response\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 % =========================================================
 \section{Cross-Domain Comparison and Research Gaps}
 The two states of the art reveal a gap between architectural completeness and physiological fidelity. General eHealth research provides layered architectures, interoperability principles, governance requirements, and broad service taxonomies. Cardiovascular research provides detailed mechanistic and patient-specific models with stronger physiological interpretation. Few studies combine both strengths in a single system that is interoperable, longitudinal, dynamically updated, clinically validated, and usable in routine care.
 
-The principal research gaps are:
+\subsection{General eHealth Digital Twin Gaps}
+The general healthcare literature identifies several unresolved problems that are not limited to one clinical specialty:
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Definition and maturity:} systems continue to use the Digital Twin label for static models, offline simulations, and one-way data pipelines.
-    \item \textbf{Longitudinal synchronization:} most patient models are calibrated from episodic data and do not evolve continuously with the patient.
-    \item \textbf{Multimodal integration:} imaging, biosignals, EHR data, laboratory values, wearables, and patient-reported data remain difficult to align semantically and temporally.
-    \item \textbf{Identifiability and uncertainty:} multiple parameter sets may explain the same measurements, while uncertainty is often incompletely reported.
-    \item \textbf{Hybrid-model validation:} AI can accelerate or personalize mechanistic models, but errors from data-driven and physics-based components must be evaluated jointly.
-    \item \textbf{Clinical evidence:} retrospective and proof-of-concept studies dominate; external, prospective, multi-center, and workflow-level validation remain limited.
-    \item \textbf{Adaptive-model governance:} continuous learning introduces drift, revalidation, auditability, and regulatory problems.
-    \item \textbf{Interoperability and provenance:} many prototypes do not demonstrate robust integration with clinical information systems or traceable data lifecycles.
-    \item \textbf{Human factors and responsibility:} the effect of twin outputs on clinician behavior, patient understanding, alert burden, accountability, and trust is underexplored.
-    \item \textbf{Equity and access:} high-fidelity models may depend on specialized imaging, invasive tests, and high-performance computing that are not equally available.
+    \item \textbf{Definitions and benchmarks:} Digital Model, Digital Shadow, partial connected Digital Twin, process Digital Twin, and intelligent Digital Twin are not always distinguished consistently despite the definition framework discussed in Chapter~3.
+    \item \textbf{Synchronization:} many systems remain one-way dashboards or episodic simulations rather than continuously maintained physical--virtual systems.
+    \item \textbf{Data fragmentation:} EHR data, imaging, laboratory results, wearables, and patient-reported data remain difficult to integrate across institutions and time scales.
+    \item \textbf{Interoperability and provenance:} robust semantic mapping, source traceability, units, timestamps, and data-quality indicators are still weak in many prototypes.
+    \item \textbf{Longitudinal representation:} few systems demonstrate stable patient-state maintenance across repeated measurements, treatments, and disease progression.
+    \item \textbf{Clinical validation:} external, prospective, multi-center, workflow-level, and outcome-oriented validation remain limited.
+    \item \textbf{Governance and responsibility:} privacy, consent, accountability, explainability, cybersecurity, and clinical responsibility remain unresolved implementation barriers.
 \end{itemize}
 
-A future clinically credible eHealth Digital Twin should therefore be defined not only by model sophistication but by a complete evidence chain: verified software, traceable and interoperable data, patient-specific calibration, uncertainty-aware prediction, external and prospective validation, human-supervised services, and controlled feedback. Cardiovascular studies offer strong examples of physiological modeling and treatment simulation, while general eHealth studies provide the architectural and governance foundation required to translate these capabilities into a broader healthcare system.
+\subsection{AI-Related Gaps}
+AI increases the analytical power of Digital Twins but also creates specific gaps. Complex models require explainability, calibration, subgroup analysis, bias assessment, uncertainty estimation, and out-of-distribution testing. Adaptive models require drift detection and documented revalidation. Generative AI and LLM-based components require governance because synthetic outputs may reproduce bias, leak private information, or appear more clinically reliable than they are. A major methodological gap is the limited comparison between pure AI systems, pure mechanistic simulations, and hybrid approaches under the same clinical objectives. Another gap is the risk of interpreting overfitting as personalization when the model has not been externally validated.
+
+\subsection{Cardiovascular Digital Twin Gaps}
+The cardiovascular literature adds domain-specific challenges. High-fidelity models often depend on specialized imaging, invasive measurements, patient-specific segmentation, boundary-condition estimation, and expensive computation. Physiological parameters may be difficult to identify uniquely, and several parameter sets can explain the same ECG, pressure, or flow observations. Longitudinal synchronization remains uncommon, multicenter validation is still limited, and many studies treat ECG, imaging, pressure, flow, and clinical history separately rather than as a continuously updated patient-state representation. What-if treatment simulation remains scientifically promising but clinically sensitive because predicted medication or intervention effects require prospective validation before individual therapeutic use.
+
+\subsection{CardioTwin Scope}
+CardioTwin addresses a limited and realistic subset of these gaps. It focuses on multimodal cardiovascular patient-state representation, real ECG and BP acquisition, AI-assisted ECG analysis, integration of clinical and physiological variables, longitudinal state updates, risk-oriented summaries, evidence-based what-if scenarios, transparent uncertainty warnings, and clinician-facing visualization. It does not claim to solve full organ-scale cardiac simulation, continuous hospital-grade synchronization, invasive hemodynamic personalization, autonomous treatment optimization, regulatory certification, or prospective clinical validation. These limits are necessary to keep the PFE scientifically credible while still making it a practical continuation of the Master’s thesis findings.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{\input{figures/fig_master_to_cardiotwin}}
+    \caption{Translation of the Master's thesis state-of-the-art findings into the CardioTwin PFE methodology. Author synthesis based on the reviewed literature.}
+    \label{fig:master_to_cardiotwin}
+\end{figure}
+
+A future clinically credible eHealth Digital Twin should therefore be defined not only by model sophistication but by a complete evidence chain: verified software, traceable and interoperable data, patient-specific calibration, uncertainty-aware prediction, external and prospective validation, human-supervised services, and controlled feedback. Cardiovascular studies offer strong examples of physiological modeling and treatment simulation, while general eHealth studies provide the architectural and governance foundation required to translate these capabilities into broader healthcare systems.
 
 \section{Conclusion}
-This chapter developed two distinct but connected states of the art. The first showed how healthcare Digital Twins extend from patient-specific medicine to hospital processes, public health, and AI-enabled services. The second examined cardiovascular Digital Twins in depth, including arrhythmia risk, ablation planning, virtual drug testing, whole-heart modeling, heart-failure hemodynamics, interpretable AI, and population-scale twinning. The comparative analyses demonstrate that the field has progressed beyond purely conceptual discussion, but fully connected and clinically validated patient twins remain uncommon. These findings provide the evidence base for the architecture and practical specialization developed in the following parts of the thesis.
+This chapter developed two distinct but connected states of the art. The first showed how healthcare Digital Twins extend from patient-specific medicine to hospital processes, public health, and AI-enabled services. The second examined cardiovascular Digital Twins in depth, including arrhythmia risk, ablation planning, virtual drug testing, whole-heart modeling, heart-failure hemodynamics, interpretable AI, and population-scale twinning. The comparative analyses demonstrate that the field has progressed beyond purely conceptual discussion, but fully connected and clinically validated patient twins remain uncommon. The chapter also translated the literature findings into explicit CardioTwin design implications, establishing the scientific basis for the proposed method and final PFE transition.
 
 \clearpage

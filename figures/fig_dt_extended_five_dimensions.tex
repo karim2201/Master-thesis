@@ -1,0 +1,21 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    dim/.style={draw=DTBlue, fill=DTLightBlue, rounded corners=4pt, align=center, font=\small, text width=3.2cm, minimum height=1.1cm},
+    data/.style={draw=DTOrange, fill=DTLightOrange, circle, align=center, font=\small, text width=2.6cm, minimum size=2.8cm},
+    service/.style={draw=DTGreen, fill=DTLightGreen, rounded corners=4pt, align=center, font=\small, text width=3.3cm, minimum height=1.1cm},
+    conn/.style={->, thick, DTGray}
+]
+\node[data] (data) at (0,0) {\textbf{Digital Twin\\data}\\raw, processed, historical, simulated};
+\node[dim] (physical) at (-5,1.9) {\textbf{Physical entity}\\real object, patient, process, or environment};
+\node[dim] (virtual) at (5,1.9) {\textbf{Virtual entity}\\models, states, behavior, and context};
+\node[service] (services) at (0,-3.0) {\textbf{Services}\\monitoring, prediction, simulation, decision support};
+\node[dim] (connections) at (0,3.8) {\textbf{Connections}\\sensors, APIs, databases, interfaces, feedback};
+
+\draw[conn] (physical) -- (data);
+\draw[conn] (data) -- (virtual);
+\draw[conn] (virtual) -- (services);
+\draw[conn] (services) -- (physical);
+\draw[conn] (connections) -- (physical);
+\draw[conn] (connections) -- (virtual);
+\draw[conn] (connections) -- (data);
+\end{tikzpicture}

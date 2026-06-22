@@ -1,0 +1,47 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{stage}=[
+    rectangle, rounded corners=2pt, draw=DTBlue, fill=DTLightBlue,
+    text width=2.55cm, minimum height=0.82cm, align=center, line width=0.6pt
+]
+\tikzstyle{role}=[
+    rectangle, rounded corners=2pt, draw=DTGreen, fill=DTLightGreen,
+    text width=2.45cm, minimum height=0.72cm, align=center, font=\scriptsize
+]
+\tikzstyle{note}=[
+    rectangle, rounded corners=2pt, draw=DTOrange, fill=DTLightOrange,
+    text width=11.5cm, align=center, font=\scriptsize
+]
+
+\node[stage] (s1) at (0,0) {Data acquisition};
+\node[stage] (s2) at (3.4,0) {Preprocessing and quality control};
+\node[stage] (s3) at (6.8,0) {State estimation};
+\node[stage] (s4) at (10.2,0) {Pattern recognition};
+
+\node[stage] (s5) at (10.2,-2.45) {Prediction and prognosis};
+\node[stage] (s6) at (6.8,-2.45) {Simulation support};
+\node[stage] (s7) at (3.4,-2.45) {Decision support};
+\node[stage] (s8) at (0,-2.45) {Monitored adaptation};
+
+\foreach \a/\b in {s1/s2,s2/s3,s3/s4,s4/s5,s5/s6,s6/s7,s7/s8}{
+    \draw[->, thick, DTBlue] (\a) -- (\b);
+}
+\draw[->, thick, DTBlue] (s8.north) to[out=110,in=180] (s2.west);
+
+\node[role] (r2) at (3.4,1.85) {Denoising\\artifact detection\\harmonization};
+\node[role] (r3) at (6.8,1.85) {Latent-state\\and risk estimation};
+\node[role] (r4) at (10.2,1.85) {Segmentation\\classification\\diagnosis support};
+\node[role] (r5) at (10.2,-4.15) {Trajectory\\and event forecasting};
+\node[role] (r6) at (6.8,-4.15) {Surrogate models\\scenario ranking};
+\node[role] (r8) at (0,-4.15) {Drift monitoring\\controlled revalidation};
+
+\draw[-, DTGreen] (r2) -- (s2);
+\draw[-, DTGreen] (r3) -- (s3);
+\draw[-, DTGreen] (r4) -- (s4);
+\draw[-, DTGreen] (r5) -- (s5);
+\draw[-, DTGreen] (r6) -- (s6);
+\draw[-, DTGreen] (r8) -- (s8);
+
+\node[note] at (5.1,-5.55) {
+AI enables intelligence, personalization, and prediction, but Digital Twin maturity still depends on physical--virtual connection, state updating, validation, and service integration.
+};
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    box/.style={draw=DTBlue, fill=DTLightBlue, rounded corners=4pt, align=center, font=\small, text width=4.2cm, minimum height=1.5cm},
+    flow/.style={->, very thick, DTBlue},
+    back/.style={->, very thick, DTGreen},
+    note/.style={draw=DTGray, fill=DTLightGray, rounded corners=3pt, align=center, font=\scriptsize, text width=4.6cm}
+]
+\node[box] (physical) at (0,0) {\textbf{Physical entity}\\product, device, patient, organ, process, or environment};
+\node[box] (virtual) at (8,0) {\textbf{Virtual entity}\\models, states, simulations, history, and predictions};
+\draw[flow] ([yshift=0.35cm]physical.east) -- node[above, font=\scriptsize, align=center]{physical-to-virtual\\data and state update} ([yshift=0.35cm]virtual.west);
+\draw[back] ([yshift=-0.35cm]virtual.west) -- node[below, font=\scriptsize, align=center]{virtual-to-physical\\recommendations or supervised actions} ([yshift=-0.35cm]physical.east);
+\node[note] at (4,-2.8) {The classical approach identifies the minimum physical--virtual structure. In healthcare, feedback should normally remain human-supervised.};
+\end{tikzpicture}

@@ -1,14 +1,14 @@
 \chapter{General Introduction}
 
 \section{Context}
-Healthcare systems are increasingly supported by digital technologies such as connected medical devices, electronic health records, telemedicine platforms, mobile health applications, and artificial intelligence-based analytics. This evolution has contributed to the emergence of eHealth, a broad domain that aims to improve healthcare delivery, monitoring, prevention, diagnosis, and patient engagement through information and communication technologies.
+Healthcare systems are increasingly supported by digital technologies such as connected medical devices, electronic health records, telemedicine platforms, mobile health applications, and Artificial Intelligence-based analytics. This evolution has contributed to the emergence of eHealth, a broad domain that aims to improve healthcare delivery, monitoring, prevention, diagnosis, and patient engagement through information and communication technologies.
 
 At the same time, healthcare data are becoming more heterogeneous and continuous. A patient may generate information through clinical consultations, laboratory tests, medical imaging, wearable devices, mobile applications, and hospital information systems. The challenge is no longer only to collect data, but also to transform these data into meaningful, reliable, and actionable knowledge for healthcare professionals and patients.
 
-Digital Twin technology has recently gained attention as a promising paradigm for representing physical entities and processes through dynamic virtual counterparts. In healthcare, a Digital Twin may support the representation of a patient, a medical device, a hospital service, a clinical workflow, or even a population-level process. The objective is to connect real-world data with virtual models in order to monitor current states, simulate possible futures, and support decision-making.
+Digital Twin technology has recently gained attention as a paradigm for representing physical entities and processes through dynamic virtual counterparts. However, the term is used with different meanings across product lifecycle management, aerospace, manufacturing, information systems, and healthcare. This thesis therefore analyzes the evolution of Digital Twin definitions from the classical three-dimensional model toward extended data- and service-centered models before applying the concept to eHealth. In healthcare, a Digital Twin may support the representation of a patient, an organ, a medical device, a hospital service, a clinical workflow, or a population-level process. The objective is to connect real-world data with virtual models in order to monitor current states, simulate possible futures, and support decision-making.
 
 \section{Problem Statement}
-Despite the progress of eHealth systems, several limitations remain. First, medical data are often distributed across multiple systems and formats, which makes integration and interoperability difficult. Second, many digital health applications provide static analysis based on isolated measurements rather than dynamic representations that evolve with the real-world situation. Third, decision support systems frequently rely on general population models and may not sufficiently account for individual variability, contextual information, and temporal evolution.
+Despite the progress of eHealth systems, several limitations remain. Medical data are often distributed across multiple systems and formats, which makes integration and interoperability difficult. Many digital health applications also provide static analysis based on isolated measurements rather than dynamic representations that evolve with the real-world situation. In addition, decision-support systems frequently rely on general population models and may not sufficiently account for individual variability, contextual information, uncertainty, and temporal evolution.
 
 These limitations raise the following central problem:
 
@@ -17,18 +17,22 @@ How can Digital Twin technology be used as a conceptual and architectural founda
 \end{quote}
 
 \section{Research Motivation}
-The motivation of this thesis comes from the need to move from fragmented eHealth applications toward integrated and intelligent healthcare ecosystems. A Digital Twin-based approach can provide a structured way to combine real-world data, virtual representation, simulation, artificial intelligence, and decision services. This is particularly relevant in healthcare because clinical decisions depend not only on current measurements, but also on patient history, context, uncertainty, and possible future trajectories.
+The motivation of this Master’s thesis comes from the need to move from fragmented eHealth applications toward integrated and intelligent healthcare ecosystems. A Digital Twin-based approach can provide a structured way to combine real-world data, virtual representation, simulation, Artificial Intelligence, and decision services. This is particularly relevant in healthcare because clinical decisions depend not only on current measurements, but also on patient history, context, uncertainty, and possible future trajectories.
+
+While the thesis examines Digital Twins for eHealth in a general healthcare context, cardiovascular Digital Twins are used as a representative clinical deep-dive. This domain combines multimodal biosignals, imaging, hemodynamic measurements, longitudinal monitoring, and patient-specific physiological modeling, making it suitable for analyzing the transition from conceptual healthcare Digital Twin architectures to clinically oriented implementations. This running case also establishes the theoretical basis for the cardiovascular specialization introduced later in the CardioTwin PFE.
 
 \section{Objectives}
-The main objective of this thesis is to study the state of the art of Digital Twin technology in eHealth and to propose a general conceptual architecture for eHealth Digital Twin systems. The specific objectives are:
+The main objective of this thesis is to study the state of the art of Digital Twin technology in eHealth and to identify how the literature can inform a practical cardiovascular PFE specialization. The specific objectives are:
 
 \begin{itemize}[leftmargin=*]
-    \item to review the foundations of eHealth and digital health systems;
-    \item to study the evolution, definitions, components, and maturity levels of Digital Twins;
-    \item to analyze the use of Digital Twins in healthcare from a general eHealth perspective;
-    \item to compare existing architectures, technologies, applications, and limitations;
-    \item to identify major challenges related to interoperability, security, privacy, ethics, and validation;
-    \item to propose a conceptual multi-layer architecture for Digital Twin-based eHealth systems.
+    \item to review the foundations of eHealth, digital health systems, and Digital Twin concepts;
+    \item to compare representative Digital Twin definitions and distinguish classical, extended, application-oriented, and configuration-oriented definition approaches;
+    \item to distinguish digital models, digital shadows, connected Digital Twins, and intelligent Digital Twins;
+    \item to analyze Digital Twins in healthcare through a general eHealth state of the art;
+    \item to analyze cardiovascular Digital Twins as a representative clinical deep-dive;
+    \item to compare selected studies through two landscape state-of-the-art tables;
+    \item to synthesize architecture, data-flow, Artificial Intelligence, validation, and governance requirements;
+    \item to derive literature-based design implications for the CardioTwin PFE.
 \end{itemize}
 
 \section{Contributions}
@@ -36,13 +40,15 @@ The main contributions of this thesis are:
 
 \begin{itemize}[leftmargin=*]
     \item a structured synthesis of Digital Twin concepts and their relevance to eHealth;
-    \item a classification of healthcare Digital Twin applications from a general perspective;
-    \item a comparative study of selected research papers and architectures;
-    \item a proposed conceptual architecture for a Digital Twin-based eHealth system;
-    \item a discussion of implementation challenges and future research directions.
+    \item a comparative analysis of Digital Twin definitions, including the classical three-dimensional model, the extended five-dimensional model, and the operational definition adopted in this thesis;
+    \item a dual state-of-the-art review covering both general healthcare Digital Twins and cardiovascular Digital Twins;
+    \item a comparative analysis of representative eHealth and cardiovascular studies using two landscape tables;
+    \item academic synthesis figures covering Digital Twin definitions, Artificial Intelligence roles, healthcare Digital Twin categories, cardiovascular Digital Twin categories, and maturity evidence;
+    \item a discussion of interoperability, privacy, security, explainability, validation, and governance as cross-cutting requirements;
+    \item a set of literature-derived design implications that connect the Master’s thesis findings to the CardioTwin PFE.
 \end{itemize}
 
 \section{Thesis Outline}
-This thesis is organized into five main parts. Part I introduces the research context, problem statement, objectives, and contributions. Part II presents the background on eHealth and Digital Twin fundamentals. Part III provides the literature review methodology and comparative state of the art. Part IV proposes a conceptual architecture for Digital Twin-based eHealth systems. Finally, Part V concludes the thesis and presents future work.
+This thesis is organized into five main parts. Part I introduces the research context, problem statement, objectives, and contributions. Part II first presents Digital Twin fundamentals, including the evolution of definitions, the classical and extended approaches, maturity terminology, and the operational definition adopted in this thesis. It then introduces eHealth and digital-health foundations before examining healthcare Digital Twin concepts and applications. Part III describes the structured literature-review methodology and develops the dual state of the art: Digital Twins in eHealth and healthcare, then cardiovascular Digital Twins. This part includes two comparative landscape tables, analytical synthesis, research gaps, and explicit implications for CardioTwin. Part IV proposes a conceptual architecture for Digital Twin-based eHealth systems. Part V concludes the thesis and presents the transition toward the CardioTwin PFE.
 
 \clearpage

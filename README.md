@@ -2,23 +2,58 @@
 
 **Title:** Digital Twin for eHealth: State of the Art and Conceptual Architecture
 
-This project contains the complete LaTeX source of the Master thesis. The state-of-the-art chapter is organized into two complementary reviews:
+This project contains the complete LaTeX source of the Master’s thesis. It preserves the formatted title page, multilingual front matter, Arabic text support, XeLaTeX configuration, bibliography system, TikZ figures, and landscape comparative tables.
 
-1. **Digital Twins in eHealth and healthcare**, covering patient, organ, hospital-process, public-health, architectural, AI, interoperability, governance, and validation research.
-2. **Cardiovascular Digital Twins**, covering precision cardiology, electrophysiology, arrhythmia-risk modeling, ablation planning, virtual drug testing, electromechanics, hemodynamics, heart failure, AI surrogates, and population-scale cardiac twinning.
+## Current Structure
 
-Each state of the art includes a dedicated landscape comparative table and a critical synthesis of maturity, evidence, limitations, and research gaps.
+- **Part I — General Introduction**
+  - Chapter 1: General Introduction
+- **Part II — Background**
+  - Chapter 2: Digital Twin Fundamentals, Definitions, Dimensions, and Maturity
+  - Chapter 3: eHealth and Digital Health Foundations
+  - Chapter 4: Digital Twin in Healthcare and eHealth
+- **Part III — State of the Art**
+  - Chapter 5: Literature Review Methodology
+  - Chapter 6: Dual State-of-the-Art Review
+- **Part IV — Proposed Method**
+  - Chapter 7: Proposed Architecture for a Digital Twin-Based eHealth System
+- **Part V — General Conclusion and PFE Transition**
+  - Chapter 8: General Conclusion and Proposed Method for the PFE
 
-## Main file
+## Dual State of the Art
 
-- `main.tex`
+Chapter 6 is organized into two complementary studies:
+
+1. **Digital Twins in eHealth and healthcare**, covering patient-specific twins, organ and device twins, hospital-process twins, public-health twins, Artificial Intelligence, hybrid AI--simulation models, interoperability, privacy, ethics, governance, validation, and technology maturity.
+2. **Cardiovascular Digital Twins**, covering precision cardiology, electrophysiology, arrhythmia modeling, ablation planning, electromechanical and hemodynamic models, heart-failure twins, patient-specific calibration, AI-accelerated simulation, hybrid modeling, population-scale cardiac twins, validation, uncertainty, and identifiability.
+
+Each state of the art includes a dedicated landscape `longtable`, critical synthesis, and explicit implications for the CardioTwin PFE.
+
+## Added Synthesis Figures
+
+The project includes academic TikZ synthesis figures for:
+
+- the structured review workflow;
+- the evolution of Digital Twin definitions;
+- the classical three-dimensional Digital Twin approach;
+- the extended five-dimensional Digital Twin approach;
+- the three principal streams of Digital Twin definitions;
+- the mapping of Digital Twin characteristics to the five-dimensional model;
+- the Digital Twin lifecycle;
+- the role of AI across the healthcare Digital Twin lifecycle;
+- the taxonomy of eHealth Digital Twin applications;
+- the taxonomy of cardiovascular Digital Twins;
+- the evidence and maturity continuum;
+- the translation from Master’s thesis findings to the CardioTwin PFE.
 
 ## Compilation
 
-Recommended on Overleaf or locally:
+The project uses XeLaTeX because it relies on `fontspec`, `polyglossia`, and Arabic/French/English text.
+
+Recommended command:
 
 ```bash
-latexmk -pdf main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 Manual compilation:
@@ -30,25 +65,15 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-## Main folders
+## Main Folders
 
-- `preliminaries/`: title page, acknowledgements, abstracts, and acronyms
-- `chapters/`: thesis chapters
-- `figures/`: TikZ figures
+- `preliminaries/`: title page, acknowledgement, English/French/Arabic abstracts, and acronyms
+- `chapters/`: thesis chapters and completed appendix
+- `figures/`: TikZ figures and the ESI logo
 - `bibliography/`: BibTeX references
-
-## State-of-the-art chapter
-
-`chapters/chapter6_comparative_study.tex` contains:
-
-- the eHealth/healthcare Digital Twin state of the art;
-- its dedicated comparative table;
-- the cardiovascular Digital Twin state of the art;
-- its dedicated comparative table;
-- cross-domain synthesis and research gaps.
 
 ## Notes
 
-- This version is configured for XeLaTeX in order to preserve Arabic, French, and English rendering.
-- Landscape tables use `pdflscape`, `longtable`, and `ragged2e`.
-- The title page styling, Arabic header text, and multilingual front matter are preserved from the formatted project.
+- Landscape comparative tables use `pdflscape`, `longtable`, and `ragged2e`.
+- The final chapter introduces CardioTwin as a practical cardiovascular continuation of the general eHealth Digital Twin study.
+- The appendix contains completed supplementary review dimensions, not drafting notes.

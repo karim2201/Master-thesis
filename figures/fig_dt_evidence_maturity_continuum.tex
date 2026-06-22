@@ -1,0 +1,37 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{maturitystep}=[
+    rectangle, rounded corners=2pt, draw=DTBlue, fill=DTLightBlue,
+    text width=2.55cm, minimum height=0.9cm, align=center, font=\scriptsize
+]
+\tikzstyle{val}=[
+    rectangle, rounded corners=2pt, draw=DTGreen, fill=DTLightGreen,
+    text width=2.3cm, minimum height=0.78cm, align=center, font=\scriptsize
+]
+\node[maturitystep] (s1) at (0,0) {Conceptual framework};
+\node[maturitystep] (s2) at (2.9,0) {Static patient model};
+\node[maturitystep] (s3) at (5.8,0) {Offline simulation};
+\node[maturitystep] (s4) at (8.7,0) {Patient-specific calibrated model};
+\node[maturitystep] (s5) at (11.6,0) {Digital Shadow};
+\node[maturitystep] (s6) at (14.5,0) {Connected Digital Twin};
+\node[maturitystep] (s7) at (17.4,0) {Intelligent adaptive Digital Twin};
+
+\foreach \a/\b in {s1/s2,s2/s3,s3/s4,s4/s5,s5/s6,s6/s7}{
+    \draw[->, thick, DTBlue] (\a) -- (\b);
+}
+
+\node[anchor=east, font=\bfseries\small] at (-0.35,-1.35) {Validation evidence};
+\node[val] (v1) at (0,-2.0) {Conceptual};
+\node[val] (v2) at (2.9,-2.0) {Retrospective};
+\node[val] (v3) at (5.8,-2.0) {External};
+\node[val] (v4) at (8.7,-2.0) {Prospective};
+\node[val] (v5) at (11.6,-2.0) {Clinical workflow};
+\node[val] (v6) at (14.5,-2.0) {Regulatory deployment};
+
+\foreach \a/\b in {v1/v2,v2/v3,v3/v4,v4/v5,v5/v6}{
+    \draw[->, thick, DTGreen] (\a) -- (\b);
+}
+
+\node[draw=DTOrange, fill=DTLightOrange, rounded corners=2pt, text width=10.5cm, align=center, font=\scriptsize] at (8.7,-3.45) {
+Technological sophistication and clinical evidence are related but distinct dimensions: a complex model may still lack longitudinal synchronization or prospective validation.
+};
+\end{tikzpicture}

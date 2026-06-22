@@ -1,17 +1,29 @@
-\chapter{Appendix: Figure and Table Placeholders}
+\chapter{Appendix: Supplementary Review Dimensions}
 
-This appendix lists figure ideas that can be added later if the thesis is expanded.
+This appendix summarizes the completed analytical dimensions used to compare the reviewed studies. It is included as supporting material for the two state-of-the-art tables in Chapter~6.
 
-\begin{itemize}[leftmargin=*]
-    \item Detailed PRISMA diagram with final numbers after paper selection.
-    \item Timeline of Digital Twin evolution from industrial systems to eHealth.
-    \item Detailed comparison of Digital Twin architectures in healthcare.
-    \item Data model showing Patient, Observation, Device, Encounter, and Service entities.
-    \item Security threat model for Digital Twin-based eHealth systems.
-    \item Evaluation framework diagram linking technical, clinical, ethical, and usability criteria.
-\end{itemize}
+\section{Study Classification Dimensions}
+\begin{table}[H]
+\centering
+\small
+\caption{Supplementary classification dimensions used during the structured literature review.}
+\label{tab:appendix_review_dimensions}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{4.0cm} X}
+\toprule
+\textbf{Dimension} & \textbf{Information extracted from each study}\\
+\midrule
+Represented entity & Patient, organ, physiological system, device, hospital process, care pathway, public-health process, or population.\\
+Data modalities & EHR data, biosignals, imaging, laboratory results, sensor streams, wearable data, clinical history, workflow events, or simulated data.\\
+Modeling approach & Mechanistic model, statistical model, Machine Learning, Deep Learning, hybrid AI--mechanistic model, graph model, process simulation, or architecture framework.\\
+Synchronization level & Static model, offline simulation, episodic calibration, digital shadow, partial Digital Twin, process Digital Twin, connected Digital Twin, or intelligent Digital Twin direction.\\
+Services & Monitoring, diagnosis support, prognosis, treatment simulation, resource optimization, risk assessment, alerting, reporting, or clinical workflow support.\\
+Validation evidence & Conceptual discussion, retrospective evaluation, external validation, prospective feasibility, workflow validation, clinical deployment, or regulatory consideration.\\
+Limitations & Data quality, calibration, missing modalities, lack of prospective validation, interoperability, privacy, explainability, uncertainty, computation, or clinical adoption.\\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\figplaceholder{Add the final PRISMA diagram here after selecting the exact number of papers.}
-\figplaceholder{Add a refined architecture diagram if the supervisor asks for more technical detail.}
+\section{Value-Type Traceability}
+For CardioTwin and related healthcare Digital Twin prototypes, the type of each stored value should remain explicit. A directly measured value, such as a blood-pressure reading, does not have the same evidential status as a calculated index, a model-estimated latent state, a predicted future trajectory, or a simulated what-if output. This distinction supports auditability, uncertainty communication, and human-supervised interpretation.
 
 \clearpage

@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    dtstep/.style={draw=DTBlue, fill=DTLightBlue, rounded corners=3pt, align=center, font=\scriptsize, text width=2.25cm, minimum height=0.8cm},
+    arr/.style={->, thick, DTBlue},
+    feedback/.style={->, thick, dashed, DTGreen}
+]
+\node[dtstep] (purpose) at (0,0) {Purpose};
+\node[dtstep] (physical) at (2.6,0) {Physical entity};
+\node[dtstep] (data) at (5.2,0) {Data sources};
+\node[dtstep] (model) at (7.8,0) {Virtual model};
+\node[dtstep] (cal) at (10.4,0) {Calibration};
+\node[dtstep] (ver) at (13.0,0) {Verification};
+\node[dtstep] (sync) at (13.0,-1.8) {Synchronization};
+\node[dtstep] (services) at (10.4,-1.8) {Services};
+\node[dtstep] (mon) at (7.8,-1.8) {Monitoring};
+\node[dtstep] (reval) at (5.2,-1.8) {Revalidation};
+\node[dtstep] (evol) at (2.6,-1.8) {Evolution};
+\node[dtstep] (retire) at (0,-1.8) {Retirement\\or archival};
+
+\draw[arr] (purpose) -- (physical);
+\draw[arr] (physical) -- (data);
+\draw[arr] (data) -- (model);
+\draw[arr] (model) -- (cal);
+\draw[arr] (cal) -- (ver);
+\draw[arr] (ver) -- (sync);
+\draw[arr] (sync) -- (services);
+\draw[arr] (services) -- (mon);
+\draw[arr] (mon) -- (reval);
+\draw[arr] (reval) -- (evol);
+\draw[arr] (evol) -- (retire);
+\draw[feedback] (evol.north) .. controls (4.5,0.9) and (8.5,0.9) .. (model.north);
+\draw[feedback] (reval.north) .. controls (7.0,0.65) and (10.5,0.65) .. (ver.north);
+\end{tikzpicture}

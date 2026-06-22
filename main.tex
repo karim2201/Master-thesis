@@ -57,15 +57,11 @@
 % ------------------ Formatting ------------------
 \pagestyle{plain}
 
-% ------------------ Source-content compatibility ------------------
-\newcommand{\todo}[1]{\par\noindent\fcolorbox{DTOrange}{DTLightOrange}{\parbox{0.95\linewidth}{\textbf{TODO:} #1}}\par\vspace{0.5em}}
-\newcommand{\figplaceholder}[1]{\par\noindent\fcolorbox{DTGray}{DTLightGray}{\parbox[c][3.5cm][c]{0.95\linewidth}{\centering\textbf{Figure placeholder}\par #1}}\par}
-
 % ------------------ Thesis metadata ------------------
 \newcommand{\thesistitle}{Digital Twin for eHealth: State of the Art and Conceptual Architecture}
 \newcommand{\studentname}{Halimi Abdelkrim and Hakkas Yacine}
-\newcommand{\supervisorname}{Mr. Mimoun Malki}
-\newcommand{\cosupervisorname}{Mr. Abdelhamid Malki}
+\newcommand{\supervisorname}{Prof. Mimoun Malki}
+\newcommand{\cosupervisorname}{Prof. Abdelhamid Malki}
 \newcommand{\academicYear}{2025/2026}
 \newcommand{\institution}{Higher School of Computer Science -- 8 Mai 1945, Sidi Bel Abbes}
 \newcommand{\specialization}{Ingénierie des Systèmes Informatiques (ISI)}
@@ -93,8 +89,8 @@
 \input{chapters/chapter1_general_introduction}
 
 \part{Background}
-\input{chapters/chapter2_ehealth_foundations}
 \input{chapters/chapter3_digital_twin_fundamentals}
+\input{chapters/chapter2_ehealth_foundations}
 \input{chapters/chapter4_digital_twin_in_ehealth}
 
 \part{State of the Art}
@@ -104,7 +100,7 @@
 \part{Proposed Method}
 \input{chapters/chapter7_proposed_architecture}
 
-\part{Conclusion}
+\part{General Conclusion and PFE Transition}
 \input{chapters/chapter8_general_conclusion}
 
 \bibliographystyle{IEEEtran}

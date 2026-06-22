@@ -1,0 +1,37 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{source}=[
+    rectangle, rounded corners=2pt, draw=DTBlue, fill=DTLightBlue,
+    text width=3.8cm, minimum height=1.0cm, align=center, font=\scriptsize
+]
+\tikzstyle{module}=[
+    rectangle, rounded corners=2pt, draw=DTGreen, fill=DTLightGreen,
+    text width=3.0cm, minimum height=0.78cm, align=center, font=\scriptsize
+]
+\tikzstyle{target}=[
+    rectangle, rounded corners=2pt, draw=DTOrange, fill=DTLightOrange,
+    text width=4.2cm, minimum height=1.0cm, align=center, font=\small
+]
+
+\node[source] (ehealth) at (0,3.0) {eHealth state of the art\\architecture, interoperability, governance};
+\node[source] (cardio) at (0,1.4) {Cardiovascular state of the art\\biosignals, hemodynamics, patient specificity};
+\node[source] (ai) at (0,-0.2) {AI and hybrid modeling\\diagnosis support, prediction, simulation};
+\node[source] (val) at (0,-1.8) {Validation requirements\\uncertainty, traceability, human supervision};
+
+\node[target] (ct) at (5.6,0.6) {CardioTwin PFE\\patient-oriented cardiovascular Digital Twin prototype};
+
+\foreach \n in {ehealth,cardio,ai,val}{
+    \draw[->, thick, DTBlue] (\n.east) -- (ct.west);
+}
+
+\node[module] (m1) at (10.5,3.2) {Biomedical data acquisition};
+\node[module] (m2) at (10.5,2.1) {ECG preprocessing};
+\node[module] (m3) at (10.5,1.0) {AI diagnostic assistance};
+\node[module] (m4) at (10.5,-0.1) {Clinical and physiological assessment};
+\node[module] (m5) at (10.5,-1.2) {Patient-state fusion and update};
+\node[module] (m6) at (10.5,-2.3) {What-if simulation};
+\node[module] (m7) at (10.5,-3.4) {Visualization and evaluation};
+
+\foreach \n in {m1,m2,m3,m4,m5,m6,m7}{
+    \draw[->, thick, DTGreen] (ct.east) -- (\n.west);
+}
+\end{tikzpicture}

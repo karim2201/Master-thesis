@@ -1,0 +1,32 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{center}=[
+    ellipse, draw=DTBlue, fill=DTLightBlue,
+    text width=4.0cm, minimum height=1.3cm, align=center, line width=0.7pt
+]
+\tikzstyle{box}=[
+    rectangle, rounded corners=2pt, draw=DTGreen, fill=DTLightGreen,
+    text width=3.65cm, minimum height=1.2cm, align=center, font=\scriptsize
+]
+\tikzstyle{io}=[
+    rectangle, rounded corners=2pt, draw=DTOrange, fill=DTLightOrange,
+    text width=4.0cm, align=center, font=\scriptsize
+]
+
+\node[center] (c) at (0,0) {Cardiovascular Digital Twins};
+
+\node[box] (ep) at (-5.0,2.5) {Electrophysiological twins\\arrhythmia and ablation};
+\node[box] (em) at (0,2.9) {Electromechanical twins\\activation, mechanics, circulation};
+\node[box] (hemo) at (5.0,2.5) {Hemodynamic twins\\pressure, flow, volume};
+\node[box] (hf) at (-5.0,-2.5) {Heart-failure twins\\phenotyping and prognosis};
+\node[box] (monitor) at (0,-2.9) {Monitoring and prognostic twins\\risk and trajectory};
+\node[box] (hybrid) at (5.0,-2.5) {Hybrid AI--mechanistic twins\\surrogates and calibration};
+
+\foreach \n in {ep,em,hemo,hf,monitor,hybrid}{
+    \draw[->, thick, DTBlue] (c) -- (\n);
+}
+
+\node[io] (inputs) at (-6.1,0) {Typical inputs:\\ECG, imaging, pressure, flow, EHR, laboratory values, wearables, clinical history};
+\node[io] (outputs) at (6.1,0) {Typical outputs:\\arrhythmia localization, prognosis, hemodynamic estimation, treatment simulation, stratification};
+\draw[->, thick, DTOrange] (inputs) -- (c);
+\draw[->, thick, DTOrange] (c) -- (outputs);
+\end{tikzpicture}

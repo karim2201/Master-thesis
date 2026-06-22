@@ -1,48 +1,314 @@
 \chapter{Digital Twin Fundamentals}
 
-\section{Origin and Evolution of the Digital Twin Concept}
-The Digital Twin concept emerged from engineering and product lifecycle management, where virtual representations of physical assets are used to support design, monitoring, prediction, and optimization. Over time, the concept evolved from static digital representations toward dynamic systems connected to real-world data streams and capable of supporting simulation and decision-making.
+\section{Origin and Historical Evolution of the Digital Twin}
+The Digital Twin concept emerged from Product Lifecycle Management (PLM), where Michael Grieves introduced the idea of connecting a physical product with a corresponding virtual information construct across the product lifecycle~\cite{grieves2005product,grieves2014digital,grieves2017digital}. In this early formulation, the central concern was not healthcare, Artificial Intelligence, or real-time analytics, but the possibility of maintaining a coherent relation between a manufactured product, the information describing it, and the processes that use that information.
 
-In its general form, a Digital Twin can be understood as a virtual representation of a physical entity or process that is connected to the real world through data exchange. The virtual representation is not only a visual model; it may include data, models, algorithms, services, and interfaces used to understand and improve the physical counterpart.
+The concept was later adopted in aerospace, manufacturing, cyber-physical systems, data science, and healthcare. NASA-oriented definitions emphasized high-fidelity simulation, sensor updates, maintenance history, and the need to mirror the operational life of a physical vehicle or system~\cite{shafto2010modeling,glaessgen2012digital}. Manufacturing and cyber-physical-system literature then strengthened the role of synchronization, data exchange, simulation, and production services~\cite{boschert2016digital,negri2017review,kritzinger2018digital,tao2018digitalTwinDriven,tao2019digital}. More recent reviews and taxonomies show that the Digital Twin is no longer interpreted only as a virtual product model, but also as a data-driven and service-oriented system whose configuration depends on the application domain~\cite{jones2020characterising,fuller2020digital,vanderValk2020taxonomy,vanderValk2021archetypes,tomczyk2022paradigm}.
 
-\section{Digital Model, Digital Shadow, and Digital Twin}
-One important distinction in the literature is between digital models, digital shadows, and digital twins. A digital model is a virtual representation with no automatic data exchange. A digital shadow includes automatic data flow from the physical entity to the digital representation. A full Digital Twin requires stronger integration, where the physical and virtual entities interact through a bidirectional data flow.
+Tomczyk and van der Valk~\cite{tomczyk2022paradigm} describe this evolution as a paradigm shift in the definition of the Digital Twin. Their analysis shows a movement from the classical three-dimensional view, composed of physical space, virtual space, and a bidirectional connection, toward an extended interpretation in which data and services become explicit dimensions. Figure~\ref{fig:dt_definition_evolution} summarizes this historical movement as an author synthesis. The figure is not a reproduction of a published diagram; it organizes the definition literature reviewed in this thesis.
 
 \begin{figure}[H]
     \centering
-    \resizebox{0.95\textwidth}{!}{\input{figures/fig_dt_maturity}}
-    \caption{Evolution from digital model to intelligent Digital Twin.}
+    \resizebox{\textwidth}{!}{\input{figures/fig_dt_definition_evolution}}
+    \caption{Evolution of representative Digital Twin definitions from lifecycle-oriented models to data- and service-centered systems. Author synthesis based on the reviewed literature.}
+    \label{fig:dt_definition_evolution}
+\end{figure}
+
+The evolution shown in Figure~\ref{fig:dt_definition_evolution} is important for eHealth because healthcare Digital Twins cannot be reduced to a three-dimensional visual model. They require traceable data, longitudinal updating, clinically meaningful services, governance, and validation. The following sections therefore examine the main definition streams before adopting the operational definition used in this thesis.
+
+\section{The Absence of a Universal Definition}
+There is no universally accepted Digital Twin definition. Tomczyk and van der Valk~\cite{tomczyk2022paradigm} argue that this plurality is partly explained by the interdisciplinary use of the concept and by the evolution of Information and Communication Technologies. A definition developed for PLM does not necessarily emphasize the same elements as a definition developed for aerospace, manufacturing, information systems, data science, smart cities, public health, or clinical medicine.
+
+Definitions differ because the represented physical entity, application objective, required fidelity, data-exchange direction, synchronization frequency, expected services, available technologies, lifecycle stage, and degree of automation differ. For example, an aerospace Digital Twin may require detailed multiphysics simulation and maintenance history, while a hospital-process twin may focus on patient flow, resource allocation, and operational scenarios. A cardiovascular twin may combine ECG, imaging, hemodynamics, clinical history, and mechanistic models, while a public-health twin may represent aggregated populations and environmental factors.
+
+Technological change also affects the definition. The rise of IoT, cloud computing, Big Data platforms, Artificial Intelligence, edge computing, service-oriented architectures, real-time analytics, and healthcare interoperability standards has expanded what a Digital Twin can do. As a result, recent literature increasingly treats data, services, connectivity, interfaces, and user-oriented functions as central elements rather than secondary implementation details~\cite{tao2019digital,fuller2020digital,tomczyk2022paradigm}. This does not mean that one modern definition is universally correct. Instead, different definitions emphasize different Digital Twin functions, and the maturity of a system must be evaluated against its stated purpose.
+
+\section{Definitions of the Digital Twin in the Literature}
+This section presents representative author-attributed definitions. Each definition is discussed in relation to its original domain, central idea, data-exchange assumptions, service orientation, and limitation when transferred to healthcare.
+
+\subsection{Grieves' Product-Lifecycle Definition}
+Grieves conceptualizes the Digital Twin as a PLM construct linking a physical product, a virtual product, and the information connection between the two~\cite{grieves2005product,grieves2014digital}. The original domain is industrial product lifecycle management. The central idea is that information about a physical product should be available through a virtual counterpart across design, production, operation, and support.
+
+The strength of this view is its clear physical--virtual structure. It establishes that a Digital Twin must refer to a specific physical counterpart and not merely to a generic model. However, the early PLM framing was strongly influenced by manufactured products and lifecycle information. When transferred to healthcare, it must be extended to account for biological variability, uncertainty, clinical interpretation, patient privacy, and human-supervised decision-making.
+
+\subsection{The NASA and Glaessgen--Stargel Definition}
+The NASA roadmap and the definition developed by Glaessgen and Stargel place the Digital Twin in the context of aerospace systems~\cite{shafto2010modeling,glaessgen2012digital}. Glaessgen and Stargel define the concept through an as-built vehicle or system supported by integrated multiphysics, multiscale, and probabilistic simulation, updated by sensor data, maintenance history, and fleet information. The objective is to mirror the operational life of the physical counterpart and support reliability, safety, and decision-making.
+
+This definition is valuable because it emphasizes high-fidelity simulation, historical data, sensor updating, and uncertainty. Its limitation for healthcare is that patients are not engineered vehicles with fully specified designs, controlled operating conditions, or complete maintenance records. A patient twin may use simulation and sensor updates, but it must also handle incomplete observations, heterogeneous data, disease evolution, treatment response, and ethical constraints.
+
+\subsection{Boschert and Rosen's Lifecycle-Oriented Definition}
+Boschert and Rosen approach the Digital Twin from the simulation perspective~\cite{boschert2016digital}. Their lifecycle-oriented view emphasizes a comprehensive physical and functional description of the system and information useful during current and future lifecycle stages. Simulation is treated as an essential mechanism for exploring system behavior.
+
+The relevance to healthcare lies in the longitudinal dimension. A patient or organ twin should not be a one-time model; it should preserve information over time and support future interpretation. However, lifecycle simulation alone is insufficient. Healthcare twins also require clinical validation, traceable provenance, safety-aware services, and careful distinction between measured, estimated, predicted, and simulated values.
+
+\subsection{Negri et al.'s Synchronization-Oriented Definition}
+Negri et al.~\cite{negri2017review} review the role of Digital Twins in cyber-physical production systems. Their interpretation emphasizes a virtual representation of a physical system, simulation across disciplines, synchronization with the real system, sensor data, connected smart devices, mathematical models, and real-time data processing.
+
+This definition helps distinguish synchronized twins from static simulations. It makes the physical--virtual relationship operational by linking the virtual model to sensor-driven updates. For healthcare, the synchronization principle is essential, but it must be adapted to different temporal scales: ECG may be sampled at high frequency, while demographics, medical history, and diagnosis labels change more slowly.
+
+\subsection{Kritzinger et al.'s Data-Exchange Definition}
+Kritzinger et al.~\cite{kritzinger2018digital} provide one of the most useful maturity distinctions in the Digital Twin literature by classifying digital representations according to the direction and automation of data exchange. A Digital Model involves manual data exchange between the physical and virtual spaces. A Digital Shadow includes automatic physical-to-digital data flow, but no equivalent automatic return flow. A Digital Twin requires automatic bidirectional exchange.
+
+This classification is widely used because it prevents overuse of the term Digital Twin. Nevertheless, it does not by itself assess clinical validity, model fidelity, service usefulness, safety, or ethical acceptability. In healthcare, a bidirectional data link is not enough; the returned information must also be clinically meaningful, validated, explainable, and normally mediated by healthcare professionals.
+
+\subsection{Enders and Ho{\ss}bach's Information-Oriented Definition}
+Enders and Ho{\ss}bach~\cite{enders2019dimensions} analyze Digital Twin applications across industries and define the concept as a virtual representation of a physical twin that may be connected to the physical counterpart and can provide additional information about it. Their information-oriented definition is useful because it highlights the informational value of the twin rather than treating the virtual entity as a purely geometric model.
+
+The advantage of this view is flexibility across domains. Its weakness is that allowing the connection to be optional can blur the boundary between a Digital Twin and a disconnected digital model. For healthcare, the connection should be explicit and traceable because clinical interpretation depends on knowing where a value came from, how recently it was updated, and whether it is measured, inferred, predicted, or simulated.
+
+\subsection{Tao et al.'s Five-Dimensional Definition}
+Tao et al.~\cite{tao2018digitalTwinDriven,tao2019digital} extend the classical model by defining five dimensions: physical entity, virtual entity, Digital Twin data, services, and connections. This approach makes data and services independent dimensions rather than implicit by-products of the physical--virtual link. Qi and Tao~\cite{qi2018digital} further relate Digital Twins to Big Data and Industry 4.0, while Qi et al.~\cite{qi2018service} emphasize Digital Twin services for smart manufacturing.
+
+The five-dimensional view is important for eHealth because healthcare twins depend on multimodal data, longitudinal storage, interfaces, alerts, reporting, simulation, prediction, and decision support. Its limitation is that the presence of five architectural dimensions does not automatically guarantee maturity. A system may contain data and services but still lack validation, synchronization, or clinical credibility.
+
+\subsection{Jones et al.'s Characteristic-Based Definition}
+Jones et al.~\cite{jones2020characterising} characterize Digital Twins through recurring properties identified in the literature. These include the physical entity, virtual entity, physical environment, virtual environment, parameters, state, fidelity, physical-to-virtual connection, virtual-to-physical connection, twinning, physical process, and virtual process.
+
+This characteristic-based approach is useful for comparing heterogeneous systems because it avoids reducing the Digital Twin to one rigid architecture. It also supports maturity analysis: two systems may both be called Digital Twins but differ strongly in fidelity, state representation, twinning rate, or feedback direction. In healthcare, such granularity helps distinguish an ECG classifier, an offline cardiac simulation, a digital shadow, and a connected patient-state twin.
+
+\subsection{van der Valk et al.'s Configurable Taxonomy}
+Van der Valk et al.~\cite{vanderValk2020taxonomy} propose a multidimensional taxonomy of Digital Twins, and van der Valk et al.~\cite{vanderValk2021archetypes} later identify archetypes of Digital Twin configurations. Their work treats Digital Twins as configurable systems whose properties depend on use case, purpose, data link, model accuracy, synchronization, interface, data input, human--machine interaction, and machine-to-machine interaction.
+
+The configuration-oriented view is especially relevant to healthcare. A hospital-process twin, a patient-monitoring twin, and a cardiovascular electrophysiology twin do not need identical fidelity, data frequency, or services. However, the taxonomy also implies a responsibility: each implementation should state its configuration clearly rather than using the Digital Twin label without specifying connection, purpose, synchronization, and service maturity.
+
+\subsection{Fuller et al.'s Enabling-Technology Perspective}
+Fuller et al.~\cite{fuller2020digital} review enabling technologies, challenges, and open research issues, including IoT, Artificial Intelligence, Machine Learning, simulation, cloud computing, and cybersecurity. Their perspective reinforces that a Digital Twin is not equivalent to any single technology. A dashboard, standalone simulation, disconnected 3D model, or isolated AI predictor may support a twin, but it is not itself a complete Digital Twin.
+
+For healthcare, this distinction is essential. AI may support diagnosis, prognosis, personalization, and anomaly detection, but the Digital Twin maturity still depends on physical--virtual coupling, traceable data exchange, state maintenance, validation, and clinically meaningful services.
+
+\subsection{Tomczyk and van der Valk's Definition Synthesis}
+Tomczyk and van der Valk~\cite{tomczyk2022paradigm} synthesize Digital Twin definitions into three principal streams: the classical approach, the extended approach, and the application-oriented approach. Their concept-matrix analysis shows that newer definitions increasingly emphasize data, services, connectivity, Information and Communication Technologies, and user-oriented applications.
+
+Their contribution is central to this thesis because it explains why definition plurality is not merely a terminological problem. It reflects the movement of Digital Twin research from product-centered representations toward connected systems that produce services through data, models, interfaces, and domain-specific configurations. In eHealth, this shift justifies analyzing not only whether a virtual patient model exists, but also whether it is updated, traceable, useful, validated, and safely integrated into clinical decision processes.
+
+\section{Comparative Analysis of Digital Twin Definitions}
+Table~\ref{tab:dt_definition_comparison} compares the representative definitions discussed above. The criteria are selected to clarify why authors use different definitions and how each definition transfers, or fails to transfer, to healthcare. The table distinguishes original domain, definition focus, core elements, data-exchange assumptions, service purpose, and healthcare limitation.
+
+\clearpage
+\begin{landscape}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{2.8cm} >{\RaggedRight\arraybackslash}p{2.9cm} >{\RaggedRight\arraybackslash}p{3.4cm} >{\RaggedRight\arraybackslash}p{4.0cm} >{\RaggedRight\arraybackslash}p{3.0cm} >{\RaggedRight\arraybackslash}p{3.6cm} >{\RaggedRight\arraybackslash}p{4.2cm}}
+\caption{Comparison of representative Digital Twin definitions in the literature.}\label{tab:dt_definition_comparison}\\
+\toprule
+\textbf{Author and year} & \textbf{Original domain} & \textbf{Definition focus} & \textbf{Core elements} & \textbf{Data exchange} & \textbf{Services or purpose} & \textbf{Main limitation for healthcare}\\
+\midrule
+\endfirsthead
+\caption[]{Comparison of representative Digital Twin definitions in the literature (continued).}\\
+\toprule
+\textbf{Author and year} & \textbf{Original domain} & \textbf{Definition focus} & \textbf{Core elements} & \textbf{Data exchange} & \textbf{Services or purpose} & \textbf{Main limitation for healthcare}\\
+\midrule
+\endhead
+\midrule \multicolumn{7}{r}{\emph{Continued on next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Grieves~\cite{grieves2005product,grieves2014digital} & Product lifecycle management & Virtual product information linked to a physical product & Physical product, virtual product, connection, lifecycle information & Bidirectional link is conceptually central but initially product-information oriented & Lifecycle support, design, production, maintenance, decision support & Industrial product focus; requires extension for biological variability, privacy, clinical risk, and uncertainty\\
+\addlinespace
+Shafto et al. and Glaessgen--Stargel~\cite{shafto2010modeling,glaessgen2012digital} & Aerospace and NASA vehicle systems & High-fidelity simulation of an as-built system & Multiphysics models, multiscale simulation, sensor updates, history, fleet data & Sensor and historical data update the virtual counterpart & Reliability, health management, mission support, life prediction & Assumes engineered systems and rich physical models; not directly sufficient for patient twins\\
+\addlinespace
+Boschert and Rosen~\cite{boschert2016digital} & Mechatronics and simulation & Simulation across lifecycle stages & Physical and functional description, lifecycle information, simulation & Data support lifecycle simulation and future stages & Behavior exploration, design, operation, maintenance & Strong simulation focus but less explicit on clinical governance and human-supervised feedback\\
+\addlinespace
+Negri et al.~\cite{negri2017review} & CPS-based production systems & Synchronization with real production systems & Virtual representation, sensors, smart devices, mathematical models, real-time processing & Sensor-driven synchronization with the physical system & Monitoring, simulation, control, production optimization & Useful for synchronization, but clinical time scales and validation requirements differ\\
+\addlinespace
+Kritzinger et al.~\cite{kritzinger2018digital} & Manufacturing literature classification & Direction and automation of data exchange & Digital Model, Digital Shadow, Digital Twin & Manual, one-way automatic, or bidirectional automatic exchange & Terminological classification and maturity distinction & Does not alone capture clinical validity, fidelity, services, safety, or ethics\\
+\addlinespace
+Enders and Ho{\ss}bach~\cite{enders2019dimensions} & Cross-industry information systems & Information value of a virtual representation & Physical twin, digital representation, possible connection, additional information & Connection may exist but is not always mandatory & Additional information about the physical counterpart & Optional connection can blur the boundary between model and twin\\
+\addlinespace
+Tao et al.~\cite{tao2018digitalTwinDriven,tao2019digital} & Smart manufacturing and Industry 4.0 & Five-dimensional Digital Twin & Physical entity, virtual entity, data, services, connections & Multiple data and service connections across physical and virtual spaces & Evaluation, prediction, optimization, service delivery, lifecycle management & Strong architecture, but healthcare requires clinical validation and governance beyond architecture\\
+\addlinespace
+Jones et al.~\cite{jones2020characterising} & Manufacturing definition review & Recurring Digital Twin characteristics & Entity, environment, parameters, state, fidelity, connections, twinning, processes & Physical-to-virtual and virtual-to-physical connections plus twinning rate & Comparative characterization of heterogeneous twins & Broad characterization must be translated into clinical evidence criteria\\
+\addlinespace
+van der Valk et al.~\cite{vanderValk2020taxonomy,vanderValk2021archetypes} & Information systems and industrial taxonomy & Configurable Digital Twin taxonomy and archetypes & Purpose, data link, model accuracy, synchronization, interface, input, HMI, M2M interaction & Depends on configuration and use case & Use-case-specific configuration and archetype identification & Flexible but requires explicit reporting to prevent vague Digital Twin claims\\
+\addlinespace
+Fuller et al.~\cite{fuller2020digital} & Cross-domain technology review & Enabling technologies and challenges & IoT, AI, ML, simulation, cloud, data analytics, cybersecurity & Technology-dependent physical--virtual integration & Monitoring, prediction, optimization, decision support & Technology focus may be misread as meaning that any AI or IoT system is a Digital Twin\\
+\addlinespace
+Tomczyk and van der Valk~\cite{tomczyk2022paradigm} & Definition synthesis & Paradigm shift in Digital Twin definitions & Classical, extended, and application-oriented definition streams & Moves from bidirectional link toward broader connection, data, and services & Explains definitional evolution and concept-matrix patterns & Provides conceptual synthesis; implementation validity remains domain-specific\\
+\end{longtable}
+\end{landscape}
+\clearpage
+
+The comparison shows that Digital Twin definitions converge on a physical--virtual relationship but diverge on what must be explicit. Classical definitions identify the minimum structure. Simulation-oriented definitions strengthen model fidelity. Data-exchange definitions clarify the difference between models, shadows, and twins. Five-dimensional definitions make data and services visible. Taxonomies and archetypes recognize that Digital Twins are configured for use cases. For eHealth, the most appropriate interpretation must combine all these insights: a healthcare twin needs a physical counterpart, a virtual representation, traceable data, explicit connection, synchronization, services, validation, and human-supervised clinical use.
+
+\section{The Classical Three-Dimensional Approach}
+The classical approach describes a Digital Twin through three dimensions: physical entity, virtual entity, and bidirectional connection~\cite{grieves2014digital,grieves2017digital,tomczyk2022paradigm}. Figure~\ref{fig:dt_classical_three_dimensions} presents this structure as an author synthesis.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.9\textwidth}{!}{\input{figures/fig_dt_classical_three_dimensions}}
+    \caption{Classical three-dimensional Digital Twin approach. Author synthesis based on Grieves and related definitions.}
+    \label{fig:dt_classical_three_dimensions}
+\end{figure}
+
+\subsection*{Physical Entity}
+The physical entity is the real product, system, process, device, patient, organ, or environment represented by the twin. It has an observable state, behavior, operating environment, lifecycle, and potential interventions. In healthcare, the physical entity may be a patient, cardiovascular system, ECG acquisition device, care pathway, or hospital service.
+
+\subsection*{Virtual Entity}
+The virtual entity is the digital counterpart. It may contain geometry, state variables, mathematical models, simulation, behavior, history, and prediction capabilities. It is not necessarily a three-dimensional visual model. A virtual entity can be a computational model, a state representation, a data structure, a simulation environment, or a combination of these elements.
+
+\subsection*{Bidirectional Connection}
+The connection links the physical and virtual entities. The physical-to-virtual flow transfers measurements, events, and state updates. The virtual-to-physical flow returns information, recommendations, optimized parameters, control signals, or supervised actions. In healthcare, feedback from the virtual side should normally remain human-supervised because automated clinical control raises safety, ethical, and regulatory concerns. Under the Kritzinger taxonomy~\cite{kritzinger2018digital}, a system with only automatic physical-to-virtual flow is better classified as a Digital Shadow than as a full Digital Twin.
+
+\section{The Extended Five-Dimensional Approach}
+The five-dimensional approach extends the classical model by adding Digital Twin data and services as explicit dimensions~\cite{tao2018digitalTwinDriven,tao2019digital,qi2018digital,tomczyk2022paradigm}. Figure~\ref{fig:dt_extended_five_dimensions} summarizes the approach.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.82\textwidth}{!}{\input{figures/fig_dt_extended_five_dimensions}}
+    \caption{Extended five-dimensional Digital Twin approach. Author synthesis based on Tao et al. and Tomczyk and van der Valk.}
+    \label{fig:dt_extended_five_dimensions}
+\end{figure}
+
+\subsection*{Physical Entity}
+The physical entity remains the real-world object, patient, process, system, or environment. In eHealth, it includes not only the biological entity but also its clinical context, sensors, care setting, and interactions with healthcare professionals.
+
+\subsection*{Virtual Entity}
+The virtual entity contains models, state descriptions, behavior representations, context, and simulations. It may include mechanistic models, statistical models, Machine Learning models, rule-based logic, or hybrid representations.
+
+\subsection*{Digital Twin Data}
+Digital Twin data include raw measurements, processed signals, historical records, contextual variables, simulated values, model parameters, metadata, provenance, and uncertainty indicators. Data deserve a separate dimension because they are not merely transmitted between physical and virtual spaces; they are stored, transformed, validated, reused, and interpreted by services.
+
+\subsection*{Connections}
+Connections include more than a single arrow. They cover sensors to acquisition modules, databases to virtual models, model services to interfaces, physical-to-virtual flows, virtual-to-physical flows, machine-to-machine communication, human-to-machine interfaces, APIs, and healthcare interoperability standards such as HL7 FHIR.
+
+\subsection*{Services}
+Services transform the internal capabilities of a twin into useful functions. They include monitoring, visualization, diagnosis support, prediction, optimization, simulation, scenario analysis, validation, alerting, reporting, and decision support. In healthcare, services must be evaluated not only for technical performance but also for safety, usability, explainability, and clinical relevance.
+
+\section{From Classical to Extended Digital Twin Definitions}
+The extended five-dimensional approach does not reject the classical approach. Instead, it makes two previously implicit elements explicit: data and services. Table~\ref{tab:classical_extended_comparison} compares both approaches and their implications for eHealth.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Comparison between the classical three-dimensional and extended five-dimensional Digital Twin approaches.}
+\label{tab:classical_extended_comparison}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{3.0cm} >{\RaggedRight\arraybackslash}p{3.8cm} >{\RaggedRight\arraybackslash}p{4.0cm} >{\RaggedRight\arraybackslash}X}
+\toprule
+\textbf{Criterion} & \textbf{Classical three-dimensional approach} & \textbf{Extended five-dimensional approach} & \textbf{Implication for eHealth}\\
+\midrule
+Represented entity & Physical object or system & Physical entity plus environment and context & Patient, organ, device, workflow, or population context must be explicit\\
+Virtual model & Digital counterpart of the physical entity & Virtual entity supported by data, models, and services & Clinical state representation may combine models, records, signals, and simulations\\
+Connection & Bidirectional physical--virtual link & Multiple connections among sensors, databases, services, and interfaces & Requires interoperable and traceable healthcare data flows\\
+Role of data & Often implicit in the connection & Independent dimension & Multimodal and longitudinal data management becomes central\\
+Role of services & Often implicit as use of the model & Independent dimension & Dashboards, alerts, reports, simulation, and decision support must be evaluated\\
+User interfaces & Not always emphasized & Part of service and connection logic & Clinicians and patients need understandable outputs\\
+Scalability & Usually focused on one product or system & Platform and service orientation & Health systems need modular architectures and integration with existing systems\\
+Lifecycle & Product lifecycle focus & Lifecycle plus evolving services and data & Patient state, disease trajectory, and treatment history must be maintained\\
+Interoperability & Not central in early definitions & Connection and data dimensions make it explicit & Standards such as FHIR become architectural requirements\\
+Decision support & Possible but not always specified & Service dimension makes it explicit & Clinical recommendations require validation and human supervision\\
+Healthcare suitability & Useful minimum structure & Better suited to complex eHealth platforms & Supports multimodal data, AI, simulation, governance, and clinical services\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The classical approach remains useful because it identifies the minimum physical--virtual structure. The extended approach is more appropriate for complex eHealth platforms because healthcare systems require multimodal data, longitudinal storage, interoperability, AI, simulation, dashboards, alerts, clinical services, and governance. However, neither approach is sufficient unless the maturity and validation of the implementation are also assessed.
+
+\section[Application-Oriented and Configuration-Oriented Approaches]{\texorpdfstring{Application-Oriented and Configuration-Oriented\\Approaches}{Application-Oriented and Configuration-Oriented Approaches}}
+Some Digital Twin definitions are derived from specific use cases rather than from a universal architecture. Examples include manufacturing systems, aerospace vehicles, hospital workflows, individual patients, organs, medical devices, public-health processes, and cardiovascular models. Application-oriented definitions have practical advantages: they provide domain relevance, clear services, measurable validation targets, and implementation guidance.
+
+Their risk is definition fragmentation. If each domain defines Digital Twin only around its own needs, the term may be used for any simulation, dashboard, or prediction system. The taxonomy of van der Valk et al.~\cite{vanderValk2020taxonomy,vanderValk2021archetypes} addresses this problem by treating Digital Twins as configurable systems. A Digital Twin can be configured differently depending on purpose, data link, model accuracy, synchronization, interface, data input, and interaction mode, but the configuration should be reported transparently.
+
+Figure~\ref{fig:dt_definition_streams} summarizes the three definition streams highlighted by Tomczyk and van der Valk~\cite{tomczyk2022paradigm}. The figure helps interpret healthcare Digital Twins: they are application-oriented, but they should still satisfy general physical--virtual, data, connection, and service criteria.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.95\textwidth}{!}{\input{figures/fig_dt_definition_streams}}
+    \caption{Three principal streams of Digital Twin definitions identified in the literature. Author synthesis based on Tomczyk and van der Valk.}
+    \label{fig:dt_definition_streams}
+\end{figure}
+
+\section{Digital Model, Digital Shadow, and Digital Twin}
+The distinction between Digital Model, Digital Shadow, and Digital Twin is based on two dimensions: the automation of data exchange and the direction of data exchange~\cite{kritzinger2018digital}. This distinction is essential in healthcare because many systems described as Digital Twins are actually static models, episodic simulations, or one-way monitoring systems.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.9\textwidth}{!}{\input{figures/fig_dt_maturity}}
+    \caption{Evolution from digital model to intelligent Digital Twin. Author synthesis based on the reviewed literature.}
     \label{fig:dt_maturity}
 \end{figure}
 
-\section{Core Components of a Digital Twin}
-Most Digital Twin definitions include three fundamental components: a physical entity, a virtual entity, and a connection between them. More extended views also include data and services as explicit components. In this thesis, the Digital Twin is considered as a system composed of five main elements:
+Table~\ref{tab:model_shadow_twin} clarifies the distinction and adds the intelligent or cognitive Digital Twin direction. An intelligent Digital Twin may include learning, reasoning, adaptation, optimization, and uncertainty-aware services, but AI alone does not transform a model into a Digital Twin. Physical--virtual connection and state updating remain necessary.
 
-\begin{enumerate}[leftmargin=*]
-    \item \textbf{Physical space:} the real-world entity, process, device, patient, or healthcare environment.
-    \item \textbf{Virtual space:} the digital representation that models the state and behavior of the physical counterpart.
-    \item \textbf{Data:} real-time, historical, contextual, and simulated data used to feed and update the twin.
-    \item \textbf{Services:} monitoring, simulation, prediction, optimization, alerts, and decision support.
-    \item \textbf{Connection:} communication mechanisms enabling synchronization between the physical and virtual spaces.
-\end{enumerate}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Distinction between Digital Model, Digital Shadow, Digital Twin, and intelligent Digital Twin.}
+\label{tab:model_shadow_twin}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{2.35cm} >{\RaggedRight\arraybackslash}p{2.45cm} >{\RaggedRight\arraybackslash}p{2.45cm} >{\RaggedRight\arraybackslash}p{2.15cm} >{\RaggedRight\arraybackslash}p{2.6cm} >{\RaggedRight\arraybackslash}X}
+\toprule
+\textbf{System type} & \textbf{Physical-to-virtual exchange} & \textbf{Virtual-to-physical exchange} & \textbf{Automatic update} & \textbf{Typical service} & \textbf{Main limitation}\\
+\midrule
+Digital Model & Manual or absent & Manual or absent & No & Offline analysis or documentation & Static and disconnected from current physical state\\
+Digital Shadow & Automatic from physical to virtual & Manual or absent & One-way update & Monitoring, dashboards, retrospective analysis & Lacks automatic bidirectional influence or controlled feedback\\
+Digital Twin & Automatic and traceable & Automatic or supervised feedback & Bidirectional update according to purpose & Monitoring, simulation, prediction, decision support & Requires validation, governance, and safe service integration\\
+Intelligent Digital Twin & Automatic and learning-aware & Adaptive recommendations or optimized actions & Bidirectional plus model adaptation & Personalization, optimization, uncertainty-aware support & AI may drift, overfit, or become opaque without revalidation\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Fundamental Characteristics of a Digital Twin}
+The definition literature repeatedly identifies characteristics that can be mapped to the five-dimensional model. Jones et al.~\cite{jones2020characterising} emphasize entity, environment, state, parameters, fidelity, connections, twinning, and processes. Van der Valk et al.~\cite{vanderValk2020taxonomy,vanderValk2021archetypes} add configuration dimensions such as purpose, data link, synchronization, model accuracy, data input, and interfaces. Figure~\ref{fig:dt_characteristics_mapping} organizes these characteristics into the five-dimensional view.
 
 \begin{figure}[H]
     \centering
-    \resizebox{0.88\textwidth}{!}{\input{figures/fig_dt_core_concept}}
-    \caption{Core components of a Digital Twin system.}
-    \label{fig:dt_core_concept}
+    \resizebox{\textwidth}{!}{\input{figures/fig_dt_characteristics_mapping}}
+    \caption{Mapping of recurring Digital Twin characteristics to the five-dimensional model. Author synthesis based on the reviewed definition studies.}
+    \label{fig:dt_characteristics_mapping}
 \end{figure}
 
-\section{Enabling Technologies}
-Digital Twin systems are enabled by several technologies. The Internet of Things allows physical entities to be monitored through sensors and connected devices. Cloud and edge computing provide infrastructure for data storage and processing. Artificial intelligence and machine learning support pattern recognition, prediction, personalization, and anomaly detection. Simulation models provide interpretable and mechanistic representations of system behavior. Cybersecurity technologies protect data exchange, access control, and system integrity.
+This mapping shows why a Digital Twin should not be evaluated through a single criterion. A connected model may still have low fidelity. A high-fidelity simulation may lack synchronization. A dashboard may provide services without maintaining a virtual state. A mature healthcare twin must therefore be described through its entity, data, model, connection, synchronization, services, validation, and clinical context.
 
-\section{Digital Twin Services}
-The value of a Digital Twin is expressed through its services. Typical services include real-time monitoring, visualization, anomaly detection, risk estimation, scenario simulation, optimization, predictive maintenance, and decision support. In healthcare, these services must be designed carefully because incorrect outputs may affect clinical decisions and patient safety.
+\section[Digital Twin Fidelity, Synchronization, and Twinning Rate]{\texorpdfstring{Digital Twin Fidelity, Synchronization,\\and Twinning Rate}{Digital Twin Fidelity, Synchronization, and Twinning Rate}}
+Fidelity is the degree to which the virtual entity reproduces the aspects of the physical counterpart that matter for the intended purpose. It may include geometric fidelity, behavioral fidelity, physiological fidelity, temporal fidelity, and functional fidelity. Maximum fidelity is not always necessary or feasible. A hospital-flow twin does not need cardiac electrophysiology, while an ablation-planning twin may require detailed anatomy and conduction modeling.
+
+Synchronization concerns how the virtual counterpart is updated in relation to the physical entity. Synchronization can be continuous, periodic, event-driven, episodic, or manual. The appropriate frequency depends on the use case. ECG acquisition may require high-frequency sampling; blood-pressure trends may be updated periodically; demographic data and medical history change more slowly.
+
+The twinning rate describes how often and how quickly the physical and virtual counterparts are reconciled. It depends on latency, sampling rate, update frequency, computational cost, and clinical urgency~\cite{jones2020characterising,vanderValk2020taxonomy}. In healthcare, a high twinning rate is useful only when the data are reliable and the service requires rapid response. A slow but clinically validated update can be more useful than a fast but poorly calibrated model.
+
+\section{Digital Twin Data and Services}
+Digital Twin data can be measured, calculated, estimated, predicted, simulated, contextual, or metadata. Measured data come directly from sensors, devices, or clinical observations. Calculated data are derived through deterministic formulas. Estimated data infer hidden states or parameters. Predicted data describe expected future values. Simulated data result from what-if scenarios or model experiments. Metadata and provenance describe source, timestamp, unit, processing history, and uncertainty.
+
+This distinction is especially important for eHealth and CardioTwin because clinical users should not interpret a simulated treatment scenario in the same way as a measured ECG or blood-pressure value. Appendix~A therefore includes supplementary review dimensions and value-type traceability principles that support auditability and uncertainty communication.
+
+Digital Twin services may be descriptive, diagnostic, predictive, prescriptive, simulation-based, monitoring-oriented, reporting-oriented, optimization-oriented, or decision-support services~\cite{tao2019digital,fuller2020digital}. Service maturity depends on data quality, model validity, synchronization, user interface, governance, and clinical evaluation. A technically advanced service that is not explainable, validated, or safely integrated into workflow may have limited clinical value.
+
+\section{Digital Twin Lifecycle}
+A Digital Twin is not only created; it evolves. Figure~\ref{fig:dt_lifecycle} presents the lifecycle from purpose definition to retirement as an author synthesis based on the reviewed literature.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.95\textwidth}{!}{\input{figures/fig_dt_lifecycle}}
+    \caption{Lifecycle of a Digital Twin from purpose definition to operation, evolution, and retirement. Author synthesis based on the reviewed literature.}
+    \label{fig:dt_lifecycle}
+\end{figure}
+
+The lifecycle begins by defining the purpose of the twin and identifying the physical counterpart. It then requires data-source selection, virtual-model design, initialization, calibration, verification, synchronization, service delivery, monitoring, revalidation, evolution, and eventual retirement or archival. In healthcare, the twin evolves with disease progression, treatment, behavior, sensors, care setting, clinical objectives, and available data. These changes may require recalibration or revalidation, especially when the system supports clinical decisions.
+
+\section{Enabling Technologies}
+Digital Twin systems rely on several enabling technologies. IoT and IoMT devices support data acquisition from sensors, medical devices, and connected environments. Cloud computing provides scalable storage and processing, while edge computing can reduce latency and support local preprocessing. Big Data platforms manage large multimodal datasets. Artificial Intelligence and Machine Learning support pattern recognition, state estimation, prediction, personalization, anomaly detection, and surrogate modeling. Simulation provides interpretable and mechanistic representations of system behavior. APIs, middleware, and interoperability standards support communication among data sources, models, and services. Cybersecurity mechanisms protect data exchange, access control, auditability, and system integrity~\cite{fuller2020digital,tao2019digital,chaparro2025technological}.
+
+These technologies are enabling components, not definitions by themselves. A system does not become a Digital Twin merely because it uses AI, cloud computing, or IoT. The technologies must contribute to a maintained physical--virtual relationship and to services that are aligned with the purpose of the twin.
 
 \section{Digital Twin Maturity}
-Digital Twins can be classified according to their level of maturity. A low-maturity system may only provide a static representation, while a high-maturity system can learn from real-time data, simulate future behavior, interact with the physical world, and support autonomous or semi-autonomous decisions. In healthcare, fully autonomous Digital Twins remain rare because of clinical safety, ethical, legal, and validation requirements.
+Digital Twin maturity can be interpreted through connection, synchronization, service capability, intelligence, and validation. A low-maturity system may be a static digital model. A more advanced system may be a digital shadow that receives automatic data from the physical entity. A connected Digital Twin maintains bidirectional or human-supervised feedback. An intelligent Digital Twin adds learning, adaptation, optimization, or reasoning.
+
+In healthcare, maturity must not be assessed only by technological complexity. A deep-learning model with high internal accuracy may still be only a prediction model if it is disconnected from a patient-state representation. Conversely, a clinically validated, synchronized, rule-based monitoring twin may be more mature for its purpose than an opaque AI system without external validation. The two states of the art in Chapter~6 therefore use cautious labels such as conceptual framework, static digital model, offline patient-specific simulation, episodically calibrated model, Digital Shadow, process Digital Twin, partial connected Digital Twin, and intelligent-DT direction.
+
+\section{Operational Definition Adopted in This Thesis}
+Based on the reviewed definitions, this thesis adopts the following operational definition:
+
+\begin{quote}
+A Digital Twin is a purpose-oriented and continuously maintainable virtual representation of a physical healthcare entity or process, connected to its real counterpart through traceable data exchanges and capable of supporting validated monitoring, analysis, simulation, prediction, or decision-support services.
+\end{quote}
+
+This definition requires a clearly identified physical counterpart, a virtual representation, traceable data, an explicit connection, updates or synchronization, purpose-oriented services, validation, and human supervision when clinical decisions are involved. It excludes standalone dashboards, disconnected simulations, one-time AI predictions, static digital records, and generic three-dimensional models without state updating.
+
+For the rest of the thesis, this operational definition supports a cautious interpretation of healthcare and cardiovascular Digital Twins. CardioTwin is therefore treated as a practical cardiovascular specialization that should maintain a patient state, integrate measured and derived information, support ECG analysis and what-if scenarios, and clearly distinguish measured, calculated, estimated, predicted, and simulated values. It does not claim full clinical maturity without implementation, evaluation, and future clinical validation.
 
 \section{Conclusion}
-This chapter presented the foundations of Digital Twin technology. The next chapter focuses on how this paradigm is adapted to healthcare and eHealth in a general manner.
+This chapter showed that the Digital Twin is a plural and evolving concept rather than a single universally fixed definition. Grieves' PLM view established the classical physical--virtual structure; NASA and aerospace definitions emphasized high-fidelity simulation; manufacturing literature clarified synchronization and data exchange; Tao et al. made data and services explicit; Jones et al. and van der Valk et al. provided characteristic and configuration perspectives; and Tomczyk and van der Valk synthesized the movement from classical definitions toward extended and application-oriented approaches.
+
+The operational definition adopted in this thesis combines these insights and provides the terminology used in the healthcare and cardiovascular state-of-the-art analysis. The next chapter introduces the eHealth and digital-health environment in which these Digital Twin principles can be applied, before their healthcare-specific adaptation is examined in the following chapter.
 
 \clearpage

@@ -1,0 +1,27 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    dim/.style={draw=DTBlue, fill=DTLightBlue, rounded corners=3pt, align=center, font=\scriptsize\bfseries, text width=2.8cm, minimum height=0.9cm},
+    item/.style={draw=DTGray, fill=DTLightGray, rounded corners=2pt, align=center, font=\scriptsize, text width=2.5cm, minimum height=0.75cm},
+    link/.style={->, thin, DTGray}
+]
+\node[dim] (p) at (0,2.2) {Physical entity};
+\node[dim] (v) at (3.4,2.2) {Virtual entity};
+\node[dim] (d) at (6.8,2.2) {Data};
+\node[dim] (c) at (10.2,2.2) {Connections};
+\node[dim] (s) at (13.6,2.2) {Services};
+
+\node[item] (p1) at (0,0.8) {physical environment};
+\node[item] (p2) at (0,-0.2) {physical process};
+\node[item] (v1) at (3.4,0.8) {virtual environment};
+\node[item] (v2) at (3.4,-0.2) {models and fidelity};
+\node[item] (d1) at (6.8,0.8) {parameters and state};
+\node[item] (d2) at (6.8,-0.2) {provenance and uncertainty};
+\node[item] (c1) at (10.2,0.8) {physical-to-virtual};
+\node[item] (c2) at (10.2,-0.2) {virtual-to-physical};
+\node[item] (s1) at (13.6,0.8) {interfaces};
+\node[item] (s2) at (13.6,-0.2) {monitoring, prediction, optimization};
+
+\foreach \a/\b in {p/p1,p/p2,v/v1,v/v2,d/d1,d/d2,c/c1,c/c2,s/s1,s/s2}
+    \draw[link] (\a) -- (\b);
+\node[align=center, font=\scriptsize, text width=12.5cm] at (6.8,-1.8) {Recurring characteristics from definition studies can be organized through the five-dimensional model without implying that every implementation has the same fidelity, synchronization, or service maturity.};
+\end{tikzpicture}

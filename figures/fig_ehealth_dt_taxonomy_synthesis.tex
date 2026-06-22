@@ -1,0 +1,23 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{root}=[
+    rectangle, rounded corners=2pt, draw=DTBlue, fill=DTLightBlue,
+    text width=5.0cm, minimum height=0.9cm, align=center, line width=0.7pt
+]
+\tikzstyle{cat}=[
+    rectangle, rounded corners=2pt, draw=DTGreen, fill=DTLightGreen,
+    text width=4.1cm, minimum height=1.65cm, align=left, font=\scriptsize
+]
+
+\node[root] (root) at (0,0) {Digital Twin applications in eHealth};
+
+\node[cat] (patient) at (-5.2,-2.0) {\textbf{Patient-specific twins}\\Data: EHR, wearables, labs\\Services: monitoring, risk, personalization};
+\node[cat] (organ) at (0,-2.0) {\textbf{Organ and body-system twins}\\Data: imaging, signals, physiology\\Services: simulation, intervention planning};
+\node[cat] (pathway) at (5.2,-2.0) {\textbf{Disease and care-pathway twins}\\Data: events, treatments, outcomes\\Services: trajectory analysis, care coordination};
+\node[cat] (device) at (-5.2,-4.35) {\textbf{Medical-device twins}\\Data: device telemetry, usage, alarms\\Services: maintenance, safety, optimization};
+\node[cat] (hospital) at (0,-4.35) {\textbf{Hospital and workflow twins}\\Data: resources, queues, operations\\Services: scheduling, capacity, process simulation};
+\node[cat] (population) at (5.2,-4.35) {\textbf{Public-health and population twins}\\Data: cohorts, environment, mobility\\Services: prevention, policy, emergency response};
+
+\foreach \n in {patient,organ,pathway,device,hospital,population}{
+    \draw[->, thick, DTBlue] (root) -- (\n);
+}
+\end{tikzpicture}
