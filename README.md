@@ -1,6 +1,6 @@
 # Master Thesis LaTeX Project
 
-**Title:** Digital Twin for eHealth: State of the Art and Conceptual Architecture
+**Title:** Digital Twin Technology in eHealth: Foundations, State of the Art, Cardiovascular Applications, and Architectural design for Cardiovascular Digital Twin
 
 This project contains the complete LaTeX source of the Master’s thesis. It preserves the formatted title page, multilingual front matter, Arabic text support, XeLaTeX configuration, bibliography system, TikZ figures, and landscape comparative tables.
 
@@ -14,11 +14,11 @@ This project contains the complete LaTeX source of the Master’s thesis. It pre
   - Chapter 4: Digital Twin in Healthcare and eHealth
 - **Part III — State of the Art**
   - Chapter 5: Literature Review Methodology
-  - Chapter 6: Dual State-of-the-Art Review
-- **Part IV — Proposed Method**
-  - Chapter 7: Proposed Architecture for a Digital Twin-Based eHealth System
-- **Part V — General Conclusion and PFE Transition**
-  - Chapter 8: General Conclusion and Proposed Method for the PFE
+  - Chapter 6: State-of-the-Art Review
+- **Part IV — Selected Method**
+  - Chapter 7: Selected Architecture for a Digital Twin-Based eHealth System
+- **Part V — General Conclusion and Future Work**
+  - Chapter 8: General Conclusion and Selected Method for the PFE
 
 ## Dual State of the Art
 

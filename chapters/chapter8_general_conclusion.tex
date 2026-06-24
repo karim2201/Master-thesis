@@ -1,4 +1,4 @@
-\chapter{General Conclusion and Proposed Method for the PFE}
+\chapter{General Conclusion and Selected Method for the PFE}
 
 \section{General Conclusion}
 This Master’s thesis studied the Digital Twin paradigm in the context of eHealth. It showed that a Digital Twin is not only a digital copy, dashboard, or isolated prediction model, but a connected physical--virtual system that uses data, models, and services to support monitoring, simulation, prediction, and decision support. The thesis also distinguished digital models, digital shadows, connected Digital Twins, and intelligent Digital Twins in order to avoid confusing static simulations with mature, updated, and clinically meaningful systems.
@@ -22,7 +22,7 @@ The main contributions of this work are:
 \section{Limitations of the Study}
 This thesis is primarily a state-of-the-art and conceptual architecture study. It does not provide a complete clinical deployment, regulatory medical device, or prospectively validated healthcare product. The reviewed literature is also heterogeneous: authors use the term Digital Twin with different levels of rigor, and many publications describe simulations, predictive models, or digital shadows rather than fully synchronized twins.
 
-Another limitation is that the proposed architecture remains general. It identifies layers, data flows, and cross-cutting requirements, but each healthcare use case still requires specific datasets, clinical objectives, validation protocols, regulatory analysis, and user requirements. In cardiovascular medicine, high-fidelity twinning may require imaging, invasive measurements, calibration, and computational resources that are beyond the scope of this Master’s thesis and the associated academic prototype.
+Another limitation is that the selected architecture remains general. It identifies layers, data flows, and cross-cutting requirements, but each healthcare use case still requires specific datasets, clinical objectives, validation protocols, regulatory analysis, and user requirements. In cardiovascular medicine, high-fidelity twinning may require imaging, invasive measurements, calibration, and computational resources that are beyond the scope of this Master’s thesis and the associated academic prototype.
 
 \section{From the Master Study to the PFE}
 The CardioTwin PFE is introduced as a practical cardiovascular continuation of the Master’s thesis. The transition follows a clear logic: general Digital Twin foundations define the physical--virtual relationship; eHealth foundations define the healthcare data and service environment; the healthcare state of the art identifies architectural, AI, interoperability, and governance requirements; the cardiovascular state of the art identifies a clinically relevant specialization; and the synthesis translates these findings into a feasible prototype scope.
@@ -38,8 +38,8 @@ The PFE is entitled:
 
 CardioTwin is positioned as a patient-oriented cardiovascular Digital Twin prototype inspired by the literature synthesis. It does not claim to reproduce a complete three-dimensional virtual heart or to provide autonomous medical prescriptions. Instead, it aims to combine real biomedical measurements, ECG signal analysis, clinical and physiological information, patient-state representation, cardiovascular risk assessment, controlled what-if simulation, monitoring, and visualization services.
 
-\section{Proposed PFE Methodology}
-The proposed method follows the layered and evidence-aware logic derived from the Master’s thesis.
+\section{Selected PFE Methodology}
+The selected method follows the layered and evidence-aware logic derived from the Master’s thesis.
 
 \subsection{Data Acquisition and Validation}
 CardioTwin will acquire or import ECG data, systolic blood pressure, diastolic blood pressure, heart rate when available, demographic information, clinical history, symptoms, and other relevant physiological measurements. The prototype may use connected medical sensors and the MySignals eHealth development kit where appropriate, but hardware acquisition remains a means to support the patient-state model rather than an objective in itself. Preprocessing includes ECG filtering, artifact handling, normalization, segmentation, timestamp alignment, missing-data handling, and validation of measurement consistency.
