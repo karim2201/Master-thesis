@@ -30,6 +30,15 @@ The applications of Digital Twins in eHealth are diverse. They include remote mo
 \section{Patient-Centered eHealth Digital Twins}
 A patient-centered eHealth Digital Twin integrates clinical, physiological, behavioral, and contextual data to support personalized monitoring and decision-making. Such a system may receive information from EHRs, connected devices, laboratory results, patient-reported outcomes, and environmental sources. However, the level of clinical reliability depends on data quality, model validation, and the ability to handle uncertainty.
 
+\section[Non-Invasive Identification of Patient-Specific Digital Twins]{Non-Invasive Identification of Patient-Specific\\ Digital Twins}
+Many clinically relevant physiological variables are difficult to measure directly. Some variables require invasive procedures, specialized imaging, or controlled clinical settings, while routine eHealth systems usually observe only indirect signals such as biosignals, images, wearable measurements, laboratory values, or clinician-entered summaries. A central challenge for patient-specific Digital Twins is therefore to infer a plausible internal state from partial and non-invasive observations without confusing inference with measurement.
+
+In this context, Artificial Intelligence can support an inverse-identification task. Instead of directly mapping a medical observation to a clinical label, the learning system estimates latent patient-specific parameters that initialize or calibrate a mechanistic model. The mechanistic model then simulates physiological variables such as pressure, flow, volume, or state trajectories. This differs from direct medical prediction: a model that maps echocardiography to ejection fraction or a disease class may be useful, but it does not necessarily create a patient-specific simulator. Digital Twin identification follows a richer chain: non-invasive observation, estimated physiological parameters, mechanistic model, and simulated patient state.
+
+Med-Real2Sim, introduced by Kuang et al.~\cite{kuang2024medreal2sim}, illustrates this emerging direction in cardiovascular modeling. The method uses non-invasive echocardiography videos to infer parameters of a mechanistic cardiovascular model and then reconstruct pressure--volume behavior that would otherwise require more invasive characterization. Its importance for healthcare Digital Twins is methodological: AI does not replace physiology, but helps identify patient-specific parameters under physiological constraints.
+
+Such approaches remain limited by identifiability and validation. A simulated state may match an observable value such as ventricular volume while still depending on non-unique or model-dependent latent parameters. For this reason, non-invasive Digital Twin identification must preserve the distinction between measured observations, estimated parameters, simulated states, and predicted or counterfactual outputs.
+
 \section{Healthcare Process Digital Twins}
 Digital Twins are not limited to individual patients. They can also represent healthcare processes, such as emergency department flow, outpatient services, operating room scheduling, hospital bed allocation, or vaccination campaigns. In this context, the Digital Twin supports simulation of operational scenarios and optimization of healthcare resources.
 
@@ -40,6 +49,6 @@ Healthcare Digital Twins use sensitive data and may influence medical decisions.
 The implementation of Digital Twins in eHealth faces several challenges: interoperability between healthcare systems, access to high-quality multimodal data, real-time synchronization, computational cost, cybersecurity, explainability, regulatory approval, integration into clinical workflows, and acceptance by healthcare professionals and patients.
 
 \section{Summary}
-Digital Twins offer a promising direction for eHealth, but their adoption requires more than technical models. It requires architecture, governance, validation, security, interoperability, and ethical alignment. These issues are addressed in the state-of-the-art chapters that follow.
+Digital Twins offer a promising direction for eHealth, but their adoption requires more than technical models. It requires architecture, governance, validation, security, interoperability, ethical alignment, and careful handling of non-invasive patient-specific model identification. These issues are addressed in the state-of-the-art chapters that follow.
 
 \clearpage

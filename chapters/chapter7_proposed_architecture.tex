@@ -33,6 +33,10 @@ The virtual twin layer represents the current state of the physical entity or he
 \section{Intelligence and Simulation Layer}
 This layer provides analytical and predictive capabilities. It may include rule-based reasoning, machine learning models, deep learning models, statistical models, mechanistic simulations, optimization algorithms, and uncertainty estimation. The purpose is to transform the virtual representation into useful knowledge for monitoring, prediction, scenario analysis, and decision support.
 
+For physiological patient twins, this layer may optionally implement a hybrid real-to-simulation pattern inspired by recent physics-informed Digital Twin methods. Such a pattern can include a non-invasive data encoder, an inverse patient-parameter estimator, a mechanistic physiological model, a differentiable or reduced-order surrogate, an intervention model, a physiological-plausibility checker, and an uncertainty-estimation component. The workflow is: non-invasive observations are processed to estimate latent patient parameters; the mechanistic model simulates physiological states; reconstructed observable variables are compared with available measurements; plausibility and uncertainty are checked; and controlled what-if services are generated only within the validated domain of the model.
+
+This pattern does not replace the general architecture and is not required for every eHealth application. It is one possible implementation of the intelligence and simulation layer for physiological twins. The system must explicitly distinguish measured inputs, model-estimated parameters, simulated physiological states, predicted future values, and counterfactual intervention outputs.
+
 \section{Service Layer}
 The service layer exposes the functions of the Digital Twin to users and systems. Possible services include dashboards, alerts, reports, risk assessment, scenario simulation, remote monitoring, workflow optimization, and decision support. These services must be designed according to user needs, clinical safety, explainability, and usability requirements.
 

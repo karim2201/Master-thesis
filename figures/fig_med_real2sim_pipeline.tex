@@ -1,0 +1,52 @@
+\begin{tikzpicture}[font=\small, >=Latex]
+\tikzstyle{pretrain}=[
+    rectangle, rounded corners=2pt, draw=DTBlue, fill=DTLightBlue,
+    text width=3.1cm, minimum height=0.82cm, align=center, font=\scriptsize
+]
+\tikzstyle{patient}=[
+    rectangle, rounded corners=2pt, draw=DTGreen, fill=DTLightGreen,
+    text width=3.1cm, minimum height=0.82cm, align=center, font=\scriptsize
+]
+\tikzstyle{output}=[
+    rectangle, rounded corners=2pt, draw=DTOrange, fill=DTLightOrange,
+    text width=3.3cm, minimum height=0.82cm, align=center, font=\scriptsize
+]
+\tikzstyle{warn}=[
+    rectangle, rounded corners=2pt, draw=red!65!black, fill=red!6,
+    text width=9.6cm, minimum height=0.7cm, align=center, font=\scriptsize
+]
+
+\node[pretrain] (p0) at (0,2.2) {Plausible physiological parameter ranges};
+\node[pretrain] (p1) at (3.7,2.2) {Windkessel cardiovascular simulator};
+\node[pretrain] (p2) at (7.4,2.2) {Synthetic pressure, volume, and flow states};
+\node[pretrain] (p3) at (11.1,2.2) {Differentiable physics surrogate};
+
+\draw[->, thick, DTBlue] (p0) -- (p1);
+\draw[->, thick, DTBlue] (p1) -- (p2);
+\draw[->, thick, DTBlue] (p2) -- (p3);
+
+\node[patient] (r0) at (0,0) {Non-invasive echocardiography video};
+\node[patient] (r1) at (3.7,0) {Image encoder / inverse model};
+\node[patient] (r2) at (7.4,0) {Estimated patient-specific parameters};
+\node[patient] (r3) at (11.1,0) {Frozen surrogate or mechanistic simulator};
+
+\draw[->, thick, DTGreen] (r0) -- (r1);
+\draw[->, thick, DTGreen] (r1) -- (r2);
+\draw[->, thick, DTGreen] (r2) -- (r3);
+\draw[->, thick, DTGreen] (p3.south) -- (r3.north);
+
+\node[output] (o1) at (7.4,-2.0) {Patient-specific physiological states};
+\node[output] (o2) at (11.1,-2.0) {Pressure--volume loop and ejection fraction};
+\draw[->, thick, DTOrange] (r3) -- (o1);
+\draw[->, thick, DTOrange] (o1) -- (o2);
+
+\node[output] (u0) at (3.7,-2.0) {Intervention parameters};
+\node[output] (u1) at (3.7,-3.35) {LVAD or other hypothetical scenario};
+\node[output] (u2) at (7.4,-3.35) {Counterfactual simulation};
+\draw[->, thick, DTOrange] (u0) -- (u1);
+\draw[->, thick, DTOrange] (u1) -- (u2);
+\draw[->, thick, DTOrange] (u2) -- (o1);
+
+\node[warn] (w) at (5.6,-4.75) {Estimated parameters and simulated physiological states are not direct clinical measurements.};
+
+\end{tikzpicture}
